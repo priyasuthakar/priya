@@ -62,17 +62,84 @@
 			<li><a href="catagoryadmin">Catagory</a></li>
 			<li><a href="supplieradmin">Supplier</a></li>
 			<li><a href="productadmin">Product</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="logout"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
-			</ul>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="logout"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
+		</ul>
 	</div>
 	</nav>
 
-	<a href="add2" class="btn btn-link" role="button">Add</a>
-	<a href="view2" class="btn btn-link" role="button">View</a>
+	<c:url var="addAction" value="/catagory/add"></c:url>
 
+	<form:form action="${addAction}" commandName="catagory">
+		<table>
+			<tr>
+				<td><form:label path="id">
+						<spring:message text="ID" />
+					</form:label></td>
+				<c:choose>
+					<c:when test="${!empty catagory.id}">
+						<td><form:input path="id" disabled="true" readonly="true" />
+						</td>
+					</c:when>
 
+					<c:otherwise>
+						<td><form:input path="id" pattern=".{3,4}" required="true"
+								title="id should contains 3 to 4 characters" /></td>
+					</c:otherwise>
+				</c:choose>
+			</tr>
+			<tr>
+				<form:input path="id" hidden="true" />
+				<td><form:label path="name">
+						<spring:message text="Name" />
+					</form:label></td>
+				<td><form:input path="name" required="true" /></td>
+			</tr>
+			<tr>
+				<td><form:label path="discription">
+						<spring:message text="Discription" />
+					</form:label></td>
+				<td><form:input path="discription" required="true" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><c:if test="${!empty catagory.name}">
+						<input type="submit"
+							value="<spring:message text="Edit Catagory"/>" />
+					</c:if> <c:if test="${empty catagory.name}">
+						<input type="submit" value="<spring:message text="Add Catagory"/>" />
+					</c:if></td>
+			</tr>
+		</table>
+	</form:form>
+	</div>
+	</center>
 
+	<br>
+	<h3>
+		<center>Catagory List</center>
+	</h3>
+	<center>
+		<c:if test="${!empty catagoryList}">
+			<table class="tg">
+				<tr>
+					<th width="80">Catagory ID</th>
+					<th width="120">Catagory Name</th>
+					<th width="120">Catagory Discription</th>
+					<th width="60">Edit</th>
+					<th width="60">Delete</th>
+				</tr>
+				<c:forEach items="${catagoryList}" var="catagory">
+					<tr>
+						<td>${catagory.id}</td>
+						<td>${catagory.name}</td>
+						<td>${catagory.discription}</td>
+						<td><a href="<c:url value='catagory/edit/${category.id}' />">Edit</a></td>
+						<td><a
+							href="<c:url value='catagory/remove/${category.id}' />">Delete</a></td>
+					</tr>
+				</c:forEach>
+			</table>
+		</c:if>
 </body>
 </html>

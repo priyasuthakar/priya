@@ -3,7 +3,6 @@ package com.niit.appleproduct.dao;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,9 +22,7 @@ public class CatagoryDAOimp implements CatagoryDAO {
 
 	@Transactional
 	public void saveOrUpdate(Catagory catagory) {
-		Session sess=sessionFactory.openSession();
-		sess.saveOrUpdate(catagory);
-		sess.flush();
+		sessionFactory.getCurrentSession().saveOrUpdate(catagory);
 	}
 
 	@Transactional

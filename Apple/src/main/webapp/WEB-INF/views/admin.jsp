@@ -61,11 +61,11 @@
 		</div>
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="Home">Home</a></li>
-			
+
 		</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="logout"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
-			</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="logout"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
+		</ul>
 	</div>
 	</nav>
 

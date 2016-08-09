@@ -62,10 +62,10 @@
 			<li><a href="catagoryadmin">Catagory</a></li>
 			<li><a href="supplieradmin">Supplier</a></li>
 			<li><a href="productadmin">Product</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="logout"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
-			</ul>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="logout"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
+		</ul>
 	</div>
 	</nav>
 

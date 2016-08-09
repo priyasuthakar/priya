@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.appleproduct.models.User;
 
-@Repository("UserDAO")
+@Repository("userDAO")
 public class UserDAOimp implements UserDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -26,20 +26,18 @@ public class UserDAOimp implements UserDAO {
 	}
 
 	@Transactional
-	public void delete(String username) {
-		User user = new User();
-		user.setUsername(username);
+	public void delete(User user) {
 		sessionFactory.getCurrentSession().delete(user);
 	}
 
 	@Transactional
-	public User get(String username) {
-		String hql = "from catagory where username=" + "" + username + "";
+	public User get(int id) {
+		String hql = "from user where id=" + "'" + id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		List<User> listProduct = query.list();
+		List<User> listUser = query.list();
 
-		if (listProduct != null && !listProduct.isEmpty()) {
-			return listProduct.get(0);
+		if (listUser != null && !listUser.isEmpty()) {
+			return listUser.get(0);
 		}
 		return null;
 	}
@@ -55,7 +53,7 @@ public class UserDAOimp implements UserDAO {
 	}
 
 	public boolean isValidUser(String username, String password) {
-		String hql = "from UserDetails where id = '" + username + "' and password =" + password + "'";
+		String hql = "from User where username = '" + username + "' and password =" + password + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List list = query.list();
 		if (list == null || list.isEmpty()) {

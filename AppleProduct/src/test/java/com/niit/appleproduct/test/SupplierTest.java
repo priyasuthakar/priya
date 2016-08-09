@@ -17,7 +17,6 @@ public class SupplierTest {
 		supplier.setName("IPhone_6s");
 		supplier.setDiscription("Phone");
 		supplierDAO.saveOrUpdate(supplier);
-		supplierDAO.delete("ID02");
 
 	}
 

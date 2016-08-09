@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
- 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%-- <%@ page session="false"%> --%>
+<%@page isELIgnored="false"%>
+<%@include file="/WEB-INF/views/Header.jsp"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,8 +24,8 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
 <style>
+
 .navbar {
 	margin-bottom: 0;
 	background-color: #20B2AA;
@@ -51,84 +56,53 @@
 	width: 100%;
 	margin: auto;
 }
+
+footer .glyphicon {
+	font-size: 24px;
+	margin-bottom: 20px;
+	color: #20B2AA;
+}
+
 </style>
 
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar"
 	data-offset="60">
-
-	<nav class="navbar navbar-inverse">
-
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand"> <span
-						class="glyphicon glyphicon-apple"></span>Shopping Site</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="Home"><span
-						class="glyphicon glyphicon-home"></span>Home</a></li>
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"> Catagory <span
-						class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="product">Desktop</a></li>
-						<li><a href="product">Laptop</a></li>
-						<li><a href="product">Iphone</a></li>
-						<li><a href="product">Ipad</a></li>
-						<li><a href="product">Ipod</a></li>
-						<li><a href="product">Accessories</a></li>
-					</ul></li>
-				<li><a href="feedback"><span
-						class="glyphicon glyphicon-pencil"></span>FeedBack</a></li>
-				<li><a href="#about"><span
-						class="glyphicon glyphicon-stats"></span>About Us</a></li>
-				<li><a href="#contactus"><span
-						class="glyphicon glyphicon-earphone"></span>Contact Us</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-			<li><a href="cart"><span
-						class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
-				<li><a href="login"><span
-						class="glyphicon glyphicon-log-in"></span> Login</a></li>
-				<li><a href="reg"><span class="glyphicon glyphicon-user"></span>Sign
-						Up</a></li>
-			</ul>
-				</div>
-	</nav>
 	
+<h4>${errorMessage}</h4>
 
 	<center>
+	
 		<h1>
 			<i> Sign-in </i>
 		</h1>
 		</br> </br> </br> </br> </br> </br>
 		<div class="container">
-		<br> ${message}
-	<c:url var="action" value="/login"></c:url>
-
-	<form:form action="${action}" method="post" class="form-horizontal">
-				<div class="form-group">
-					<label class="col-sm-4 control-label">User Name</label>
-					<div class="col-sm-4">
-						<input class="form-control" type="text" id="text"
-							placeholder="Enter user name" required="true"
-							title="should not be empty">
-					</div>
+			<form action="login" method="post" id="login">
+			<div class="control-group">
+				<label class="col-lg-4 control-label">User Name</label>
+				<div class="controls col-lg-4">
+					<input type="text" id="username" placeholder="Enter user name"
+						required="true" title="should not be empty" />
 				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label">Password</label>
-					<div class="col-sm-4">
-						<input class="form-control" type="password" id="pwd"
-							placeholder="Enter password" required="true"
-							title="should not be empty">
-					</div>
+			</div>
+			</br>
+			</br>
+			<div class="control-group">
+				<label class="col-lg-4 control-label">Password</label>
+				<div class="controls col-lg-4">
+					<input type="pwd" id="password" placeholder="Enter password"
+						required="true" title="should not be empty" />
 				</div>
-				<div class="checkbox">
-					<label><input type="checkbox"> Remember me</label>
-				</div>
-			</form:form>
-			<a class="btn btn-default"  role="button">Submit</a>
-			<a href="login" class="btn btn-info" role="button">Reset</a> </br>
+			</div>
+			</br>
+			</br>
+			<div class="checkbox">
+				<label><input type="checkbox"> Remember me</label>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button> <a
+				href="login" class="btn btn-default" role="button">Reset</a> </br>
+</form>
 		</div>
 	</center>
 </body>

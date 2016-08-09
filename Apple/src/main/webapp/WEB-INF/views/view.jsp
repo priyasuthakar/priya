@@ -18,38 +18,6 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-<style>
-.navbar {
-	margin-bottom: 0;
-	background-color: #20B2AA;
-	z-index: 9999;
-	border: 0;
-	font-size: 18px !important;
-	line-height: 1.42857143 !important;
-	letter-spacing: 2px;
-	border-radius: 0;
-	font-family: Montserrat, sans-serif;
-}
-
-.navbar li a, .navbar .navbar-brand {
-	color: Black !important;
-}
-
-.navbar-nav li a:hover, .navbar-nav li.active a {
-	color: #20B2AA !important;
-	background-color: #fff !important;
-}
-
-.navbar-default .navbar-toggle {
-	border-color: transparent;
-	color: #fff !important;
-}
-
-.carousel-inner>.item>img, .carousel-inner>.item>a>img {
-	width: 100%;
-	margin: auto;
-}
-</style>
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
@@ -62,12 +30,35 @@
 			<li><a href="catagoryadmin">Catagory</a></li>
 			<li><a href="supplieradmin">Supplier</a></li>
 			<li><a href="productadmin">Product</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="logout"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
-			</ul>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="logout"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
+		</ul>
 	</div>
 	</nav>
 
+	<h3>Category List</h3>
+	<!--  
+ <c:if test="${!empty categoryList }">-->
+		<table class="tg">
+			<tr>
+				<th width="120">CATAGORYID</th>
+				<th width="120">CATAGORYNAME</th>
+				<th width="120">CATAGORYDISCRIPTION</th>
+				<th width="120">EDIT</th>
+				<th width="120">DELETE</th>
+			</tr>
+		 	<c:forEach items="${catagoryList}" var="catagory">
+				<tr>
+					<td>${catagory.id}</td>
+					<td>${catagory.name}</td>
+					<td>${catagory.discription}</td>
+					<td><a href="<c:url value='catagory/edit/${catagory.id}'/>">Edit</a></td>
+					<td><a href="<c:url value='catagory/remove/${catagory.id}'/>">Edit</a></td>
+				</tr>
+			</c:forEach> 
+		</table>
+	</c:if>
+	
 </body>
 </html>

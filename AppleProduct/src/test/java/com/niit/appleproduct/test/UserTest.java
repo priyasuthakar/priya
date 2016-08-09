@@ -19,9 +19,17 @@ public class UserTest {
 		user.setGender("female");
 		user.setMobileno("8903721630");
 		user.setEmailid("priyaasuthakar@gmail.com");
-		user.setUsername("priya");
+		user.setAddress("aaaaa");
+		user.setState("tamilnadu");
+		user.setCountry("india");
+		user.setPincode("613004");
+		user.setUsername("priyas");
 		user.setPassword("priya143");
+		user.setConfirmpassword("priya143");
+		user.setEnabled("s");
+		user.setRole("user");
 		userDAO.saveOrUpdate(user);
+		userDAO.delete(user);
 	}
 
 }

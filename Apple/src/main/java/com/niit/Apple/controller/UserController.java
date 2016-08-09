@@ -4,61 +4,64 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.appleproduct.dao.UserDAO;
 import com.niit.appleproduct.models.User;
 
-
 @Controller
 public class UserController {
+AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 	
 	@Autowired
-	UserDAO userDAO;
-	
+	private  UserDAO userDAO;
 	@Autowired
-	User user;
+	private  User user;
 	
-	
-	@RequestMapping("/login")
-	public ModelAndView login(@RequestParam(value = "username") String username,
-			 @RequestParam(value = "password") String password,
-			HttpSession session) {
-		
-		ModelAndView mv = new ModelAndView("/home");
-		boolean isValidUser = userDAO.isValidUser(username, password);
-		
-		if (isValidUser == true) {
-			System.out.println("Logged In");
-			user = userDAO.get(username);
-			session.setAttribute("loggedInUser", user.getUsername());
-			if (user.getUsername() == "admin") {
-				System.out.println("Admin");
-				mv.addObject("isAdmin", "true");
-			} else {
-				System.out.println("User");
-				mv.addObject("isAdmin", "false");
-			}
-		} else {
-			System.out.println("Invalid Credentials");
-			mv.addObject("invalidCredentials", "true");
-			mv.addObject("errorMessage", "Invalid Credentials");
-		}
-		
+	@RequestMapping("/reg")
+	public ModelAndView reg(){
+		ModelAndView mv = new ModelAndView("reg");
+		mv.addObject("user", user); 
+		mv.addObject("isuserClickedRegisterHere", "true"); 
 		return mv;
 	}
 	
-	@RequestMapping("/logout")
-	public ModelAndView logout(HttpServletRequest request, HttpSession session) {
-		ModelAndView mv = new ModelAndView("/home");
+	@RequestMapping(value ="reg",method=RequestMethod.POST)
+	public ModelAndView regpost(@ModelAttribute("user") User user) {
+	userDAO.saveOrUpdate(user);
+		ModelAndView mv = new ModelAndView("Home");
+		mv.addObject( "successMessage","You are successfully registered please login with your details");
+		return mv;
+	}
+
+	@RequestMapping("/login")
+	public ModelAndView login(){
+		ModelAndView mv = new ModelAndView("login");
+		mv.addObject("user", user);
+		mv.addObject("isuserClickedLoginHere", "true"); 
+		return mv;
+	}
+	@RequestMapping(value ="login",method=RequestMethod.POST)
+	public ModelAndView loginpost() {
+		ModelAndView mv= new ModelAndView("Home");
+		mv.addObject( "LoggedinMessage","You are successfully logged in");
+		return mv;
+	
+	}
+
+	@RequestMapping(value ="logout")
+	public ModelAndView logout(HttpServletRequest request,HttpSession session){
+		ModelAndView mv = new ModelAndView("home");
 		session.invalidate();
-		session = request.getSession(true);
-		mv.addObject("logoutMessage", "You are successfully logged out");
+		session=request.getSession(true);
 		mv.addObject("loggedOut", "true");
-		
+		mv.addObject("logout", "Loggedout Successfully");
 		return mv;
 	}
 

@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%-- <%@ page session="false"%> --%>
+<%@page isELIgnored="false"%>
+<%@include file="/WEB-INF/views/Header.jsp"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -18,8 +23,8 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
 <style>
+
 .navbar {
 	margin-bottom: 0;
 	background-color: #20B2AA;
@@ -50,159 +55,150 @@
 	width: 100%;
 	margin: auto;
 }
+
+footer .glyphicon {
+	font-size: 24px;
+	margin-bottom: 20px;
+	color: #20B2AA;
+}
+
 </style>
 
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar"
 	data-offset="60">
-
-	<nav class="navbar navbar-inverse">
-
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand"> <span
-						class="glyphicon glyphicon-apple"></span>Shopping Site</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="Home"><span
-						class="glyphicon glyphicon-home"></span>Home</a></li>
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"> Catagory <span
-						class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="product">Desktop</a></li>
-						<li><a href="product">Laptop</a></li>
-						<li><a href="product">Iphone</a></li>
-						<li><a href="product">Ipad</a></li>
-						<li><a href="product">Ipod</a></li>
-						<li><a href="product">Accessories</a></li>
-					</ul></li>
-				<li><a href="feedback"><span
-						class="glyphicon glyphicon-pencil"></span>FeedBack</a></li>
-				<li><a href="#about"><span
-						class="glyphicon glyphicon-stats"></span>About Us</a></li>
-				<li><a href="#contactus"><span
-						class="glyphicon glyphicon-earphone"></span>Contact Us</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-			<li><a href="cart"><span
-						class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
-				<li><a href="login"><span
-						class="glyphicon glyphicon-log-in"></span> Login</a></li>
-				<li><a href="reg"><span class="glyphicon glyphicon-user"></span>Sign
-						Up</a></li>
-			</ul>
-				</div>
-	</nav>
-	
-
 	<center>
 		<h1>
 			<i> Registration </i>
 		</h1>
 
 		<div class="container">
-		<form:form action="user/register" method="post" commandName="user" class="form-horizontal" role="form">
-				<div class="form-group">
-					<label class="col-sm-4 control-label">First Name</label>
-					<div class="col-sm-4">
-						<input class="form-control" id="text"
-							placeholder="Enter first name" required="true"
-							title="should not be empty"/>
+			<form:form action="reg" method="post" commandName="user"
+				autocomplete="on" class="form-horizontal" role="form">
+				<div class="control-group">
+				
+					<form:label class="col-lg-4 control-form:label"  path="firstname"><spring:message text="First Name" /></form:label>
+					<div class="col-lg-4 controls">
+						<form:input  path="firstname" placeholder="Enter first name"
+							required="true" title="should not be empty" />
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label">Last Name</label>
-					<div class="col-sm-4">
-						<input class="form-control" id="text"
-							placeholder="Enter last name" required="true"
-							title="should not be empty"/>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-form:label" path="lastname"><spring:message text="Last Name" /></form:label>
+					<div class="col-lg-4 controls">
+						<form:input path="lastname" placeholder="Enter last name"
+							required="true" title="should not be empty" />
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label"> Age</label>
-					<div class="col-sm-4">
-						<input class="form-control" type="Number" min="18"
-							id="Number" placeholder="Enter age" required />
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-form:label" path="age"><spring:message text= "Age"/> </form:label>
+					<div class="col-lg-4 controls">
+						<form:input min="18" path="age" placeholder="Enter age" required="true"/>
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label">Gender</label></br>
-					<div class="col-sm-4">
-						<label><input type="radio" name="optradio">Male</label> <label><input
-							type="radio" name="optradio">Female</label>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-form:label" path="gender"><spring:message text="Gender"/></form:label></br>
+					<div class="col-lg-4 controls">
+						<label><form:radiobutton path="gender" name="optradio" />Male</label>
+						<label><form:radiobutton path="gender" name="optradio" />Female</label>
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label">Mobile No</label>
-					<div class="col-sm-4">
-						<input class="form-control" type="text" pattern="[789][0-9]{9}"
-							id="text" placeholder="Enter mobile no" required="true"
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-form:label" path="mobileno"><spring:message text="Mobile No"/></form:label>
+					<div class="col-lg-4 controls">
+						<form:input pattern="[789][0-9]{9}" path="mobileno"
+							placeholder="Enter mobile no" required="true"
 							title="should be in the form of 10 digit starting with 789!" />
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label">E-Mail Id</label>
-					<div class="col-sm-4">
-						<input class="form-control" type="email" id="email"
-							placeholder="Enter email" required="true"
-							title="should be in the form of abc@example.com"/>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-form:label" path="emailid"><spring:message text="E-Mail Id"/></form:label>
+					<div class="col-lg-4 controls">
+						<form:input type="email" path="emailid" placeholder="Enter email"
+							required="true" title="should be in the form of abc@example.com" />
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label">Address:</label>
-					<div class="col-sm-4">
-						<textarea class="form-control" rows="5" max="100" id="address" required></textarea>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-form:label" path="address"><spring:message text="Address"/></form:label>
+					<div class="col-lg-4 controls">
+						<form:textarea type="text" rows="5" max="100" path="address" required="true"></form:textarea>
+					</div>
+				</div>                                                        
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-form:label" path="state"><spring:message text="State"/></form:label>
+					<div class="col-lg-4 controls">
+						<form:input type="text" path="state" placeholder="Enter " required="true"/>
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label">State:</label>
-					<div class="col-sm-4">
-						<input class="form-control" type="text" id="text"
-							placeholder="Enter " required/>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-form:label" path="country"><spring:message text="Country"/></form:label>
+					<div class="col-lg-4 controls">
+						<form:input type="text" path="country" placeholder="Enter " required="true" />
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label">Country:</label>
-					<div class="col-sm-4">
-						<input class="form-control" type="text" id="text"
-							placeholder="Enter " required/>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-form:label" path="pincode"><spring:message text="Pincode"/></form:label>
+					<div class="col-lg-4 controls">
+						<form:input type="text" path="pincode" placeholder="Enter "
+							required="true" title="should not be empty" />
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label">Pincode:</label>
-					<div class="col-sm-4">
-						<input class="form-control" type="text" id="text"
-							placeholder="Enter " required="true" title="should not be empty"/>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-form:label" path="username"><spring:message text="User Name"/></form:label>
+					<div class="col-lg-4 controls">
+						<form:input type="text" path="username" placeholder="Enter user name"
+							required="true" title="should not be empty" />
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label">User Name</label>
-					<div class="col-sm-4">
-						<input class="form-control" type="text" id="text"
-							placeholder="Enter user name" required="true"
-							title="should not be empty"/>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-form:label" path="password"><spring:message text="Password"/></form:label>
+					<div class="col-lg-4 controls">
+						<form:password path="password" placeholder="Enter password"
+							required="true" title="should not be empty" />
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label">Password</label>
-					<div class="col-sm-4">
-						<input class="form-control" type="password" id="pwd"
-							placeholder="Enter password" required="true"
-							title="should not be empty"/>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label">Re-Password </label>
-					<div class="col-sm-4">
-						<input class="form-control" type="password" id="pwd"
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-form:label" path="password"><spring:message text="Re-Password"/> </form:label>
+					<div class="col-lg-4 controls">
+						<form:password path="confirmpassword"
 							placeholder="Re-Enter password" required="true"
-							title="should be same as password"/>
+							title="should be same as password" />
 					</div>
 				</div>
+				</br>
+				</br>
+		
+		 		 <form:button type="submit" class="btn btn-info" ><spring:message text="Submit" /> </form:button>
+    			  <a href="reg" class="btn btn-info" role="button">Reset</a>
 			</form:form>
-			<a href="#" class="btn btn-info" role="button">Submit</a> <a
-				href="reg" class="btn btn-info" role="button">Reset</a>
 		</div>
 	</center>
 </body>

@@ -17,7 +17,7 @@ public class ProductTest {
 		product.setName("IPhone_6s");
 		product.setDiscription("Phone");
 		productDAO.saveOrUpdate(product);
-	
+		productDAO.delete("ID01");
 		
 	}
 

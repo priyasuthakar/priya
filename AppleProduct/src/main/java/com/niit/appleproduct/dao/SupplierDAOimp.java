@@ -3,7 +3,6 @@ package com.niit.appleproduct.dao;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,9 +22,7 @@ public class SupplierDAOimp implements SupplierDAO {
 
 	@Transactional
 	public void saveOrUpdate(Supplier supplier) {
-		Session sess=sessionFactory.openSession();
-		sess.saveOrUpdate(supplier);
-		sess.flush();
+		sessionFactory.getCurrentSession().saveOrUpdate(supplier);
 	}
 
 	@Transactional
@@ -37,12 +34,12 @@ public class SupplierDAOimp implements SupplierDAO {
 
 	@Transactional
 	public Supplier get(String id) {
-		String hql = "from catagory where id=" + "'" + id + "'";
+		String hql = "from supplier where id=" + "'" + id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		List<Supplier> listCatagory = query.list();
+		List<Supplier> listSupplier = query.list();
 
-		if (listCatagory != null && !listCatagory.isEmpty()) {
-			return listCatagory.get(0);
+		if (listSupplier != null && !listSupplier.isEmpty()) {
+			return listSupplier.get(0);
 		}
 		return null;
 	}

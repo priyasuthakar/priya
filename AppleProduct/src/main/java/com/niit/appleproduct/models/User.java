@@ -1,6 +1,8 @@
 package com.niit.appleproduct.models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,19 +12,35 @@ import org.springframework.stereotype.Component;
 @Table(name = "USER")
 @Component
 public class User {
-
-	private String firstname;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private int id=0;
+private String firstname;
 	private String lastname;
 	private String age;
 	private String gender;
 	private String mobileno;
 	private String emailid;
+	private String address;
+	private String state;
+	private String country;
+	private String pincode;
 	private String username;
 	private String password;
+	private String confirmpassword;
 	private String enabled;
 	private String role;
 
-	@Id
+
+		
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getFirstname() {
 		return firstname;
 	}
@@ -30,7 +48,7 @@ public class User {
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
-
+	
 	public String getLastname() {
 		return lastname;
 	}
@@ -71,6 +89,38 @@ public class User {
 		this.emailid = emailid;
 	}
 
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getPincode() {
+		return pincode;
+	}
+
+	public void setPincode(String pincode) {
+		this.pincode = pincode;
+	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -87,6 +137,14 @@ public class User {
 		this.password = password;
 	}
 
+	public String getConfirmpassword() {
+		return confirmpassword;
+	}
+
+	public void setConfirmpassword(String confirmpassword) {
+		this.confirmpassword = confirmpassword;
+	}
+
 	public String getEnabled() {
 		return enabled;
 	}
@@ -95,13 +153,14 @@ public class User {
 		this.enabled = enabled;
 	}
 
-	public String getrole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setrole(String role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
-	
+
+
 
 }

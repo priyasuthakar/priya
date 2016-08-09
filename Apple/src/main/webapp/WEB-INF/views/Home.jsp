@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%-- <%@ page session="false"%> --%>
+<%@page isELIgnored="false"%>
+<%@include file="/WEB-INF/views/Header.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,11 +44,6 @@ h4 {
 	color: #303030;
 	font-weight: 400;
 	margin-bottom: 30px;
-}
-
-
-.container-fluid {
-	padding: 20px 50px;
 }
 
 .bg-grey {
@@ -93,6 +92,9 @@ h4 {
 
 .item span {
 	font-style: normal;
+}
+.container-fluid {
+	padding: 20px 50px;
 }
 
 .navbar {
@@ -161,51 +163,18 @@ footer .glyphicon {
 	}
 }
 </style>
+
 </head>
+
 <body id="myPage" data-spy="scroll" data-target=".navbar"
 	data-offset="60">
+<h2>
+<font size="32">
+${successMessage}
+${LoggedinMessage}
+</font>
+</h2>
 
-	<nav class="navbar navbar-inverse">
-
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand"> <span
-						class="glyphicon glyphicon-apple"></span>Shopping Site</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="Home"><span
-						class="glyphicon glyphicon-home"></span>Home</a></li>
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"> Catagory <span
-						class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="product">Desktop</a></li>
-						<li><a href="product">Laptop</a></li>
-						<li><a href="product">Iphone</a></li>
-						<li><a href="product">Ipad</a></li>
-						<li><a href="product">Ipod</a></li>
-						<li><a href="product">Accessories</a></li>
-					</ul></li>
-				<li><a href="feedback"><span
-						class="glyphicon glyphicon-pencil"></span>FeedBack</a></li>
-				<li><a href="#about"><span
-						class="glyphicon glyphicon-stats"></span>About Us</a></li>
-				<li><a href="#contactus"><span
-						class="glyphicon glyphicon-earphone"></span>Contact Us</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-			<li><a href="cart"><span
-						class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
-				<li><a href="admin"><span
-						class="glyphicon glyphicon-log-in"></span> Admin</a></li>
-				<li><a href="loginHere"><span
-						class="glyphicon glyphicon-log-in"></span> Login</a></li>
-				<li><a href="registerhere"><span class="glyphicon glyphicon-user"></span>Sign
-						Up</a></li>
-			</ul>
-				</div>
-	</nav>
-	
 	<!-- Container (Portfolio Section) -->
 	<div id="portfolio" class="container-fluid text-center">
 		<h2>Portfolio</h2>
