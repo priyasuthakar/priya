@@ -1,11 +1,17 @@
 package com.niit.Apple.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.appleproduct.dao.CatagoryDAO;
 
 @Controller
 public class LoginController {
+	@Autowired
+	private CatagoryDAO catagoryDAO;
+
 		
 	@RequestMapping("/")
 	public String home() {
@@ -22,44 +28,23 @@ public class LoginController {
 		return "product";
 	}
 	
-	@RequestMapping("/admin")
+	/*@RequestMapping("/admin")
 	public String admin() {
 		return "admin";
 	}
+	*/
+	@RequestMapping("/viewcatagory")
+    public ModelAndView view() {
+		ModelAndView mv=new ModelAndView("/view");
+       mv.addObject("catagoryList",catagoryDAO.list());
+        return mv;
+    }
+	
+	@RequestMapping("/editcatagory")
+    public ModelAndView edit() {
+		ModelAndView mv=new ModelAndView("/edit");
+       mv.addObject("catagoryList",catagoryDAO.list());
+        return mv;
+    }
 		
-	@RequestMapping("/add")
-	public String add() {
-		return "add";
 	}
-	
-	@RequestMapping("/add1")
-	public String add1() {
-		return "add1";
-	}
-	
-	@RequestMapping("/add2")
-	public String add2() {
-		return "add2";
-	}
-	
-	@RequestMapping("/edit")
-	public String edit() {
-		return "edit";
-	}
-	
-	@RequestMapping("/edit1")
-	public String edit1() {
-		return "edit1";
-	}
-	
-	@RequestMapping("/edit2")
-	public String edit2() {
-		return "edit2";
-	}
-
-	@RequestMapping("/view")
-	public String view() {
-		return "view";
-	}
-	
-}

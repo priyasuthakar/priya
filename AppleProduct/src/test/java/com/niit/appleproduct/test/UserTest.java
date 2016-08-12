@@ -26,10 +26,9 @@ public class UserTest {
 		user.setUsername("priyas");
 		user.setPassword("priya143");
 		user.setConfirmpassword("priya143");
-		user.setEnabled("s");
+		user.setEnabled(true);
 		user.setRole("user");
 		userDAO.saveOrUpdate(user);
-		userDAO.delete(user);
 	}
 
 }

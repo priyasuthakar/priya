@@ -25,7 +25,7 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <style>
 body {
-	font: 400 15px Lato, sans-serif;
+	font: 400 15px Helvetica, sans-serif;
 	line-height: 1.8;
 	color: #818181;
 }
@@ -82,6 +82,19 @@ h4 {
 	background-color: #20B2AA;
 }
 
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+	width: 250%;
+	margin: auto;
+}
+
+.tales {
+	width: 200%;
+}
+
+.carousel-inner {
+	max-height: 600px !important;
+}
+
 .item h4 {
 	font-size: 19px;
 	line-height: 1.375em;
@@ -93,6 +106,7 @@ h4 {
 .item span {
 	font-style: normal;
 }
+
 .container-fluid {
 	padding: 20px 50px;
 }
@@ -121,11 +135,6 @@ h4 {
 .navbar-default .navbar-toggle {
 	border-color: transparent;
 	color: #fff !important;
-}
-
-.carousel-inner>.item>img, .carousel-inner>.item>a>img {
-	width: 100%;
-	margin: auto;
 }
 
 footer .glyphicon {
@@ -168,12 +177,10 @@ footer .glyphicon {
 
 <body id="myPage" data-spy="scroll" data-target=".navbar"
 	data-offset="60">
-<h2>
-<font size="32">
-${successMessage}
-${LoggedinMessage}
-</font>
-</h2>
+
+	<h2>${LoggedinMessage}</h2>
+	<h2>${successMessage}</h2>
+	<h2>${logoutsuccess}</h2>
 
 	<!-- Container (Portfolio Section) -->
 	<div id="portfolio" class="container-fluid text-center">
@@ -251,96 +258,97 @@ ${LoggedinMessage}
 				</a>
 			</div>
 		</div>
-		<br>
+	</div>
+	<br>
 
-		<!-- Container (About Section) -->
-		<div id="about" class="container-fluid bg-grey ">
-			<div class="row">
-				<div class="col-sm-8">
-					<h2>About Us</h2>
-					<br>
-					<p>This Website exclusively contains for purchasing apple
-						product.</p>
-				</div>
-				<div class="col-sm-4">
-					<span class="glyphicon glyphicon-stats logo"></span>
-				</div>
+	<!-- Container (About Section) -->
+	<div id="about" class="container-fluid bg-grey ">
+		<div class="row">
+			<div class="col-sm-8">
+				<h2>About Us</h2>
+				<br>
+				<p>This Website exclusively contains for purchasing apple
+					product.</p>
+			</div>
+			<div class="col-sm-4">
+				<span class="glyphicon glyphicon-stats logo"></span>
 			</div>
 		</div>
+	</div>
 
-		<div class="container-fluid ">
-			<div class="row">
-				<div class="col-sm-4">
-					<span class="glyphicon glyphicon-globe logo slideanim"></span>
-				</div>
-				<div class="col-sm-8">
-					<h2>Our Values</h2>
-					<br>
-					<h4>
-						<strong>MISSION:</strong> To deliver an exceptional shopping
-						experience by offering the best service, value, quality, and
-						freshest products while being good stewards of our environment and
-						giving back to the communities we serve.
-					</h4>
-					<br>
-					<h4>
-						<strong>VISION:</strong>Become the #1 supermarket in our
-						communities by offering the most inviting buying environment in
-						the industry while saving our customer time and money and building
-						our brand to premier status.
-					</h4>
-				</div>
+	<div class="container-fluid ">
+		<div class="row">
+			<div class="col-sm-4">
+				<span class="glyphicon glyphicon-globe logo slideanim"></span>
+			</div>
+			<div class="col-sm-8">
+				<h2>Our Values</h2>
+				<br>
+				<h4>
+					<strong>MISSION:</strong> To deliver an exceptional shopping
+					experience by offering the best service, value, quality, and
+					freshest products while being good stewards of our environment and
+					giving back to the communities we serve.
+				</h4>
+				<br>
+				<h4>
+					<strong>VISION:</strong>Become the #1 supermarket in our
+					communities by offering the most inviting buying environment in the
+					industry while saving our customer time and money and building our
+					brand to premier status.
+				</h4>
 			</div>
 		</div>
+	</div>
 
-		<!-- Container (Contact Section) -->
-		<div id="contactus" class="container-fluid bg-grey">
-			<h2 class="text-center">CONTACT</h2>
-			<div class="row">
-				<div class="col-sm-5">
-					<p>Contact us and we'll get back to you within 24 hours.</p>
-					<p>
-						<span class="glyphicon glyphicon-map-marker"></span> Chicago, US
-					</p>
-					<p>
-						<span class="glyphicon glyphicon-phone"></span> +00 1515151515
-					</p>
-					<p>
-						<span class="glyphicon glyphicon-envelope"></span>
-						appleproduct@apple.com
-					</p>
-				</div>
-				<div class="col-sm-7 slideanim">
-					<div class="row">
-						<div class="col-sm-6 form-group">
-							<input class="form-control" id="name" name="name"
-								placeholder="Name" type="text" required>
-						</div>
-						<div class="col-sm-6 form-group">
-							<input class="form-control" id="email" name="email"
-								placeholder="Email" type="email" required>
-						</div>
+	<!-- Container (Contact Section) -->
+	<div id="contactus" class="container-fluid bg-grey">
+		<h2 class="text-center">CONTACT</h2>
+		<div class="row">
+			<div class="col-sm-5">
+				<p>Contact us and we'll get back to you within 24 hours.</p>
+				<p>
+					<span class="glyphicon glyphicon-map-marker"></span> Chicago, US
+				</p>
+				<p>
+					<span class="glyphicon glyphicon-phone"></span> +00 1515151515
+				</p>
+				<p>
+					<span class="glyphicon glyphicon-envelope"></span>
+					appleproduct@apple.com
+				</p>
+			</div>
+			<div class="col-sm-7 slideanim">
+				<div class="row">
+					<div class="col-sm-6 form-group">
+						<input class="form-control" id="name" name="name"
+							placeholder="Name" type="text" required>
 					</div>
-					<textarea class="form-control" id="comments" name="comments"
-						placeholder="Comment" rows="5"></textarea>
-					<br>
-					<div class="row">
-						<div class="col-sm-12 form-group">
-							<button class="btn btn-default pull-right" type="submit">Send</button>
-						</div>
+					<div class="col-sm-6 form-group">
+						<input class="form-control" id="email" name="email"
+							placeholder="Email" type="email" required>
 					</div>
 				</div>
+				<textarea class="form-control" id="comments" name="comments"
+					placeholder="Comment" rows="5"></textarea>
+				<br>
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<button class="btn btn-default pull-right" type="submit">Send</button>
+					</div>
+				</div>
 			</div>
 		</div>
+	</div>
 
 
-		<footer class="container-fluid text-center">
-			<a href="#myPage" title="To Top"> <span
-				class="glyphicon glyphicon-chevron-up"></span>
-			</a>
-		</footer>
+	<footer class="container-fluid text-center">
+		<a href="#myPage" title="To Top"> <span
+			class="glyphicon glyphicon-chevron-up"></span>
+		</a>
+	</footer>
 
-		<script>
+	<script>
 $(document).ready(function(){
   // Add smooth scrolling to all links in navbar + footer link
   $(".navbar a, footer a[href='#myPage']").on('click', function(event) {

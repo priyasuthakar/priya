@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -59,9 +61,6 @@
 		</div>
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="Home">Home</a></li>
-			<li><a href="catagoryadmin">Catagory</a></li>
-			<li><a href="supplieradmin">Supplier</a></li>
-			<li><a href="productadmin">Product</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="logout"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
@@ -71,32 +70,35 @@
 
 	<center>
 		<div class="container">
-			<form class="form-horizontal" role="form">
-				<div class="form-group">
-					<label class="col-sm-4 control-label">Product Id</label>
-					<div class="col-sm-4">
-						<input class="form-control" type="text" id="text"
-							placeholder="Enter product id" required="true"
-							title="should not be empty">
+			<form:form action="catagory" method="post" commandName="catagory"
+				autocomplete="on" class="form-horizontal" role="form">
+				<h1>${success}</h1>
+
+				<div class="control-group">
+					<form:label class="col-lg-4" path="name">
+						<spring:message text="Name" />
+					</form:label>
+					<div class="col-lg-4 controls">
+						<form:input path="name" />
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label">Product Name</label>
-					<div class="col-sm-4">
-						<input class="form-control" type="text" id="text"
-							placeholder="Enter product name" required="true"
-							title="should not be empty">
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4" path="discription">
+						<spring:message text="Discription" />
+					</form:label>
+					<div class="col-lg-4 controls">
+						<form:input path="discription" />
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label">Description:</label>
-					<div class="col-sm-4">
-						<textarea class="form-control" rows="5" id="description"></textarea>
-					</div>
-				</div>
-			</form>
-			<button type="add" class="btn btn-default .btn-sm">Add</button>
-			<a href="add" class="btn btn-info" role="button">Reset</a> </br>
+				</br>
+				</br>
+				<form:button type="submit" class="btn btn-info">
+					<spring:message text="ADD" />
+				</form:button>
+				<a href="add" class="btn btn-info" role="button">Reset</a>
+			</form:form>
 		</div>
 	</center>
 </body>

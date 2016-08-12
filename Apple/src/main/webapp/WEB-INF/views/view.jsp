@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -36,29 +38,30 @@
 		</ul>
 	</div>
 	</nav>
-
-	<h3>Category List</h3>
+	<h1>${desuccess}</h1>
+	<h1>${editcatagory}</h1>
+	<h3>Catagory List</h3>
 	<!--  
- <c:if test="${!empty categoryList }">-->
-		<table class="tg">
+ <c:if test="${!empty catagoryList }">-->
+	<table class="tg">
+		<tr>
+			<th width="120">CATAGORYID</th>
+			<th width="120">CATAGORYNAME</th>
+			<th width="120">CATAGORYDISCRIPTION</th>
+			<th width="120">EDIT</th>
+			<th width="120">DELETE</th>
+		</tr>
+		<c:forEach items="${catagoryList}" var="catagory">
 			<tr>
-				<th width="120">CATAGORYID</th>
-				<th width="120">CATAGORYNAME</th>
-				<th width="120">CATAGORYDISCRIPTION</th>
-				<th width="120">EDIT</th>
-				<th width="120">DELETE</th>
+				<td>${catagory.id}</td>
+				<td>${catagory.name}</td>
+				<td>${catagory.discription}</td>
+				<td><a href="<c:url value='catagory/edit/${catagory.id}'/>">Edit</a></td>
+				<td><a href="<c:url value='catagory/delete/${catagory.id}'/>">Delete</a></td>
 			</tr>
-		 	<c:forEach items="${catagoryList}" var="catagory">
-				<tr>
-					<td>${catagory.id}</td>
-					<td>${catagory.name}</td>
-					<td>${catagory.discription}</td>
-					<td><a href="<c:url value='catagory/edit/${catagory.id}'/>">Edit</a></td>
-					<td><a href="<c:url value='catagory/remove/${catagory.id}'/>">Edit</a></td>
-				</tr>
-			</c:forEach> 
-		</table>
-	</c:if>
-	
+		</c:forEach>
+	</table>
+	<!-- </c:if> -->
+
 </body>
 </html>

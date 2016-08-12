@@ -13,11 +13,8 @@ public class CatagoryTest {
 		
 		CatagoryDAO catagoryDAO = (CatagoryDAO) context.getBean("catagoryDAO");
 		Catagory catagory = (Catagory) context.getBean("catagory");
-		catagory.setId("ID01");
 		catagory.setName("IPhone_6s");
 		catagory.setDiscription("Phone");
-		
-		catagory.setId("ID02");
 		catagory.setName("IPhone_5s");
 		catagory.setDiscription("Phone");
 		catagoryDAO.saveOrUpdate(catagory);

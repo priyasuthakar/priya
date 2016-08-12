@@ -25,7 +25,6 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <style>
-
 .navbar {
 	margin-bottom: 0;
 	background-color: #20B2AA;
@@ -62,7 +61,6 @@ footer .glyphicon {
 	margin-bottom: 20px;
 	color: #20B2AA;
 }
-
 </style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar"

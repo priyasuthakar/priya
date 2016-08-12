@@ -8,11 +8,11 @@ public interface UserDAO {
 
 	public List<User> list();
 
-	public User get(int id);
+	public User get(String username);
 
 	public void saveOrUpdate(User user);
 
-	public void delete(User user);
+	public void delete(String username);
 
 	public boolean isValidUser(String username, String password);
 

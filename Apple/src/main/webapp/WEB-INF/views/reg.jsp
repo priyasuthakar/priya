@@ -24,7 +24,6 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <style>
-
 .navbar {
 	margin-bottom: 0;
 	background-color: #20B2AA;
@@ -61,7 +60,6 @@ footer .glyphicon {
 	margin-bottom: 20px;
 	color: #20B2AA;
 }
-
 </style>
 
 </head>
@@ -76,17 +74,21 @@ footer .glyphicon {
 			<form:form action="reg" method="post" commandName="user"
 				autocomplete="on" class="form-horizontal" role="form">
 				<div class="control-group">
-				
-					<form:label class="col-lg-4 control-form:label"  path="firstname"><spring:message text="First Name" /></form:label>
+
+					<form:label class="col-lg-4 control-label" path="firstname">
+						<spring:message text="First Name" />
+					</form:label>
 					<div class="col-lg-4 controls">
-						<form:input  path="firstname" placeholder="Enter first name"
+						<form:input path="firstname" placeholder="Enter first name"
 							required="true" title="should not be empty" />
 					</div>
 				</div>
 				</br>
 				</br>
 				<div class="control-group">
-					<form:label class="col-lg-4 control-form:label" path="lastname"><spring:message text="Last Name" /></form:label>
+					<form:label class="col-lg-4 control-label" path="lastname">
+						<spring:message text="Last Name" />
+					</form:label>
 					<div class="col-lg-4 controls">
 						<form:input path="lastname" placeholder="Enter last name"
 							required="true" title="should not be empty" />
@@ -95,24 +97,33 @@ footer .glyphicon {
 				</br>
 				</br>
 				<div class="control-group">
-					<form:label class="col-lg-4 control-form:label" path="age"><spring:message text= "Age"/> </form:label>
+					<form:label class="col-lg-4 control-label" path="age">
+						<spring:message text="Age" />
+					</form:label>
 					<div class="col-lg-4 controls">
-						<form:input min="18" path="age" placeholder="Enter age" required="true"/>
+						<form:input min="18" path="age" placeholder="Enter age"
+							required="true" />
 					</div>
 				</div>
 				</br>
 				</br>
 				<div class="control-group">
-					<form:label class="col-lg-4 control-form:label" path="gender"><spring:message text="Gender"/></form:label></br>
+					<form:label class="col-lg-4 control-label" path="gender">
+						<spring:message text="Gender" />
+					</form:label>
 					<div class="col-lg-4 controls">
-						<label><form:radiobutton path="gender" name="optradio" />Male</label>
-						<label><form:radiobutton path="gender" name="optradio" />Female</label>
+						<form:radiobutton path="gender" name="optradio" />
+						<spring:message text="Male" />
+						<form:radiobutton path="gender" name="optradio" />
+						<spring:message text="Female" />
 					</div>
 				</div>
 				</br>
 				</br>
 				<div class="control-group">
-					<form:label class="col-lg-4 control-form:label" path="mobileno"><spring:message text="Mobile No"/></form:label>
+					<form:label class="col-lg-4 control-label" path="mobileno">
+						<spring:message text="Mobile No" />
+					</form:label>
 					<div class="col-lg-4 controls">
 						<form:input pattern="[789][0-9]{9}" path="mobileno"
 							placeholder="Enter mobile no" required="true"
@@ -122,7 +133,9 @@ footer .glyphicon {
 				</br>
 				</br>
 				<div class="control-group">
-					<form:label class="col-lg-4 control-form:label" path="emailid"><spring:message text="E-Mail Id"/></form:label>
+					<form:label class="col-lg-4 control-label" path="emailid">
+						<spring:message text="E-Mail Id" />
+					</form:label>
 					<div class="col-lg-4 controls">
 						<form:input type="email" path="emailid" placeholder="Enter email"
 							required="true" title="should be in the form of abc@example.com" />
@@ -131,11 +144,14 @@ footer .glyphicon {
 				</br>
 				</br>
 				<div class="control-group">
-					<form:label class="col-lg-4 control-form:label" path="address"><spring:message text="Address"/></form:label>
+					<form:label class="col-lg-4 control-label" path="address">
+						<spring:message text="Address" />
+					</form:label>
 					<div class="col-lg-4 controls">
-						<form:textarea type="text" rows="5" max="100" path="address" required="true"></form:textarea>
+						<form:textarea type="text" rows="5" max="100" path="address"
+							required="true"></form:textarea>
 					</div>
-				</div>                                                        
+				</div>
 				</br>
 				</br>
 				</br>
@@ -143,23 +159,31 @@ footer .glyphicon {
 				</br>
 				</br>
 				<div class="control-group">
-					<form:label class="col-lg-4 control-form:label" path="state"><spring:message text="State"/></form:label>
+					<form:label class="col-lg-4 control-label" path="state">
+						<spring:message text="State" />
+					</form:label>
 					<div class="col-lg-4 controls">
-						<form:input type="text" path="state" placeholder="Enter " required="true"/>
+						<form:input type="text" path="state" placeholder="Enter "
+							required="true" />
 					</div>
 				</div>
 				</br>
 				</br>
 				<div class="control-group">
-					<form:label class="col-lg-4 control-form:label" path="country"><spring:message text="Country"/></form:label>
+					<form:label class="col-lg-4 control-label" path="country">
+						<spring:message text="Country" />
+					</form:label>
 					<div class="col-lg-4 controls">
-						<form:input type="text" path="country" placeholder="Enter " required="true" />
+						<form:input type="text" path="country" placeholder="Enter "
+							required="true" />
 					</div>
 				</div>
 				</br>
 				</br>
 				<div class="control-group">
-					<form:label class="col-lg-4 control-form:label" path="pincode"><spring:message text="Pincode"/></form:label>
+					<form:label class="col-lg-4 control-label" path="pincode">
+						<spring:message text="Pincode" />
+					</form:label>
 					<div class="col-lg-4 controls">
 						<form:input type="text" path="pincode" placeholder="Enter "
 							required="true" title="should not be empty" />
@@ -168,16 +192,21 @@ footer .glyphicon {
 				</br>
 				</br>
 				<div class="control-group">
-					<form:label class="col-lg-4 control-form:label" path="username"><spring:message text="User Name"/></form:label>
+					<form:label class="col-lg-4 control-label" path="username">
+						<spring:message text="User Name" />
+					</form:label>
 					<div class="col-lg-4 controls">
-						<form:input type="text" path="username" placeholder="Enter user name"
-							required="true" title="should not be empty" />
+						<form:input type="text" path="username"
+							placeholder="Enter user name" required="true"
+							title="should not be empty" />
 					</div>
 				</div>
 				</br>
 				</br>
 				<div class="control-group">
-					<form:label class="col-lg-4 control-form:label" path="password"><spring:message text="Password"/></form:label>
+					<form:label class="col-lg-4 control-label" path="password">
+						<spring:message text="Password" />
+					</form:label>
 					<div class="col-lg-4 controls">
 						<form:password path="password" placeholder="Enter password"
 							required="true" title="should not be empty" />
@@ -186,7 +215,9 @@ footer .glyphicon {
 				</br>
 				</br>
 				<div class="control-group">
-					<form:label class="col-lg-4 control-form:label" path="password"><spring:message text="Re-Password"/> </form:label>
+					<form:label class="col-lg-4 control-label" path="password">
+						<spring:message text="Re-Password" />
+					</form:label>
 					<div class="col-lg-4 controls">
 						<form:password path="confirmpassword"
 							placeholder="Re-Enter password" required="true"
@@ -195,9 +226,11 @@ footer .glyphicon {
 				</div>
 				</br>
 				</br>
-		
-		 		 <form:button type="submit" class="btn btn-info" ><spring:message text="Submit" /> </form:button>
-    			  <a href="reg" class="btn btn-info" role="button">Reset</a>
+
+				<form:button type="submit" class="btn btn-info">
+					<spring:message text="Submit" />
+				</form:button>
+				<a href="reg" class="btn btn-info" role="button">Reset</a>
 			</form:form>
 		</div>
 	</center>

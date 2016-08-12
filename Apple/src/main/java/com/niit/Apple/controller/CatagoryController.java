@@ -1,68 +1,59 @@
 package com.niit.Apple.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.appleproduct.dao.CatagoryDAO;
 import com.niit.appleproduct.models.Catagory;
 
+@Controller
 public class CatagoryController {
 
 	@Autowired
-	CatagoryDAO catagoryDAO;
+	private CatagoryDAO catagoryDAO;
 	@Autowired
-	Catagory catagory;
-	
-	@RequestMapping(value = "/onLoad", method = RequestMethod.GET)
-	public String onLoad(Model model) {
-		System.out.println("onLoad");
-		model.addAttribute("catagory", new Catagory());
-		model.addAttribute("catagoryList", this.catagoryDAO.list());
-		return "/home";
+	private Catagory catagory;
+
+	@RequestMapping(value ="catagory",method=RequestMethod.GET)
+	public ModelAndView catagory(){
+		ModelAndView mv = new ModelAndView("/add");
+		mv.addObject("catagory", catagory);  
+		mv.addObject("addcatagory", "Add Catagory");
+		return mv;
+	}
+
+	// For add and update
+	@RequestMapping(value ="catagory",method=RequestMethod.POST)
+	public ModelAndView  catagoryadd(@ModelAttribute("catagory") Catagory category) {
+	catagoryDAO.saveOrUpdate(catagory);
+		ModelAndView mv = new ModelAndView("/view");
+		mv.addObject("catagory", catagory);  
+		mv.addObject("catagoryList",catagoryDAO.list());
+		return mv;
 	}
 	
-	
-	@RequestMapping(value = "/managecategories")
-	public String listCategories(Model model) {
-		model.addAttribute("catagory", new Catagory());
-		model.addAttribute("catagoryList", this.catagoryDAO.list());
+	@RequestMapping(value ="catagory/delete/{id}")
+	public String deletecatagory(@PathVariable("id") int id, ModelMap model) {
+		catagoryDAO.delete(id);
+		model.addAttribute("desuccess", "Deleted Successfully"); 
 		return "catagory";
 	}
 	
-	@RequestMapping(value= "/catagory/add")
-	public String addCatagory(@ModelAttribute("catagory") Catagory catagory){
-		
+	@RequestMapping(value ="catagory/edit/{id}")
+	public String editcatagory(@PathVariable("id") int id, Model model  ) {
+		catagory = catagoryDAO.get(id); 
+		model.addAttribute("catagory", catagory);
+		model.addAttribute("catagoryList",catagoryDAO.list());
+		model.addAttribute("editcatagory", "Edit catagory");  
+		return "catagory";
+	}
 	
-			catagoryDAO.saveOrUpdate(catagory);
-		
-		return "redirect:/managecategories";
-		
-	}
-	@RequestMapping("category/remove/{id}")
-    public String deleteCatagory(@PathVariable("id") String id,ModelMap model) throws Exception{
-		
-       try {
-		catagoryDAO.delete(id);
-		model.addAttribute("message","Successfully Added");
-	} catch (Exception e) {
-		model.addAttribute("message",e.getMessage());
-		e.printStackTrace();
-	}
-       //redirectAttrs.addFlashAttribute(arg0, arg1)
-        return "redirect:/managecategories";
-    }
- 
-    @RequestMapping("catagory/edit/{id}")
-    public String editCatagory(@PathVariable("id") String id, Model model){
-    	System.out.println("editCatagory");
-        model.addAttribute("catagory", this.catagoryDAO.get(id));
-        model.addAttribute("listCatagories", this.catagoryDAO.list());
-        return "catagory";
-    }
-
 }
+

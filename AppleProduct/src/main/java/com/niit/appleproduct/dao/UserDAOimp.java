@@ -22,18 +22,23 @@ public class UserDAOimp implements UserDAO {
 
 	@Transactional
 	public void saveOrUpdate(User user) {
+		user.setRole("user");
+		user.setEnabled(true);
 		sessionFactory.getCurrentSession().saveOrUpdate(user);
 	}
 
 	@Transactional
-	public void delete(User user) {
+	public void delete(String username) {
+		User user = new User();
+		user.setUsername(username);
 		sessionFactory.getCurrentSession().delete(user);
 	}
-
+	
 	@Transactional
-	public User get(int id) {
-		String hql = "from user where id=" + "'" + id + "'";
+	public User get(String username) {
+		String hql = "from User where username=" + "'" + username + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		@SuppressWarnings("unchecked")
 		List<User> listUser = query.list();
 
 		if (listUser != null && !listUser.isEmpty()) {
@@ -49,18 +54,24 @@ public class UserDAOimp implements UserDAO {
 		List<User> listUser = (List<User>) sessionFactory.getCurrentSession().createCriteria(User.class)
 				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 		return listUser;
-
 	}
 
-	public boolean isValidUser(String username, String password) {
-		String hql = "from User where username = '" + username + "' and password =" + password + "'";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		List list = query.list();
-		if (list == null || list.isEmpty()) {
-			return false;
-		} else {
+	@Transactional
+	public boolean isValidUser(String username,String password) {
+		String hql="from User where username ='" + username + "'and "+"password ='"+ password+"'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		@SuppressWarnings("unchecked")
+		List<User> listUser = query.list();
+		
+		if(listUser!= null && !listUser.isEmpty()) {
 			return true;
+			
 		}
-
+		return false;
 	}
+	
 }
+
+
+
+

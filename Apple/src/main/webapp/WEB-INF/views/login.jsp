@@ -25,7 +25,6 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <style>
-
 .navbar {
 	margin-bottom: 0;
 	background-color: #20B2AA;
@@ -62,47 +61,53 @@ footer .glyphicon {
 	margin-bottom: 20px;
 	color: #20B2AA;
 }
-
 </style>
 
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar"
 	data-offset="60">
-	
-<h4>${errorMessage}</h4>
 
 	<center>
-	
+
 		<h1>
 			<i> Sign-in </i>
 		</h1>
+
 		</br> </br> </br> </br> </br> </br>
 		<div class="container">
-			<form action="login" method="post" id="login">
-			<div class="control-group">
-				<label class="col-lg-4 control-label">User Name</label>
-				<div class="controls col-lg-4">
-					<input type="text" id="username" placeholder="Enter user name"
-						required="true" title="should not be empty" />
+			<form:form action="login" method="post" commandName="user"
+				autocomplete="on" class="form-horizontal" role="form">
+				<div class="control-group">
+					<form:label class="col-lg-4" path="username">
+						<spring:message text="User Name" />
+					</form:label>
+					<div class="col-lg-4 controls">
+						<form:input path="username" placeholder="Enter user name"
+							required="true" title="should not be empty" />
+					</div>
 				</div>
-			</div>
-			</br>
-			</br>
-			<div class="control-group">
-				<label class="col-lg-4 control-label">Password</label>
-				<div class="controls col-lg-4">
-					<input type="pwd" id="password" placeholder="Enter password"
-						required="true" title="should not be empty" />
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4" path="password">
+						<spring:message text="Password" />
+					</form:label>
+					<div class="col-lg-4 controls">
+						<form:password path="password" placeholder="Enter password"
+							required="true" title="should not be empty" />
+					</div>
 				</div>
-			</div>
-			</br>
-			</br>
-			<div class="checkbox">
-				<label><input type="checkbox"> Remember me</label>
-			</div>
-			<button type="submit" class="btn btn-primary">Submit</button> <a
-				href="login" class="btn btn-default" role="button">Reset</a> </br>
-</form>
+				</br>
+				</br>
+
+				<div class="checkbox">
+					<label><input type="checkbox"> Remember me</label>
+				</div>
+				<form:button type="submit" class="btn btn-info">
+					<spring:message text="Submit" />
+				</form:button>
+				<a href="login" class="btn btn-default" role="button">Reset</a>
+			</form:form>
 		</div>
 	</center>
 </body>

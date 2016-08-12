@@ -8,9 +8,9 @@ public interface CatagoryDAO {
 
 	public List<Catagory> list();
 
-	public Catagory get(String id);
+	public Catagory get(int id);
 
 	public void saveOrUpdate(Catagory catagory);
 
-	public void delete(String id);
+	public void delete(int id);
 }

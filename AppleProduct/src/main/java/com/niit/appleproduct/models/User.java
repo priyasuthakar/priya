@@ -12,9 +12,10 @@ import org.springframework.stereotype.Component;
 @Table(name = "USER")
 @Component
 public class User {
-@Id
+
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private int id=0;
+
 private String firstname;
 	private String lastname;
 	private String age;
@@ -25,21 +26,13 @@ private String firstname;
 	private String state;
 	private String country;
 	private String pincode;
+	@Id
 	private String username;
 	private String password;
 	private String confirmpassword;
-	private String enabled;
+	private Boolean enabled;
 	private String role;
 
-
-		
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getFirstname() {
 		return firstname;
@@ -145,11 +138,11 @@ private String firstname;
 		this.confirmpassword = confirmpassword;
 	}
 
-	public String getEnabled() {
+	public Boolean getEnabled() {
 		return enabled;
 	}
 
-	public void setEnabled(String enabled) {
+	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
 	}
 

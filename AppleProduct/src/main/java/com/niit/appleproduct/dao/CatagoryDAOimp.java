@@ -26,14 +26,14 @@ public class CatagoryDAOimp implements CatagoryDAO {
 	}
 
 	@Transactional
-	public void delete(String id) {
+	public void delete(int id) {
 		Catagory catagory = new Catagory();
 		catagory.setId(id);
 		sessionFactory.getCurrentSession().delete(catagory);
 	}
 
 	@Transactional
-	public Catagory get(String id) {
+	public Catagory get(int id) {
 		String hql = "from catagory where id=" + "'" + id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<Catagory> listCatagory = query.list();

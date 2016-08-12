@@ -38,27 +38,44 @@
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="cart"><span
 					class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
-			<li><a href="admin"><span class="glyphicon glyphicon-log-in"></span>
+			<!-- <li><a href="admin"><span class="glyphicon glyphicon-log-in"></span>
 					Admin</a></li>
-			
+ -->
+			<c:choose>
+				<c:when test="${empty loggedInUser}">
+
+
+					<li><a href="login"><span
+							class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					<li><a href="reg"><span class="glyphicon glyphicon-user"></span>
+							Sign Up</a></li>
+
+
+				</c:when>
+
+				<c:when test="${not empty loggedInUser}">
+
+					<li><a href="logout"><span
+							class="glyphicon glyphicon-user"></span> Logout</a></li>
+
+				</c:when>
+			</c:choose>
+		</ul>
+	</div>
+	</nav>
 	<c:choose>
-<c:when test="${empty loggedInUser}">
 
+		<c:when test="${isAdmin==true }">
+			<a href="admin.jsp"></a>
+		</c:when>
 
-<li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-  <li><a href="reg"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-  
+		<c:when test="${isAdmin==false }">
+			<a href="Home.jsp"><h2>${loginsuccess}</h2></a>
+		</c:when>
+		<c:when test="${invalidCredentials==true }">
+			<a href="login.jsp"><h2>${errorMessage}</h2></a>
+		</c:when>
 
-  </c:when>  
-
- <c:when test="${not empty loggedInUser}">
-      
-      <li><a href="logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
- 
-      </c:when>
-      </c:choose> 
-    </ul>
-</div>
-</nav>
+	</c:choose>
 </body>
 </html>
