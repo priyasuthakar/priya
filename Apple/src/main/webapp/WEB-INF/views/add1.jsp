@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@include file="/WEB-INF/views/AdminHeader.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -52,23 +56,60 @@
 </style>
 </head>
 <body>
-	<nav class="navbar navbar-inverse">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand"> Shopping Site</a>
+	<center>
+		<font face="Harlow Solid Italic"><h3>${addsupplier}</h3></font>
+		<div class="container">
+			<form:form action="add1" method="post" commandName="supplier"
+				class="form-horizontal" role="form">
+				<div class="control-group">
+					<form:label class="col-lg-4" path="id">
+						<spring:message text="Id" />
+					</form:label>
+					<div class="col-lg-4 controls">
+						<form:input path="id" />
+					</div>
+				</div>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4" path="name">
+						<spring:message text="Name" />
+					</form:label>
+					<div class="col-lg-4 controls">
+						<form:input path="name" />
+					</div>
+				</div>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4" path="discription">
+						<spring:message text="Discription" />
+					</form:label>
+					<div class="col-lg-4 controls">
+						<form:input path="discription" />
+					</div>
+				</div>
+				</br>
+				</br>
+				<%-- <form:button type="submit" class="btn btn-info">
+					<spring:message text="ADD" />
+				</form:button> --%>
+				<c:if test="${! empty supplier.name}">
+					<form:button type="submit" class="btn btn-info">
+						<spring:message text="EditSupplier" />
+					</form:button>
+				</c:if>
+				<c:if test="${empty supplier.name}">
+					<form:button type="reset" class="btn btn-info">
+						<spring:message text="AddSupplier" />
+					</form:button>
+				</c:if>
+				<!-- <a href="add1" class="btn btn-info" role="button">Reset</a> -->
+			</form:form>
 		</div>
-		<ul class="nav navbar-nav">
-			<li class="active"><a href="Home">Home</a></li>
-			<li><a href="catagoryadmin">Catagory</a></li>
-			<li><a href="supplieradmin">Supplier</a></li>
-			<li><a href="productadmin">Product</a></li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="logout"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
-		</ul>
-	</div>
-	</nav>
+	</center>
 
+	<!-- 
 	<center>
 		<div class="container">
 			<form class="form-horizontal" role="form">
@@ -95,9 +136,9 @@
 					</div>
 				</div>
 			</form>
-			<button type="add" class="btn btn-default .btn-sm">Add</button>
-			<a href="add1" class="btn btn-info" role="button">Reset</a> </br>
+			<button type="add1" class="btn btn-default .btn-sm">Add</button>
+			<a href="add11" class="btn btn-info" role="button">Reset</a> </br>
 		</div>
-	</center>
+	</center> -->
 </body>
 </html>

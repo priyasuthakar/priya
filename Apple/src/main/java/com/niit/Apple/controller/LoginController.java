@@ -23,17 +23,17 @@ public class LoginController {
 		return "Home";
 	}
 	
-	@RequestMapping("/product")
+	@RequestMapping("/product1")
 	public String desktop() {
-		return "product";
+		return "product1";
 	}
 	
-	/*@RequestMapping("/admin")
+	@RequestMapping("/admin")
 	public String admin() {
 		return "admin";
 	}
-	*/
-	@RequestMapping("/viewcatagory")
+	
+	@RequestMapping("/view")
     public ModelAndView view() {
 		ModelAndView mv=new ModelAndView("/view");
        mv.addObject("catagoryList",catagoryDAO.list());

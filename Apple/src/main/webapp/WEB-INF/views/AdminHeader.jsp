@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Admin</title>
 </head>
 <body>
 	<c:choose>
@@ -16,36 +17,15 @@
 		</c:when>
 	</c:choose>
 	<nav class="navbar navbar-inverse">
-
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand"> <span class="glyphicon glyphicon-apple"></span>
-				<font face="Script MT Bold"> Shopping Site </font>
-			</a>
+			<a class="navbar-brand"> <font face="Script MT Bold">Shopping Site</font></a>
 		</div>
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="Home"><span
-					class="glyphicon glyphicon-home"></span>Home</a></li>
-			<li class="dropdown"><a class="dropdown-toggle"
-				data-toggle="dropdown" href="#"> Catagory <span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li><a href="product1">Desktop</a></li>
-					<li><a href="product1">Laptop</a></li>
-					<li><a href="product1">Iphone</a></li>
-					<li><a href="product1">Ipad</a></li>
-					<li><a href="product1">Ipod</a></li>
-					<li><a href="product1">Accessories</a></li>
-				</ul></li>
-			<li><a href="#portfolio"><span
-					class="glyphicon glyphicon-pencil"></span>Portfolio</a></li>
-			<li><a href="#about"><span class="glyphicon glyphicon-stats"></span>About
-					Us</a></li>
-			<li><a href="#contactus"><span
-					class="glyphicon glyphicon-earphone"></span>Contact Us</a></li>
+			<li class="active"><a href="admin">Home</a></li>
 		</ul>
+		
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="cart"><span
-					class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
 			<c:choose>
 				<c:when test="${empty loggedInUser}">
 					<li><a href="login"><span

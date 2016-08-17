@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@include file="/WEB-INF/views/AdminHeader.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,49 +21,131 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<style>
+h1 {
+	font-size: 24px;
+	color: #303030;
+	font-weight: 600;
+	margin-bottom: 30px;
+	font-size: 24px;
+}
 
+.navbar {
+	margin-bottom: 0;
+	background-color: #20B2AA;
+	z-index: 9999;
+	border: 0;
+	font-size: 18px !important;
+	line-height: 1.42857143 !important;
+	letter-spacing: 2px;
+	border-radius: 0;
+	font-face: Harlow Solid Italic;
+}
+
+.navbar li a, .navbar .navbar-brand {
+	color: Black !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+	color: #20B2AA !important;
+	background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+	border-color: transparent;
+	color: #fff !important;
+}
+
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+	width: 100%;
+	margin: auto;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table, tr, th, td {
+	border: 2px solid black;
+}
+
+table {
+	padding-left: 50%
+}
+</style>
 </head>
 <body>
-	<nav class="navbar navbar-inverse">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand"> Shopping Site</a>
-		</div>
-		<ul class="nav navbar-nav">
-			<li class="active"><a href="Home">Home</a></li>
-			<li><a href="catagoryadmin">Catagory</a></li>
-			<li><a href="supplieradmin">Supplier</a></li>
-			<li><a href="productadmin">Product</a></li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="logout"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
-		</ul>
-	</div>
-	</nav>
-	<h1>${desuccess}</h1>
-	<h1>${editcatagory}</h1>
-	<h3>Catagory List</h3>
-	<!--  
- <c:if test="${!empty catagoryList }">-->
-	<table class="tg">
-		<tr>
-			<th width="120">CATAGORYID</th>
-			<th width="120">CATAGORYNAME</th>
-			<th width="120">CATAGORYDISCRIPTION</th>
-			<th width="120">EDIT</th>
-			<th width="120">DELETE</th>
-		</tr>
-		<c:forEach items="${catagoryList}" var="catagory">
+	<font face="Harlow Solid Italic"><h1>Catagory List</h1></font>
+
+	<c:if test="${!empty catagoryList }">
+		<table class="tg">
 			<tr>
-				<td>${catagory.id}</td>
-				<td>${catagory.name}</td>
-				<td>${catagory.discription}</td>
-				<td><a href="<c:url value='catagory/edit/${catagory.id}'/>">Edit</a></td>
-				<td><a href="<c:url value='catagory/delete/${catagory.id}'/>">Delete</a></td>
+				<th width="120">ID</th>
+				<th width="120">NAME</th>
+				<th width="120">DiSCRIPTION</th>
+				<th width="120">EDIT</th>
+				<th width="120">DELETE</th>
 			</tr>
-		</c:forEach>
-	</table>
-	<!-- </c:if> -->
+			<c:forEach items="${catagoryList}" var="catagory">
+				<tr>
+					<td>${catagory.id}</td>
+					<td>${catagory.name}</td>
+					<td>${catagory.discription}</td>
+					<td><a href="<c:url value="add/edit/${catagory.id}"/>">
+							Edit</a></td>
+					<td><a href="<c:url value="add/delete/${catagory.id}"/>">
+							Delete</a></td>
+			</c:forEach>
+		</table>
+	</c:if>
+
+	<font face="Harlow Solid Italic"><h1>Supplier List</h1></font>
+
+	<c:if test="${!empty supplierList }">
+		<table class="tg">
+			<tr>
+				<th width="120">ID</th>
+				<th width="120">NAME</th>
+				<th width="120">DiSCRIPTION</th>
+				<th width="120">EDIT</th>
+				<th width="120">DELETE</th>
+			</tr>
+			<c:forEach items="${supplierList}" var="supplier">
+				<tr>
+					<td>${supplier.id}</td>
+					<td>${supplier.name}</td>
+					<td>${supplier.discription}</td>
+					<td><a href="<c:url value="supplier/edit/${supplier.id}"/>">
+							Edit</a></td>
+					<td><a href="<c:url value="supplier/delete/${supplier.id}"/>">
+							Delete</a></td>
+			</c:forEach>
+		</table>
+	</c:if>
+
+	<font face="Harlow Solid Italic"><h1>Product List</h1></font>
+
+	<c:if test="${!empty productList }">
+		<table class="tg">
+			<tr>
+				<th width="120">ID</th>
+				<th width="120">NAME</th>
+				<th width="120">DiSCRIPTION</th>
+				<th width="120">EDIT</th>
+				<th width="120">DELETE</th>
+			</tr>
+			<c:forEach items="${productList}" var="product">
+				<tr>
+					<td>${product.id}</td>
+					<td>${product.name}</td>
+					<td>${product.discription}</td>
+					<td><a href="<c:url value="product/edit/${product.id}"/>">
+							Edit</a></td>
+					<td><a href="<c:url value="product/delete/${product.id}"/>">
+							Delete</a></td>
+			</c:forEach>
+		</table>
+	</c:if>
 
 </body>
 </html>

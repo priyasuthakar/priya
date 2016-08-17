@@ -24,6 +24,19 @@ public class CatagoryDAOimp implements CatagoryDAO {
 	public void saveOrUpdate(Catagory catagory) {
 		sessionFactory.getCurrentSession().saveOrUpdate(catagory);
 	}
+	
+	@Transactional
+	public void save(Catagory catagory)
+	{
+		sessionFactory.getCurrentSession().save(catagory);
+	}
+
+	@Transactional
+	public void update(Catagory catagory)
+	{
+		sessionFactory.getCurrentSession().update(catagory);
+	}
+	
 
 	@Transactional
 	public void delete(int id) {
@@ -34,7 +47,7 @@ public class CatagoryDAOimp implements CatagoryDAO {
 
 	@Transactional
 	public Catagory get(int id) {
-		String hql = "from catagory where id=" + "'" + id + "'";
+		String hql = "from catagory where id= '" + id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<Catagory> listCatagory = query.list();
 

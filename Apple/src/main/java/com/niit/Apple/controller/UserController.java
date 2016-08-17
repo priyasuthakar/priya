@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -57,14 +56,13 @@ public class UserController {
 		if(isValidUser==true)
 		{
 			user=userDAO.get(username);
-			session.setAttribute("loggedInUser",user.getFirstname());
-			if(user.getRole()=="admin")
+			session.setAttribute("loggedInUser","Welcome "+user.getFirstname()+"...!!!");
+			if(user.getRole().equals("admin"))
 			{	
 				mv.addObject("isAdmin","true");
 			}else{
 				mv.addObject("isAdmin","false");
-				mv.addObject("loginsuccess", "LoggedIn Successfully");
-				}	
+			}	
 		}
 		else{
 			mv.addObject("invalidCredentials","true");

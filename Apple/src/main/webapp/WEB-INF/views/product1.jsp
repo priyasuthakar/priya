@@ -12,7 +12,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Index Page</title>
+<title>My Shopping</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -25,14 +25,6 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <style>
-h1 {
-	font-size: 24px;
-	color: #303030;
-	font-weight: 600;
-	margin-bottom: 30px;
-	font-size: 24px;
-}
-
 .navbar {
 	margin-bottom: 0;
 	background-color: #20B2AA;
@@ -70,57 +62,10 @@ footer .glyphicon {
 	color: #20B2AA;
 }
 </style>
-
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar"
 	data-offset="60">
 
-	<center>
-		<font face="Harlow Solid Italic"><h1>Sign-in</h1></font> </br> </br> </br> </br> </br> </br>
-		<center>
-			<div class="container">
-				<form:form action="login" method="post" commandName="user"
-					class="form-horizontal" role="form">
-					<div class="control-group">
-						<form:label class="col-lg-4" path="username">
-							<spring:message text="User Name" />
-						</form:label>
-						<div class="col-lg-4 controls">
-							<form:input path="username" placeholder="Enter user name"
-								required="true" title="should not be empty" />
-						</div>
-					</div>
-					</br>
-					</br>
-					<div class="control-group">
-						<form:label class="col-lg-4" path="password">
-							<spring:message text="Password" />
-						</form:label>
-						<div class="col-lg-4 controls">
-							<form:password path="password" placeholder="Enter password"
-								required="true" title="should not be empty" />
-						</div>
-					</div>
-					</br>
-					</br>
-		</center>
-		<div class="checkbox">
-			<label><input type="checkbox"> Remember me</label>
-		</div>
-		<form:button type="submit" class="btn btn-info">
-			<spring:message text="Submit" />
-		</form:button>
-		<form:button type="reset" class="btn btn-info">
-			<spring:message text="Reset" />
-		</form:button>
-		<!-- 	<a href="login" class="btn btn-default" role="button">Reset</a> -->
-		</form:form>
-		</div>
-	</center>
+
 </body>
 </html>
-
-
-
-
-

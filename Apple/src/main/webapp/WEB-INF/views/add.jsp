@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@include file="/WEB-INF/views/AdminHeader.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,6 +23,14 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <style>
+h1 {
+	font-size: 24px;
+	color: #303030;
+	font-weight: 600;
+	margin-bottom: 30px;
+	font-size: 24px;
+}
+
 .navbar {
 	margin-bottom: 0;
 	background-color: #20B2AA;
@@ -30,7 +40,6 @@
 	line-height: 1.42857143 !important;
 	letter-spacing: 2px;
 	border-radius: 0;
-	font-family: Montserrat, sans-serif;
 }
 
 .navbar li a, .navbar .navbar-brand {
@@ -54,26 +63,21 @@
 </style>
 </head>
 <body>
-	<nav class="navbar navbar-inverse">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand"> Shopping Site</a>
-		</div>
-		<ul class="nav navbar-nav">
-			<li class="active"><a href="Home">Home</a></li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="logout"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
-		</ul>
-	</div>
-	</nav>
-
 	<center>
+		<font face="Harlow Solid Italic"><h3>${addcatagory}</h3></font>
 		<div class="container">
-			<form:form action="catagory" method="post" commandName="catagory"
-				autocomplete="on" class="form-horizontal" role="form">
-				<h1>${success}</h1>
-
+			<form:form action="add" method="post" commandName="catagory"
+				class="form-horizontal" role="form">
+				<div class="control-group">
+					<form:label class="col-lg-4" path="id">
+						<spring:message text="Id" />
+					</form:label>
+					<div class="col-lg-4 controls">
+						<form:input path="id" />
+					</div>
+				</div>
+				</br>
+				</br>
 				<div class="control-group">
 					<form:label class="col-lg-4" path="name">
 						<spring:message text="Name" />
@@ -94,10 +98,20 @@
 				</div>
 				</br>
 				</br>
-				<form:button type="submit" class="btn btn-info">
+				<%-- <form:button type="submit" class="btn btn-info">
 					<spring:message text="ADD" />
-				</form:button>
-				<a href="add" class="btn btn-info" role="button">Reset</a>
+				</form:button> --%>
+				<c:if test="${! empty catagory.name}">
+					<form:button type="submit" class="btn btn-info">
+						<spring:message text="EditCatagory" />
+					</form:button>
+				</c:if>
+				<c:if test="${empty catagory.name}">
+					<form:button type="reset" class="btn btn-info">
+						<spring:message text="AddCatagory" />
+					</form:button>
+				</c:if>
+				<!--  <a href="add" class="btn btn-info" role="button">Reset</a> -->
 			</form:form>
 		</div>
 	</center>

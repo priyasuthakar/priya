@@ -23,16 +23,26 @@ public class ProductDAOimp implements ProductDAO {
 	public void saveOrUpdate(Product product) {
 		sessionFactory.getCurrentSession().saveOrUpdate(product);
 	}
+	
+	@Transactional
+	public void save(Product product) {
+		sessionFactory.getCurrentSession().saveOrUpdate(product);
+	}
+	
+	@Transactional
+	public void update(Product product) {
+		sessionFactory.getCurrentSession().saveOrUpdate(product);
+	}
 
 	@Transactional
-	public void delete(String id) {
+	public void delete(int id) {
 		Product product = new Product();
 		product.setId(id);
 		sessionFactory.getCurrentSession().delete(product);
 	}
 
 	@Transactional
-	public Product get(String id) {
+	public Product get(int id) {
 		String hql = "from product where id=" + "'" + id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<Product> listProduct = query.list();

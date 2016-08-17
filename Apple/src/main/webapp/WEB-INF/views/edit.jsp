@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@include file="/WEB-INF/views/AdminHeader.jsp"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -22,6 +24,14 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <style>
+h1 {
+	font-size: 24px;
+	color: #303030;
+	font-weight: 600;
+	margin-bottom: 30px;
+	font-size: 24px;
+}
+
 .navbar {
 	margin-bottom: 0;
 	background-color: #20B2AA;
@@ -31,7 +41,7 @@
 	line-height: 1.42857143 !important;
 	letter-spacing: 2px;
 	border-radius: 0;
-	font-family: Montserrat, sans-serif;
+	font-face: Harlow Solid Italic;
 }
 
 .navbar li a, .navbar .navbar-brand {
@@ -55,33 +65,19 @@
 </style>
 </head>
 <body>
-	<nav class="navbar navbar-inverse">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand"> Shopping Site</a>
-		</div>
-		<ul class="nav navbar-nav">
-			<li class="active"><a href="Home">Home</a></li>
-			<li><a href="catagoryadmin">Catagory</a></li>
-			<li><a href="supplieradmin">Supplier</a></li>
-			<li><a href="productadmin">Product</a></li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="logout"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
-		</ul>
-	</div>
-	</nav>
-
 	<center>
+		<font face="Harlow Solid Italic">
+			<h1>${editcatagory}</h1>
+		</font>
 		<div class="container">
-			<form:form action="catagory" method="post" commandName="catagory"
+			<form:form action="edit" method="post" commandName="catagory"
 				autocomplete="on" class="form-horizontal" role="form">
 				<div class="control-group">
 					<form:label class="col-lg-4" path="id">
 						<spring:message text="ID" />
 					</form:label>
 					<div class="col-lg-4 controls">
-						<form:hidden path="id" />
+						<form:hidden path="id" disabled="true" readonly="true" />
 					</div>
 				</div>
 				</br>

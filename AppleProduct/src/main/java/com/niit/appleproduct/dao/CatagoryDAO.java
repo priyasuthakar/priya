@@ -12,5 +12,10 @@ public interface CatagoryDAO {
 
 	public void saveOrUpdate(Catagory catagory);
 
+	public void save(Catagory catagory);
+
+	public void update(Catagory catagory);
+
 	public void delete(int id);
+
 }

@@ -8,53 +8,57 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.niit.appleproduct.dao.SupplierDAO;
 import com.niit.appleproduct.models.Supplier;
+
+
 
 @Controller
 public class SupplierController {
 	@Autowired
-	SupplierDAO supplierDAO;
+	private SupplierDAO supplierDAO;
 	@Autowired
-	Supplier supplier;
-
-	@RequestMapping(value = "/managesuppliers", method = RequestMethod.GET)
-	public String listSuppliers(Model model) {
-		model.addAttribute("supplier", new Supplier());
-		model.addAttribute("supplierList", this.supplierDAO.list());
-		return "supplier";
+	private Supplier supplier;
+	
+	@RequestMapping("/add1")
+	public ModelAndView supplier(){
+		ModelAndView mv = new ModelAndView("/supplier");
+		mv.addObject("supplier", supplier);  
+		mv.addObject("addsupplier", "Add Supplier");
+		return mv;
 	}
-
-	// For add and update supplier both
-	@RequestMapping(value = "/supplier/add", method = RequestMethod.POST)
-	public String addSupplier(@ModelAttribute("supplier") Supplier supplier) {
-
-		supplierDAO.saveOrUpdate(supplier);
-
-		return "redirect:/managesuppliers";
-
+	
+	@RequestMapping(value ="/supplier",method=RequestMethod.POST)
+	public ModelAndView  supplieradd(@ModelAttribute("supplier") Supplier supplier) {
+	supplierDAO.save(supplier);
+		ModelAndView mv = new ModelAndView("/view");
+		mv.addObject("supplierList",supplierDAO.list());
+		return mv;
 	}
-
-	@RequestMapping("supplier/remove/{id}")
-	public String removeSupplier(@PathVariable("id") String id, ModelMap model) throws Exception {
-
-		try {
-			supplierDAO.delete(id);
-			model.addAttribute("message", "Successfully Added");
-		} catch (Exception e) {
-			model.addAttribute("message", e.getMessage());
-			e.printStackTrace();
-		}
-		// redirectAttrs.addFlashAttribute(arg0, arg1)
-		return "redirect:/managesuppliers";
+	
+	@RequestMapping(value ="/add1/delete/{id}")
+	public String deletesupplier(@PathVariable("id") int id,ModelMap model) {
+		supplierDAO.delete(id);
+		model.addAttribute("supplierList",supplierDAO.list());
+		return "view";
 	}
-
-	@RequestMapping("supplier/edit/{id}")
-	public String editSupplier(@PathVariable("id") String id, Model model) {
-		System.out.println("editSupplier");
-		model.addAttribute("supplier", this.supplierDAO.get(id));
-		model.addAttribute("listSuppliers", this.supplierDAO.list());
-		return "supplier";
+	
+	@RequestMapping(value ="/add1/edit/{id}")
+	public String editsupplier(@PathVariable("id") int id,Model model  ) {
+		supplier = supplierDAO.get(id); 
+		model.addAttribute("supplier", supplier);
+		model.addAttribute("editsupplier", "Edit supplier");  
+		return "edit1";
 	}
-
-}
+	
+	@RequestMapping("/edit1")
+	public ModelAndView  supplieredit(@ModelAttribute("supplier") Supplier supplier) {
+	System.out.println("Error");
+     supplierDAO.update(supplier);
+		ModelAndView mv = new ModelAndView("/view");
+		mv.addObject("supplierList",supplierDAO.list());
+		return mv;
+	}
+	}

@@ -1,6 +1,8 @@
 package com.niit.appleproduct.models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,17 +12,17 @@ import org.springframework.stereotype.Component;
 @Table(name = "SUPPLIER")
 @Component
 public class Supplier {
-
-	private String id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id=0;
 	private String name;
 	private String discription;
 
-	@Id
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 
 	}

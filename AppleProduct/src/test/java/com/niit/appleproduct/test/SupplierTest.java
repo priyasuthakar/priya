@@ -13,7 +13,7 @@ public class SupplierTest {
 		
 		SupplierDAO supplierDAO = (SupplierDAO) context.getBean("supplierDAO");
 		Supplier supplier = (Supplier) context.getBean("supplier");
-		supplier.setId("ID02");
+		supplier.setId(0);
 		supplier.setName("IPhone_6s");
 		supplier.setDiscription("Phone");
 		supplierDAO.saveOrUpdate(supplier);

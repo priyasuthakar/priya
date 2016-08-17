@@ -24,6 +24,14 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <style>
+h1 {
+	font-size: 24px;
+	color: #303030;
+	font-weight: 600;
+	margin-bottom: 30px;
+	font-size: 24px;
+}
+
 .navbar {
 	margin-bottom: 0;
 	background-color: #20B2AA;
@@ -66,13 +74,10 @@ footer .glyphicon {
 <body id="myPage" data-spy="scroll" data-target=".navbar"
 	data-offset="60">
 	<center>
-		<h1>
-			<i> Registration </i>
-		</h1>
-
+		<font face="Harlow Solid Italic"><h1>Registration</h1></font>
 		<div class="container">
 			<form:form action="reg" method="post" commandName="user"
-				autocomplete="on" class="form-horizontal" role="form">
+				class="form-horizontal" role="form">
 				<div class="control-group">
 
 					<form:label class="col-lg-4 control-label" path="firstname">

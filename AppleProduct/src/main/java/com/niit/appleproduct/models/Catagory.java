@@ -12,12 +12,13 @@ import org.springframework.stereotype.Component;
 @Table(name = "CATAGORY")
 @Component
 public class Catagory {
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id=001;
+	private int id=1;
 	private String name;
 	private String discription;
     
-	@Id
+	
 	public int getId() {
 		return id;
 	}

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.niit.appleproduct.models.Catagory;
 import com.niit.appleproduct.models.Supplier;
 
 
@@ -24,16 +25,28 @@ public class SupplierDAOimp implements SupplierDAO {
 	public void saveOrUpdate(Supplier supplier) {
 		sessionFactory.getCurrentSession().saveOrUpdate(supplier);
 	}
+	
+	@Transactional
+	public void save(Supplier supplier)
+	{
+		sessionFactory.getCurrentSession().save(supplier);
+	}
 
 	@Transactional
-	public void delete(String id) {
+	public void update(Supplier supplier)
+	{
+		sessionFactory.getCurrentSession().update(supplier);
+	}
+
+	@Transactional
+	public void delete(int id) {
 		Supplier supplier = new Supplier();
 		supplier.setId(id);
 		sessionFactory.getCurrentSession().delete(supplier);
 	}
 
 	@Transactional
-	public Supplier get(String id) {
+	public Supplier get(int id) {
 		String hql = "from supplier where id=" + "'" + id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<Supplier> listSupplier = query.list();

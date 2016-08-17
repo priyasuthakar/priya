@@ -20,8 +20,63 @@ public class CatagoryController {
 	private CatagoryDAO catagoryDAO;
 	@Autowired
 	private Catagory catagory;
+	
+	@RequestMapping("/add")
+	public ModelAndView catagory(){
+		ModelAndView mv = new ModelAndView("/catagory");
+		mv.addObject("catagory", catagory);  
+		mv.addObject("addcatagory", "Add Catagory");
+		return mv;
+	}
+	
+	@RequestMapping(value ="/catagory",method=RequestMethod.POST)
+	public ModelAndView  catagoryadd(@ModelAttribute("catagory") Catagory catagory) {
+	catagoryDAO.saveOrUpdate(catagory);
+		ModelAndView mv = new ModelAndView("/view");
+		mv.addObject("catagoryList",catagoryDAO.list());
+		return mv;
+	}
+	
+	@RequestMapping(value ="/add/delete/{id}")
+	public String deletecatagory(@PathVariable("id") int id,ModelMap model) {
+		catagoryDAO.delete(id);
+		model.addAttribute("catagoryList",catagoryDAO.list());
+		return "view";
+	}
+	
+	@RequestMapping(value ="/add/edit/{id}")
+	public String editcatagory(@PathVariable("id") int id,Model model  ) {
+		catagory = catagoryDAO.get(id); 
+		model.addAttribute("catagory", catagory);
+		model.addAttribute("editcatagory", "Edit catagory");  
+		return "edit";
+	}
+	
+	@RequestMapping("/edit")
+	public ModelAndView  catagoryedit(@ModelAttribute("catagory") Catagory catagory) {
+	System.out.println("Error");
+     catagoryDAO.update(catagory);
+		ModelAndView mv = new ModelAndView("/view");
+		mv.addObject("catagoryList",catagoryDAO.list());
+		return mv;
+	}
+	}
+/*@RequestMapping(value ="add/edit/{id}")
+public String editcatagory(@PathVariable("id") String id, Model model) {
+	catagory = catagoryDAO.get(id);
+	model.addAttribute("catagory", catagory);
+	model.addAttribute("catagoryList",this.catagoryDAO.list());
+	return "add";
+*/	
+/*@RequestMapping(value ="/edit")
+public String catagoryedit(@PathVariable("id") int id,Model model  ) {
+	catagory = catagoryDAO.get(id); 
+	model.addAttribute("catagory", catagory);
+	model.addAttribute("catagoryList",this.catagoryDAO.list());
+	return "view";
+}*/
 
-	@RequestMapping(value ="catagory",method=RequestMethod.GET)
+	/*@RequestMapping(value ="catagory",method=RequestMethod.GET)
 	public ModelAndView catagory(){
 		ModelAndView mv = new ModelAndView("/add");
 		mv.addObject("catagory", catagory);  
@@ -31,7 +86,7 @@ public class CatagoryController {
 
 	// For add and update
 	@RequestMapping(value ="catagory",method=RequestMethod.POST)
-	public ModelAndView  catagoryadd(@ModelAttribute("catagory") Catagory category) {
+	public ModelAndView  catagoryadd(@ModelAttribute("catagory") Catagory catagory) {
 	catagoryDAO.saveOrUpdate(catagory);
 		ModelAndView mv = new ModelAndView("/view");
 		mv.addObject("catagory", catagory);  
@@ -57,3 +112,4 @@ public class CatagoryController {
 	
 }
 
+*/

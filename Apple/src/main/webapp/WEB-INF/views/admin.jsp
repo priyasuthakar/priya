@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@include file="/WEB-INF/views/AdminHeader.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Shopping</title>
+<title>My Shopping Admin</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -20,6 +21,14 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <style>
+h1 {
+	font-size: 24px;
+	color: #303030;
+	font-weight: 600;
+	margin-bottom: 10px;
+	font-size: 24px;
+}
+
 .navbar {
 	margin-bottom: 0;
 	background-color: #20B2AA;
@@ -29,7 +38,6 @@
 	line-height: 1.42857143 !important;
 	letter-spacing: 2px;
 	border-radius: 0;
-	font-family: Montserrat, sans-serif;
 }
 
 .navbar li a, .navbar .navbar-brand {
@@ -55,54 +63,41 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-inverse">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand"> Shopping Site</a>
-		</div>
-		<ul class="nav navbar-nav">
-			<li class="active"><a href="Home">Home</a></li>
 
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="logout"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
-		</ul>
-	</div>
-	</nav>
 
 	<div id="admin">
-		<h1>Welcome to admin page</h1>
-		<br> <br>
 		<div class="container">
+
+			</br> </br>
 			<div class="col-md-1 col-md-offset-1">
-				<a href="catagory">ADDCATEGORY</a>
+				<a href="add">ADDCATAGORY</a>
 			</div>
+			<!-- <div class="col-md-1 col-md-offset-1">
+				<a href="editcatagory">EDITCATAGORY</a>
+			</div> -->
 			<div class="col-md-1 col-md-offset-1">
-				<a href="editcatagory">EDITCATEGORY</a>
-			</div>
-			<div class="col-md-1 col-md-offset-1">
-				<a href="viewcatagory">VIEWCATEGORY</a>
+				<a href="view">VIEWCATAGORY</a>
 			</div>
 			<br> <br> <br>
 
 			<div class="col-md-1 col-md-offset-1">
-				<a href="#">ADDSUPPLIER</a>
+				<a href="add1">ADDSUPPLIER</a>
 			</div>
-			<div class="col-md-1 col-md-offset-1">
+			<!-- <div class="col-md-1 col-md-offset-1">
 				<a href="#">EDITSUPPLIER</a>
-			</div>
+			</div> -->
 			<div class="col-md-1 col-md-offset-1">
-				<a href="#">VIEWSUPPLIER</a>
+				<a href="view">VIEWSUPPLIER</a>
 			</div>
 			<br> <br> <br>
 			<div class="col-md-1 col-md-offset-1">
-				<a href="#">ADDPRODUCT</a>
+				<a href="add2">ADDPRODUCT</a>
 			</div>
-			<div class="col-md-1 col-md-offset-1">
+			<!-- <div class="col-md-1 col-md-offset-1">
 				<a href="#">EDITPRODUCT</a>
-			</div>
+			</div> -->
 			<div class="col-md-1 col-md-offset-1">
-				<a href="#">VIEWPRODUCT</a>
+				<a href="view">VIEWPRODUCT</a>
 			</div>
 		</div>
 	</div>

@@ -5,7 +5,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%-- <%@ page session="false"%> --%>
 <%@page isELIgnored="false"%>
-<%@include file="/WEB-INF/views/Header.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +14,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link href="http://fonts.googleapis.com/css?family=Montserrat"
+<!-- <link href="http://fonts.googleapis.com/css?family=Montserrat"
 	rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=Lato"
 	rel="stylesheet" type="text/css">
+ -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
@@ -28,6 +28,14 @@ body {
 	font: 400 15px Helvetica, sans-serif;
 	line-height: 1.8;
 	color: #818181;
+}
+
+h1 {
+	font-size: 24px;
+	color: #303030;
+	font-weight: 600;
+	margin-bottom: 30px;
+	font-size: 24px;
 }
 
 h2 {
@@ -178,9 +186,20 @@ footer .glyphicon {
 <body id="myPage" data-spy="scroll" data-target=".navbar"
 	data-offset="60">
 
-	<h2>${LoggedinMessage}</h2>
-	<h2>${successMessage}</h2>
-	<h2>${logoutsuccess}</h2>
+	<c:if test="${isAdmin==true }">
+		<%@include file="admin.jsp"%>
+	</c:if>
+
+	<%-- <c:choose>
+		<c:when test="${isAdmin==true }">
+			<%@include file="admin.jsp"%>
+		</c:when>
+	</c:choose> --%>
+	<%@include file="/WEB-INF/views/Header.jsp"%>
+	<font face="Harlow Solid Italic"><h1>${errorMessage}</h1></font>
+	<font face="Harlow Solid Italic"><h1>${LoggedinMessage}</h1></font>
+	<font face="Harlow Solid Italic"><h1>${successMessage}</h1></font>
+	<font face="Harlow Solid Italic"><h1>${logoutsuccess}</h1></font>
 
 	<!-- Container (Portfolio Section) -->
 	<div id="portfolio" class="container-fluid text-center">
@@ -205,35 +224,35 @@ footer .glyphicon {
 						<img src=<c:url value="/resource/images/desktop.jpg"/>
 							alt="Desktop">
 						<div class="carousel-caption">
-							<a href="product" data-toggle="tooltip" title="Desktop!">Desktop</a>
+							<a href="product1" data-toggle="tooltip" title="Desktop!">Desktop</a>
 						</div>
 					</div>
 
 					<div class="item">
 						<img src=<c:url value="/resource/images/laptop.jpg"/> alt="Laptop">
 						<div class="carousel-caption">
-							<a href="product" data-toggle="tooltip" title="Laptop!">Laptop</a>
+							<a href="product1" data-toggle="tooltip" title="Laptop!">Laptop</a>
 						</div>
 					</div>
 
 					<div class="item">
 						<img src=<c:url value="/resource/images/iphone.jpg"/> alt="IPhone">
 						<div class="carousel-caption">
-							<a href="product" data-toggle="tooltip" title="Iphone!">Iphone</a>
+							<a href="product1" data-toggle="tooltip" title="Iphone!">Iphone</a>
 						</div>
 					</div>
 
 					<div class="item">
 						<img src=<c:url value="/resource/images/ipad.jpg"/> alt="IPad">
 						<div class="carousel-caption">
-							<a href="product" data-toggle="tooltip" title="Ipad!">Ipad</a>
+							<a href="product1" data-toggle="tooltip" title="Ipad!">Ipad</a>
 						</div>
 					</div>
 
 					<div class="item">
 						<img src=<c:url value="/resource/images/ipod.jpg"/> alt="IPod">
 						<div class="carousel-caption">
-							<a href="product" data-toggle="tooltip" title="Ipod!">Ipod</a>
+							<a href="product1" data-toggle="tooltip" title="Ipod!">Ipod</a>
 						</div>
 					</div>
 
@@ -241,7 +260,7 @@ footer .glyphicon {
 						<img src=<c:url value="/resource/images/accesories.jpg"/>
 							alt="Accesories">
 						<div class="carousel-caption">
-							<a href="product" data-toggle="tooltip" title="Accesories!">Accesories</a>
+							<a href="product1" data-toggle="tooltip" title="Accesories!">Accesories</a>
 						</div>
 					</div>
 				</div>
@@ -349,40 +368,40 @@ footer .glyphicon {
 	</footer>
 
 	<script>
-$(document).ready(function(){
-  // Add smooth scrolling to all links in navbar + footer link
-  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
-    // Make sure this.hash has a value before overriding default behavior
-    if (this.hash !== "") {
-      // Prevent default anchor click behavior
-      event.preventDefault();
+	$(document).ready(function() {
+		// Add smooth scrolling to all links in navbar + footer link
+		$(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+			// Make sure this.hash has a value before overriding default behavior
+			if (this.hash !== "") {
+				// Prevent default anchor click behavior
+				event.preventDefault();
 
-      // Store hash
-      var hash = this.hash;
+				// Store hash
+				var hash = this.hash;
 
-      // Using jQuery's animate() method to add smooth page scroll
-      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 900, function(){
-   
-        // Add hash (#) to URL when done scrolling (default click behavior)
-        window.location.hash = hash;
-      });
-    } // End if
-  });
-  
-  $(window).scroll(function() {
-    $(".slideanim").each(function(){
-      var pos = $(this).offset().top;
+				// Using jQuery's animate() method to add smooth page scroll
+				// The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+				$('html, body').animate({
+					scrollTop : $(hash).offset().top
+				}, 900, function() {
 
-      var winTop = $(window).scrollTop();
-        if (pos < winTop + 600) {
-          $(this).addClass("slide");
-        }
-    });
-  });
-})
+					// Add hash (#) to URL when done scrolling (default click behavior)
+					window.location.hash = hash;
+				});
+			} // End if
+		});
+
+		$(window).scroll(function() {
+			$(".slideanim").each(function() {
+				var pos = $(this).offset().top;
+
+				var winTop = $(window).scrollTop();
+				if (pos < winTop + 600) {
+					$(this).addClass("slide");
+				}
+			});
+		});
+	})
 </script>
 </body>
 </html>
