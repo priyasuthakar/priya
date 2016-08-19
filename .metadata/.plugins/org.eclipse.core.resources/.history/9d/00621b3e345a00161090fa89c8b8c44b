@@ -1,0 +1,50 @@
+package com.niit.appleproduct.test;
+
+import static org.junit.Assert.*;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.niit.appleproduct.dao.UserDAO;
+import com.niit.appleproduct.models.UserDetails;
+
+public class TestUserDAO {
+@Autowired
+static
+UserDAO userDAO;
+@Autowired
+static
+UserDetails userDetails;
+@Autowired
+static AnnotationConfigApplicationContext context;
+
+@BeforeClass
+public static void init()
+{
+	context = new AnnotationConfigApplicationContext();
+	context.scan("com.niit");
+	context.refresh();
+	
+	userDAO =(UserDAO) context.getBean("userDAO");
+	userDetails = (UserDetails) context.getBean("userDetails");
+}
+
+@AfterClass
+public static void close()
+{
+	context.close();
+	userDAO = null;
+	userDetails = null; 
+}
+
+@Test
+public void UsersTestCase()
+{
+	int size= userDAO.list().size();
+	assertEquals("User list test case",5,size);
+}
+	
+}

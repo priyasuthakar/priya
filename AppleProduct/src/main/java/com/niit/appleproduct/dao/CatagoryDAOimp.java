@@ -49,8 +49,8 @@ public class CatagoryDAOimp implements CatagoryDAO {
 	public Catagory get(int id) {
 		String hql = "from catagory where id= '" + id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		@SuppressWarnings("unchecked")
 		List<Catagory> listCatagory = query.list();
-
 		if (listCatagory != null && !listCatagory.isEmpty()) {
 			return listCatagory.get(0);
 		}

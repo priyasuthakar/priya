@@ -1,0 +1,44 @@
+package com.niit.Apple.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+
+@Controller
+public class LoginController {
+		
+	@RequestMapping("/")
+	public String home() {
+		return "Home";
+	}
+
+	@RequestMapping("/Home")
+	public String home1() {
+		return "Home";
+	}
+	
+	@RequestMapping("/product1")
+	public String desktop() {
+		return "product1";
+	}
+	
+	@RequestMapping("/admin")
+	public String admin() {
+		return "admin";
+	}
+	
+	/*@RequestMapping("/viewcatagory")
+    public ModelAndView view() {
+		ModelAndView mv=new ModelAndView("/view");
+        return mv;
+    }*/
+	
+	/*@RequestMapping("/editcatagory")
+    public ModelAndView edit() {
+		ModelAndView mv=new ModelAndView("/edit");
+       mv.addObject("catagoryList",catagoryDAO.list());
+        return mv;
+    }*/
+		
+	}

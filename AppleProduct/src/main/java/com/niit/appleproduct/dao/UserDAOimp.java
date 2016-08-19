@@ -22,7 +22,7 @@ public class UserDAOimp implements UserDAO {
 
 	@Transactional
 	public void saveOrUpdate(User user) {
-		user.setRole("user");
+		user.setRole("ROLE_USER");
 		user.setEnabled(true);
 		sessionFactory.getCurrentSession().saveOrUpdate(user);
 	}

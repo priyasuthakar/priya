@@ -1,0 +1,37 @@
+package com.niit.Apple.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+
+import com.niit.appleproduct.models.User;
+
+
+@Component("userValidator")
+public class RegistrationValidation {
+	@Autowired
+	User user;
+  public boolean supports(Class<?> klass) {
+    return User.class.isAssignableFrom(klass);
+  }
+
+  public void validate(Object target, Errors errors) {
+    User user = (User) target;
+    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userName",
+        "NotEmpty.user.userName",
+        "User Name must not be Empty.");
+    String userName = user.getUsername();
+    if ((userName.length()) > 50) {
+      errors.rejectValue("userName",
+          "lengthOfUser.user.userName",
+          "User Name must not more than 50 characters.");
+    }
+    if (!(user.getPassword()).equals(user
+        .getConfirmpassword())) {
+      errors.rejectValue("password",
+          "matchingPassword.user.password",
+          "Password and Confirm Password Not match.");
+    }
+  }
+}

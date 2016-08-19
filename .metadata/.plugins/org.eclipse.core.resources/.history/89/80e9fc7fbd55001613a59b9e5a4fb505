@@ -1,0 +1,100 @@
+package com.niit.Apple.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class LoginController {
+	@RequestMapping("/")
+	public String home() {
+		return "Home";
+	}
+
+	@RequestMapping("/Home")
+	public String home1() {
+		return "Home";
+	}
+
+	@RequestMapping("/desktop")
+	public String desktop() {
+		return "desktop";
+	}
+
+	@RequestMapping("/laptop")
+	public String laptop() {
+		return "laptop";
+	}
+
+	@RequestMapping("/iphone")
+	public String iphone() {
+		return "iphone";
+	}
+
+	@RequestMapping("/ipad")
+	public String ipad() {
+		return "ipad";
+	}
+
+	@RequestMapping("/ipod")
+	public String ipod() {
+		return "ipod";
+	}
+
+	@RequestMapping("/accessories")
+	public String accessories() {
+		return "accessories";
+	}
+
+	@RequestMapping("/discount")
+	public String discount() { 
+		return "discount";
+	}
+
+	@RequestMapping("/purchase")
+	public String purchase() {
+		return "purchase";
+	}
+
+	@RequestMapping("/help")
+	public String help() {
+		return "help";
+	}
+
+	@RequestMapping("/contactus")
+	public String contactus() {
+		return "contactus";
+	}
+
+	@RequestMapping("/index1")
+	public String Login() {
+		return "index1";
+	}
+
+	@RequestMapping("/reg")
+	public String reg() {
+		return "reg";
+	}
+
+	@RequestMapping("/admin")
+	public String admin() {
+		return "admin";
+	}
+	
+	@RequestMapping("/catagoryadmin")
+	public String catagoryadmin() {
+		return "catagoryadmin";
+	}
+	
+	@RequestMapping("/supplieradmin")
+	public String supplieradmin() {
+		return "supplieradmin";
+	}
+	
+	@RequestMapping("/productadmin")
+	public String productadmin() {
+		return "productadmin";
+	}
+	
+	
+	
+}

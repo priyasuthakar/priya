@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Sat Aug 20 01:11:49 IST 2016
+org.eclipse.jst.j2ee.server\:AppleProduct=WEB-INF/lib/AppleProduct-0.0.1-SNAPSHOT.jar
+org.eclipse.jst.j2ee.server\:/binary\:C\:\\Users\\priya\\.m2\\repository\\org\\springframework\\spring-web\\4.3.1.RELEASE\\spring-web-4.3.1.RELEASE.jar=WEB-INF/lib/spring-web-4.3.1.RELEASE.jar

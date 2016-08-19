@@ -13,11 +13,11 @@ public class ProductTest {
 
 		ProductDAO productDAO = (ProductDAO) context.getBean("productDAO");
 		Product product = (Product) context.getBean("product");
-		product.setId(0);
+		product.setId(1);
 		product.setName("IPhone_6s");
 		product.setDiscription("Phone");
 		productDAO.saveOrUpdate(product);
-		
+		productDAO.delete(1);
 		
 	}
 

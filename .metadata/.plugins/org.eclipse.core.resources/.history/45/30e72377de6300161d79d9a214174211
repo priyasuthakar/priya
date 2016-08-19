@@ -1,0 +1,63 @@
+package com.niit.Apple.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.niit.appleproduct.dao.CatagoryDAO;
+import com.niit.appleproduct.models.Catagory;
+
+@Controller
+public class ProductController {
+	@Autowired
+	private CatagoryDAO productDAO;
+	@Autowired
+	private Catagory product;
+	
+	@RequestMapping("/add")
+	public ModelAndView product(){
+		ModelAndView mv = new ModelAndView("/product");
+		mv.addObject("product", product);  
+		mv.addObject("addproduct", "Add Catagory");
+		return mv;
+	}
+	
+	@RequestMapping(value ="/add",method=RequestMethod.POST)
+	public ModelAndView  productadd(@ModelAttribute("product") Catagory product) {
+	productDAO.save(product);
+		ModelAndView mv = new ModelAndView("/view");
+		mv.addObject("productList",productDAO.list());
+		return mv;
+	}
+	
+	@RequestMapping(value ="/add/delete/{id}")
+	public String deleteproduct(@PathVariable("id") int id,ModelMap model) {
+		productDAO.delete(id);
+		model.addAttribute("productList",productDAO.list());
+		return "view";
+	}
+	
+	@RequestMapping(value ="/add1/edit/{id}")
+	public String editproduct(@PathVariable("id") int id,Model model  ) {
+		product = productDAO.get(id); 
+		model.addAttribute("product", product);
+		model.addAttribute("editproduct", "Edit product");  
+		return "edit1";
+	}
+	
+	@RequestMapping("/edit1")
+	public ModelAndView  productedit(@ModelAttribute("product") Catagory product) {
+	System.out.println("Error");
+     productDAO.update(product);
+		ModelAndView mv = new ModelAndView("/view");
+		mv.addObject("productList",productDAO.list());
+		return mv;
+	}
+	
+}

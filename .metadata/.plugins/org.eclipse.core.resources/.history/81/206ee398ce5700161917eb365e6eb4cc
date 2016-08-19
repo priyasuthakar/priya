@@ -1,0 +1,50 @@
+package com.niit.appleproduct.test;
+
+import static org.junit.Assert.*;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.niit.appleproduct.dao.CatagoryDAO;
+import com.niit.appleproduct.models.Catagory;
+
+public class TestCatagoryDAO {
+@Autowired
+static
+CatagoryDAO catagoryDAO;
+@Autowired
+static AnnotationConfigApplicationContext context;
+
+@BeforeClass
+public static void init()
+{
+	context = new AnnotationConfigApplicationContext();
+	context.scan("com.niit");
+	context.refresh();
+	
+	catagoryDAO =(CatagoryDAO) context.getBean("catagoryDAO");
+	}
+
+@AfterClass
+public static void close()
+{
+	context.close();
+	catagoryDAO = null;
+}
+
+@Test
+public void CatagoryNameTest()
+{
+	Catagory catagory = catagoryDAO.get("id0008");
+}
+
+public void CatagorysTestCase()
+{
+	int size= catagoryDAO.list().size();
+	assertEquals("User list test case",5,size);
+}
+	
+}

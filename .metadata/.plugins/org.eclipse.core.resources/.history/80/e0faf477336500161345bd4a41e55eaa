@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<security:http auto-config="true">
+<security:intercept-url pattern="/login" access="hasRole('ROLE_ADMIN')"/>
+<security:form-login login-page="/login" default-target-url="/login"
+authentication-failure-url="/login?error=true"/>
+<security:csrf disabled="true"/>
+</security:http>
+<security:authentication-manager>
+<security:authentication-provider>
+<security:jdbc-user-service data-source-ref="dataSource"
+users-by-username-query="select username,passwor,enabled from user wher username=?" 
+authorities-by-username-query="select username,role from user where username=?" />
+ </security:authentication-provider>
+ </security:authentication-manager>

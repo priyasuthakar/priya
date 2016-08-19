@@ -1,0 +1,194 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%-- <%@ page session="false"%> --%>
+<%@page isELIgnored="false"%>
+<%@include file="/WEB-INF/views/Header.jsp"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Shopping</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<style>
+h1 {
+	font-size: 24px;
+	color: #303030;
+	font-weight: 600;
+	margin-bottom: 30px;
+	font-size: 24px;
+}
+
+.navbar {
+	margin-bottom: 0;
+	background-color: #20B2AA;
+	z-index: 9999;
+	border: 0;
+	font-size: 18px !important;
+	line-height: 1.42857143 !important;
+	letter-spacing: 2px;
+	border-radius: 0;
+	font-family: Montserrat, sans-serif;
+}
+
+.navbar li a, .navbar .navbar-brand {
+	color: Black !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+	color: #20B2AA !important;
+	background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+	border-color: transparent;
+	color: #fff !important;
+}
+
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+	width: 100%;
+	margin: auto;
+}
+</style>
+</head>
+<body>
+	<font face="Harlow Solid Italic"><h1>${editsupplier}</h1></font>
+	<font face="Harlow Solid Italic"><h1>${addsupplier}</h1></font>
+	<font face="Harlow Solid Italic"><h1>${success}</h1></font>
+
+	<div class="container">
+		<form:form action="supplier" method="post" commandName="supplier">
+
+			<%-- <div class="control-group">
+				<form:label class="col-lg-4" path="id">
+					<spring:message text="Id" />
+				</form:label>
+				<div class="col-lg-4 controls">
+					<form:input path="id" />
+				</div>
+			</div>
+			</br>
+			</br> --%>
+			<div class="control-group">
+				<form:label class="col-lg-4" path="name">
+					<spring:message text="Name" />
+				</form:label>
+				<div class="col-lg-4 controls">
+					<form:input path="name" />
+				</div>
+			</div>
+			</br>
+			</br>
+			<div class="control-group">
+				<form:label class="col-lg-4" path="discription">
+					<spring:message text="Discription" />
+				</form:label>
+				<div class="col-lg-4 controls">
+					<form:input path="discription" />
+				</div>
+			</div>
+			</br>
+			</br>
+			<%-- <form:button type="submit" class="btn btn-info">
+				<spring:message text="ADD" />
+			</form:button>
+			<a href="supplier" class="btn btn-info" role="button">Reset</a> --%>
+			<c:if test="${! empty supplier.name}">
+					<form:button type="submit" class="btn btn-info">
+						<spring:message text="EditSupplier" />
+					</form:button>
+				</c:if>
+				<c:if test="${empty supplier.name}">
+					<form:button type="reset" class="btn btn-info">
+						<spring:message text="AddSupplier" />
+					</form:button>
+				</c:if>
+			</br>
+		</form:form>
+	</div>
+
+	<%-- <h1>Add a Supplier</h1>
+
+	<c:url var="addAction" value="/supplier/add"></c:url>
+
+	<form:form action="${addAction}" commandName="supplier">
+		<table>
+			<tr>
+				<td><form:label path="id">
+						<spring:message text="ID" />
+					</form:label></td>
+				<c:choose>
+					<c:when test="${!empty supplier.id}">
+						<td><form:input path="id" disabled="true" readonly="true" />
+						</td>
+					</c:when>
+
+					<c:otherwise>
+						<td><form:input path="id" pattern=".{3,4}" required="true"
+								title="id should contains 3 to 4 characters" /></td>
+					</c:otherwise>
+				</c:choose>
+			</tr>
+			<tr>
+				<form:input path="id" hidden="true" />
+				<td><form:label path="name">
+						<spring:message text="Name" />
+					</form:label></td>
+				<td><form:input path="name" required="true" /></td>
+			</tr>
+			<tr>
+				<td><form:label path="address">
+						<spring:message text="discription" />
+					</form:label></td>
+				<td><form:input path="discription" required="true" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><c:if test="${!empty supplier.name}">
+						<input type="submit"
+							value="<spring:message text="Edit Supplier"/>" />
+					</c:if> <c:if test="${empty supplier.name}">
+						<input type="submit" value="<spring:message text="Add Supplier"/>" />
+					</c:if></td>
+			</tr>
+		</table>
+	</form:form>
+	<br>
+	<h3>Supplier List</h3>
+	<c:if test="${!empty supplierList}">
+		<table class="tg">
+			<tr>
+				<th width="80">Supplier ID</th>
+				<th width="120">Supplier Name</th>
+				<th width="120">Supplier discription</th>
+				<th width="60">Edit</th>
+				<th width="60">Delete</th>
+			</tr>
+			<c:forEach items="${supplierList}" var="supplier">
+				<tr>
+					<td>${supplier.id}</td>
+					<td>${supplier.name}</td>
+					<td>${supplier.discription}</td>
+					<td><a href="<c:url value='supplier/edit/${supplier.id}' />">Edit</a></td>
+					<td><a href="<c:url value='supplier/remove/${supplier.id}' />">Delete</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+	</c:if>
+
+ --%>
+</body>
+</html>

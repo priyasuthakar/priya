@@ -45,6 +45,7 @@ public class ProductDAOimp implements ProductDAO {
 	public Product get(int id) {
 		String hql = "from product where id=" + "'" + id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		@SuppressWarnings("unchecked")
 		List<Product> listProduct = query.list();
 
 		if (listProduct != null && !listProduct.isEmpty()) {

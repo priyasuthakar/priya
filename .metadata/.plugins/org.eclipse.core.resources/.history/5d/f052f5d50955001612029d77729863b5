@@ -1,0 +1,159 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regestration Page</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<style>
+.navbar {
+	margin-bottom: auto;
+	background-color: black;
+	z-index: 9999;
+	border: 8;
+	font-size: 24px !important;
+	line-height: 1.42857143 !important;
+	letter-spacing: 2px;
+	border-radius: .5;
+	font-family: Montserrat, sans-serif;
+}
+
+.navbar li a, .navbar .navbar-brand {
+	color: skyblue !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+	color: #20B2AA !important;
+	background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+	border-color: transparent;
+	color: #fff !important;
+}
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+	width: 100%;
+	margin: auto;
+}
+</style>
+</head>
+<body style="background-color: #FFC0CB;">
+	<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand"> Shopping Site</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="Home">Home</a></li>
+			<li class="dropdown"><a class="dropdown-toggle"
+				data-toggle="dropdown" href="#"> Catagory <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="desktop">Desktop</a></li>
+					<li><a href="laptop">Laptop</a></li>
+					<li><a href="iphone">Iphone</a></li>
+					<li><a href="ipad">Ipad</a></li>
+					<li><a href="ipod">Ipod</a></li>
+					<li><a href="accessories">Accessories</a></li>
+				</ul></li>
+			<li><a href="discount">Discount</a></li>
+			<li><a href="purchase">Purchase</a></li>
+			<li><a href="help">Help</a></li>
+			<li><a href="contactus">Contact Us</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="index1"><span
+					class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			<li><a href="reg"><span class="glyphicon glyphicon-user"></span>Sign
+					Up</a></li>
+		</ul>
+	</div>
+	</nav>
+
+	<center>
+		<h1>
+			<i> Registration </i>
+		</h1>
+		<div class="container">
+			<div class="col-sm-6">
+				<label for="text">First Name</label><input type="text"
+					class="form-control input-sm" id="text"
+					placeholder="Enter first name" required>
+			</div>
+			<div class="col-sm-6">
+				<label for="text">Last Name</label><input type="text"
+					class="form-control input-sm" id="text"
+					placeholder="Enter last name" required>
+			</div>
+			</br>
+			<div class="col-sm-6 col-lg-6">
+				<label for="Number"> Age</label><input type="Number" min="18"
+					max="99" class="form-control input-sm" id="Number"
+					placeholder="Enter age" required>
+			</div>
+			<div class="col-sm-6 col-lg-6">
+				<label>Gender</label></br> &nbsp&nbsp&nbsp<label><input
+					type="radio" name="optradio">Male</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				<label><input type="radio" name="optradio">Female</label>
+			</div>
+			</br>
+			<div class="col-sm-4">
+				<label for="text">Mobile No</label><input type="text"
+					class="form-control input-sm" pattern="[789][0-9]{9}" id="text"
+					placeholder="Enter mobile no" required>
+			</div>
+			<div class="col-sm-4">
+				<label for="email">E-Mail Id</label><input type="email"
+					class="form-control input-sm" id="email" placeholder="Enter email"
+					required>
+			</div>
+			</br>
+			<div class="col-sm-4">
+				<label for="text">Address:</label><label>Plot/Flat/Door No:</label><input type="text"
+					class="form-control input-sm" id="text"
+					placeholder="Enter " required><label>Streat Name:</label><input type="text"
+					class="form-control input-sm" id="text"
+					placeholder="Enter " required><label>Address 1:</label><input type="text"
+					class="form-control input-sm" id="text"
+					placeholder="Enter " required><label>Address 2:</label><input type="text"
+					class="form-control input-sm" id="text"
+					placeholder="Enter " required><label>State:</label><input type="text"
+					class="form-control input-sm" id="text"
+					placeholder="Enter " required><label>Country:</label><input type="text"
+					class="form-control input-sm" id="text"
+					placeholder="Enter " required><label>Pincode:</label><input type="text"
+					class="form-control input-sm" id="text"
+					placeholder="Enter " required>
+			</div>
+			<div class="col-sm-16">
+				<label for="text">User Name<input type="text"
+					class="form-control input-sm" id="text"
+					placeholder="Enter user name" required></label>
+			</div>
+			<div class="col-sm-16">
+				<label for="pwd">Password<input type="password"
+					class="form-control input-sm" id="pwd" placeholder="Enter password"
+					required></label>
+			</div>
+			<div class="col-sm-16">
+				<label for="pwd">Re-Password<input type="password"
+					class="form-control input-sm" id="pwd"
+					placeholder="Re-Enter password" required></label>
+			</div>
+			<a href="welcome" class="btn btn-info" role="button">Submit</a> <a
+				href="reg" class="btn btn-info" role="button">Reset</a>
+		</div>
+	</center>
+</body>
+</html>

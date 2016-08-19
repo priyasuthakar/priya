@@ -1,0 +1,242 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%-- <%@ page session="false"%> --%>
+<%@page isELIgnored="false"%>
+<%@include file="/WEB-INF/views/Header.jsp"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regestration Page</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<style>
+h1 {
+	font-size: 24px;
+	color: #303030;
+	font-weight: 600;
+	margin-bottom: 30px;
+	font-size: 24px;
+}
+
+.navbar {
+	margin-bottom: 0;
+	background-color: #660033;
+	z-index: 9999;
+	border: 0;
+	font-size: 18px !important;
+	line-height: 1.42857143 !important;
+	letter-spacing: 2px;
+	border-radius: 0;
+	font-family: Montserrat, sans-serif;
+}
+
+.navbar .navbar-brand {
+	color: #FFFFFF !important;
+}
+
+.navbar .li a {
+	color: #FFF !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+	color: #660033 !important;
+	background-color: #FFCCCC !important;
+}
+
+.navbar-default .navbar-toggle {
+	border-color: transparent;
+	color: #FFCCCC !important;
+}
+
+footer .glyphicon {
+	font-size: 24px;
+	margin-bottom: 20px;
+	color: #660033;
+}
+</style>
+
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar"
+	data-offset="60" style="background-color: #93ece7">
+	<center>
+		<font face="Harlow Solid Italic"><h1>Registration</h1></font>
+		<div class="container">
+			<form:form action="reg" method="post" commandName="user"
+				class="form-horizontal" role="form">
+				<div class="control-group">
+
+					<form:label class="col-lg-4 control-label" path="firstname">
+						<spring:message text="First Name" />
+					</form:label>
+					<div class="col-lg-4 controls">
+						<form:input path="firstname" placeholder="Enter first name"
+							required="true" title="should not be empty" />
+					</div>
+				</div>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-label" path="lastname">
+						<spring:message text="Last Name" />
+					</form:label>
+					<div class="col-lg-4 controls">
+						<form:input path="lastname" placeholder="Enter last name"
+							required="true" title="should not be empty" />
+					</div>
+				</div>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-label" path="age">
+						<spring:message text="Age" />
+					</form:label>
+					<div class="col-lg-4 controls">
+						<form:input min="18" path="age" placeholder="Enter age"
+							required="true" />
+					</div>
+				</div>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-label" path="gender">
+						<spring:message text="Gender" />
+					</form:label>
+					<div class="col-lg-4 controls">
+						<form:radiobutton path="gender" name="optradio" />
+						<spring:message text="Male" />
+						<form:radiobutton path="gender" name="optradio" />
+						<spring:message text="Female" />
+					</div>
+				</div>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-label" path="mobileno">
+						<spring:message text="Mobile No" />
+					</form:label>
+					<div class="col-lg-4 controls">
+						<form:input pattern="[789][0-9]{9}" path="mobileno"
+							placeholder="Enter mobile no" required="true"
+							title="should be in the form of 10 digit starting with 789!" />
+					</div>
+				</div>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-label" path="emailid">
+						<spring:message text="E-Mail Id" />
+					</form:label>
+					<div class="col-lg-4 controls">
+						<form:input type="email" path="emailid" placeholder="Enter email"
+							required="true" title="should be in the form of abc@example.com" />
+					</div>
+				</div>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-label" path="address">
+						<spring:message text="Address" />
+					</form:label>
+					<div class="col-lg-4 controls">
+						<form:textarea type="text" rows="5" max="100" path="address"
+							required="true"></form:textarea>
+					</div>
+				</div>
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-label" path="state">
+						<spring:message text="State" />
+					</form:label>
+					<div class="col-lg-4 controls">
+						<form:input type="text" path="state" placeholder="Enter "
+							required="true" />
+					</div>
+				</div>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-label" path="country">
+						<spring:message text="Country" />
+					</form:label>
+					<div class="col-lg-4 controls">
+						<form:input type="text" path="country" placeholder="Enter "
+							required="true" />
+					</div>
+				</div>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-label" path="pincode">
+						<spring:message text="Pincode" />
+					</form:label>
+					<div class="col-lg-4 controls">
+						<form:input type="text" path="pincode" placeholder="Enter "
+							required="true" title="should not be empty" />
+					</div>
+				</div>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-label" path="username">
+						<spring:message text="User Name" />
+					</form:label>
+					<div class="col-lg-4 controls">
+						<form:input type="text" path="username"
+							placeholder="Enter user name" required="true"
+							title="should not be empty" />
+					</div>
+				</div>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-label" path="password">
+						<spring:message text="Password" />
+					</form:label>
+					<div class="col-lg-4 controls">
+						<form:password path="password" placeholder="Enter password"
+							required="true" title="should not be empty" />
+					</div>
+				</div>
+				</br>
+				</br>
+				<div class="control-group">
+					<form:label class="col-lg-4 control-label" path="password">
+						<spring:message text="Re-Password" />
+					</form:label>
+					<div class="col-lg-4 controls">
+						<form:password path="confirmpassword"
+							placeholder="Re-Enter password" required="true"
+							title="should be same as password" />
+					</div>
+				</div>
+				</br>
+				</br>
+
+				<form:button type="submit" class="btn btn-info">
+					<spring:message text="Submit" />
+				</form:button>
+				<a href="reg" class="btn btn-info" role="button">Reset</a>
+			</form:form>
+		</div>
+	</center>
+</body>
+</html>

@@ -1,15 +1,20 @@
 package com.niit.Apple.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.gson.Gson;
 import com.niit.appleproduct.dao.CatagoryDAO;
 import com.niit.appleproduct.models.Catagory;
 
@@ -21,7 +26,7 @@ public class CatagoryController {
 	@Autowired
 	private Catagory catagory;
 	
-	@RequestMapping("/add")
+	@RequestMapping("/catagory")
 	public ModelAndView catagory(){
 		ModelAndView mv = new ModelAndView("/catagory");
 		mv.addObject("catagory", catagory);  
@@ -30,86 +35,53 @@ public class CatagoryController {
 	}
 	
 	@RequestMapping(value ="/catagory",method=RequestMethod.POST)
-	public ModelAndView  catagoryadd(@ModelAttribute("catagory") Catagory catagory) {
+	public String  catagoryadd(@ModelAttribute("catagory") Catagory catagory, BindingResult result,Model model,RedirectAttributes redirectAttribute) {
 	catagoryDAO.saveOrUpdate(catagory);
-		ModelAndView mv = new ModelAndView("/view");
-		mv.addObject("catagoryList",catagoryDAO.list());
+	return "redirect:/viewcatagory";
+	}
+	
+	@RequestMapping(value ="viewcatagory")
+	public ModelAndView  view(@ModelAttribute("catagory") Catagory catagory,Model model) {
+		ModelAndView mv = new ModelAndView("view");
+		Gson gson = new Gson();
+		List<Catagory> clist=catagoryDAO.list();
+		String list = gson.toJson(clist);
+		System.out.println("catagory viewed"+list);
+		model.addAttribute("list", list);
 		return mv;
 	}
 	
-	@RequestMapping(value ="/add/delete/{id}")
+	
+	@RequestMapping(value ="/{id}")
 	public String deletecatagory(@PathVariable("id") int id,ModelMap model) {
 		catagoryDAO.delete(id);
 		model.addAttribute("catagoryList",catagoryDAO.list());
-		return "view";
+		return "redirect:/viewcatagory";
 	}
 	
-	@RequestMapping(value ="/add/edit/{id}")
-	public String editcatagory(@PathVariable("id") int id,Model model  ) {
+	@RequestMapping(value ="/editc{id}")
+	public String editcatagory(@PathVariable("id") int id,ModelMap model  ) {
 		catagory = catagoryDAO.get(id); 
 		model.addAttribute("catagory", catagory);
 		model.addAttribute("editcatagory", "Edit catagory");  
-		return "edit";
+		return "/redirect:/viewcatagory";
 	}
 	
-	@RequestMapping("/edit")
-	public ModelAndView  catagoryedit(@ModelAttribute("catagory") Catagory catagory) {
-	System.out.println("Error");
+	/*@RequestMapping(value="/edit",method=RequestMethod.POST)
+	public ModelAndView  catagoryedit(@ModelAttribute("catagory") Catagory catagory,Model model) {
      catagoryDAO.update(catagory);
+     System.out.println("Error");
 		ModelAndView mv = new ModelAndView("/view");
+		Gson gson = new Gson();
+		List<Catagory> clist=catagoryDAO.list();
+		String list = gson.toJson(clist);
+		System.out.println("catagory viewed"+list);
+		model.addAttribute("catagoryList", list);
+	
+		return mv;
+	
 		mv.addObject("catagoryList",catagoryDAO.list());
-		return mv;
+		
 	}
+	*/
 	}
-/*@RequestMapping(value ="add/edit/{id}")
-public String editcatagory(@PathVariable("id") String id, Model model) {
-	catagory = catagoryDAO.get(id);
-	model.addAttribute("catagory", catagory);
-	model.addAttribute("catagoryList",this.catagoryDAO.list());
-	return "add";
-*/	
-/*@RequestMapping(value ="/edit")
-public String catagoryedit(@PathVariable("id") int id,Model model  ) {
-	catagory = catagoryDAO.get(id); 
-	model.addAttribute("catagory", catagory);
-	model.addAttribute("catagoryList",this.catagoryDAO.list());
-	return "view";
-}*/
-
-	/*@RequestMapping(value ="catagory",method=RequestMethod.GET)
-	public ModelAndView catagory(){
-		ModelAndView mv = new ModelAndView("/add");
-		mv.addObject("catagory", catagory);  
-		mv.addObject("addcatagory", "Add Catagory");
-		return mv;
-	}
-
-	// For add and update
-	@RequestMapping(value ="catagory",method=RequestMethod.POST)
-	public ModelAndView  catagoryadd(@ModelAttribute("catagory") Catagory catagory) {
-	catagoryDAO.saveOrUpdate(catagory);
-		ModelAndView mv = new ModelAndView("/view");
-		mv.addObject("catagory", catagory);  
-		mv.addObject("catagoryList",catagoryDAO.list());
-		return mv;
-	}
-	
-	@RequestMapping(value ="catagory/delete/{id}")
-	public String deletecatagory(@PathVariable("id") int id, ModelMap model) {
-		catagoryDAO.delete(id);
-		model.addAttribute("desuccess", "Deleted Successfully"); 
-		return "catagory";
-	}
-	
-	@RequestMapping(value ="catagory/edit/{id}")
-	public String editcatagory(@PathVariable("id") int id, Model model  ) {
-		catagory = catagoryDAO.get(id); 
-		model.addAttribute("catagory", catagory);
-		model.addAttribute("catagoryList",catagoryDAO.list());
-		model.addAttribute("editcatagory", "Edit catagory");  
-		return "catagory";
-	}
-	
-}
-
-*/

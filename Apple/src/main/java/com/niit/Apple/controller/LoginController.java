@@ -1,17 +1,10 @@
 package com.niit.Apple.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.niit.appleproduct.dao.CatagoryDAO;
 
 @Controller
 public class LoginController {
-	@Autowired
-	private CatagoryDAO catagoryDAO;
-
 		
 	@RequestMapping("/")
 	public String home() {
@@ -23,28 +16,47 @@ public class LoginController {
 		return "Home";
 	}
 	
+	@RequestMapping("/#portfolio")
+	public String portfolio() {
+		return "Home";
+	}
+	
+	@RequestMapping("/#about")
+	public String aboutus() {
+		return "Home";
+	}
+	
+	@RequestMapping("/#contactus")
+	public String contactus() {
+		return "Home";
+	}
+
 	@RequestMapping("/product1")
 	public String desktop() {
 		return "product1";
 	}
 	
+	/*@RequestMapping("/product")
+	public String product() {
+		return "product";
+	}
+	*/
 	@RequestMapping("/admin")
 	public String admin() {
 		return "admin";
 	}
 	
-	@RequestMapping("/view")
+	/*@RequestMapping("/viewcatagory")
     public ModelAndView view() {
 		ModelAndView mv=new ModelAndView("/view");
-       mv.addObject("catagoryList",catagoryDAO.list());
         return mv;
-    }
+    }*/
 	
-	@RequestMapping("/editcatagory")
+	/*@RequestMapping("/editcatagory")
     public ModelAndView edit() {
 		ModelAndView mv=new ModelAndView("/edit");
        mv.addObject("catagoryList",catagoryDAO.list());
         return mv;
-    }
+    }*/
 		
 	}

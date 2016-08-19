@@ -5,7 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -14,8 +16,10 @@ import org.springframework.stereotype.Component;
 public class Supplier {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id=0;
+	private int id;
+	@Size (min=4,message="The field must be atleast 4 characters!")
 	private String name;
+	@Length(min =5,max=25, message = "The field must be between 5 and 25 characters long!")
 	private String discription;
 
 	public int getId() {

@@ -1,0 +1,29 @@
+package com.niit.Apple.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.niit.appleproduct.dao.CatagoryDAO;
+import com.niit.appleproduct.models.Catagory;
+
+@Controller
+public class BackendController {
+
+	@Autowired
+	private CatagoryDAO catagoryDAO;
+	
+	@Autowired
+	private Catagory catagory;
+	
+@RequestMapping(value = "/catagories" , method = RequestMethod.GET)
+public String listCatagories(Model model)
+{
+	model.addAttribute("Catagory", catagory);
+	model.addAttribute("catagoryList", this.categoryDAO.list());
+	return "Catagory";
+	
+}
+}

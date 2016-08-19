@@ -1,0 +1,42 @@
+package com.niit.appleproduct.test;
+
+import static org.junit.Assert.*;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.omg.CORBA.Context;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.niit.appleproduct.dao.UserDAO;
+import com.niit.appleproduct.models.UserDetails;
+
+public class TestUserDAO {
+@Autowired
+UserDAO userDAO;
+@Autowired
+UserDetails userDetails;
+
+AnnotationConfigApplicationContext context;
+
+@BeforeClass
+public void init()
+{
+	context = new AnnotationConfigApplicationContext();
+	context.scan("com.niit");
+	context.refresh();
+	
+	userDAO =(UserDAO) context.getBean("userDAO");
+	userDetails = (UserDetails) context.getBean("userDetails");
+}
+
+public void UsersTestCase()
+{
+	
+}
+	@Test
+		public void test() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,70 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Index Page</title>
+<link rel="stylesheet" href="bootstrap-3.3.6-dist/css/bootstrap.min.css">
+<script src="bootstrap-3.3.6-dist/js/jqury-1.12.4.min.js"></script>
+<script src="bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+</head>
+<body background="E:\1.png">
+	<font size="34" color="white">
+		<center>
+			<h>New User</h>
+		</center>
+	</font>
+	<font size="20">
+		<center>
+		<div class="container">
+			<div class="form-group">
+				<label for="text">First Name:</label> <input type="text"
+					class="form-control" id="text" placeholder="Enter first name">
+			</div>
+			<div class="form-group">
+				<label for="text">Last Name:</label> <input type="text"
+					class="form-control" id="text" placeholder="Enter last name">
+			</div>
+			<tr>
+				<td>Age&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:</td>
+				<td><input type="Number" name="age" value="" required /></br></td>
+			</tr>
+			<tr>
+				<td>&nbsp&nbsp&nbspGender&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:
+				</td>
+				<td><input type="radio" name="gender" value="male" required />Male</td>
+				<td><input type="radio" name="gender" value="female" required />Female</td>
+				</br>
+			</tr>
+			<div class="form-group">
+				<label for="text">User Name:</label> <input type="text"
+					class="form-control" id="text" placeholder="Enter user name">
+			</div>
+			<div class="form-group">
+				<label for="pwd">Password:</label> <input type="password"
+					class="form-control" id="pwd" placeholder="Enter password">
+			</div>
+			<div class="form-group">
+				<label for="pwd">Re-Password:</label> <input type="password"
+					class="form-control" id="pwd" placeholder="Re-Enter password">
+			</div>
+			<tr>
+				<td>Mobile:No&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:</td>
+				<td><input type="text" name="phno" pattern="[789][0-9]{9}"
+					required /></br></td>
+			</tr>
+			<div class="form-group">
+				<label for="email">User Name:</label> <input type="email"
+					class="form-control" id="email" placeholder="Enter email">
+			</div>
+			<button type="submit" class="btn btn-default .btn-sm">Submit</button>
+			<button type="reset" class="btn btn-default .btn-sm">Reset</button>
+			<tr>
+				<td colspan="2">Already registered!! <a href="index.jsp">Login
+						Here</a></td>
+			</tr>
+		</center>
+	</font>
+</body>
+</html>

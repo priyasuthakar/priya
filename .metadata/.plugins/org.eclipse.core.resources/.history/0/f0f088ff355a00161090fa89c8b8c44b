@@ -1,0 +1,45 @@
+package com.niit.appleproduct.test;
+
+import static org.junit.Assert.*;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.niit.appleproduct.dao.ProductDAO;
+
+public class TestProductDAO {
+@Autowired
+static
+ProductDAO productDAO;
+@Autowired
+static AnnotationConfigApplicationContext context;
+
+@BeforeClass
+public static void init()
+{
+	context = new AnnotationConfigApplicationContext();
+	context.scan("com.niit");
+	context.refresh();
+	
+	productDAO =(ProductDAO) context.getBean("productDAO");
+}
+
+@AfterClass
+public static void close()
+{
+	context.close();
+	productDAO = null;
+	
+}
+
+@Test
+public void ProductsTestCase()
+{
+	int size= productDAO.list().size();
+	assertEquals("Product list test case",5,size);
+}
+	
+}
