@@ -11,7 +11,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Regestration Page</title>
+<title>Regestration</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -70,8 +70,7 @@ footer .glyphicon {
 </style>
 
 </head>
-<body id="myPage" data-spy="scroll" data-target=".navbar"
-	data-offset="60" style="background-color: #93ece7">
+<body id="myPage" style="background-color: #93ece7">
 	<center>
 		<font face="Harlow Solid Italic"><h1>Registration</h1></font>
 		<div class="container">
@@ -87,8 +86,8 @@ footer .glyphicon {
 							required="true" title="should not be empty" />
 					</div>
 				</div>
-				</br>
-				</br>
+				<br>
+				<br>
 				<div class="control-group">
 					<form:label class="col-lg-4 control-label" path="lastname">
 						<spring:message text="Last Name" />
@@ -98,8 +97,8 @@ footer .glyphicon {
 							required="true" title="should not be empty" />
 					</div>
 				</div>
-				</br>
-				</br>
+				<br>
+				<br>
 				<div class="control-group">
 					<form:label class="col-lg-4 control-label" path="age">
 						<spring:message text="Age" />
@@ -109,8 +108,8 @@ footer .glyphicon {
 							required="true" />
 					</div>
 				</div>
-				</br>
-				</br>
+				<br>
+				<br>
 				<div class="control-group">
 					<form:label class="col-lg-4 control-label" path="gender">
 						<spring:message text="Gender" />
@@ -122,8 +121,8 @@ footer .glyphicon {
 						<spring:message text="Female" />
 					</div>
 				</div>
-				</br>
-				</br>
+				<br>
+				<br>
 				<div class="control-group">
 					<form:label class="col-lg-4 control-label" path="mobileno">
 						<spring:message text="Mobile No" />
@@ -134,8 +133,8 @@ footer .glyphicon {
 							title="should be in the form of 10 digit starting with 789!" />
 					</div>
 				</div>
-				</br>
-				</br>
+				<br>
+				<br>
 				<div class="control-group">
 					<form:label class="col-lg-4 control-label" path="emailid">
 						<spring:message text="E-Mail Id" />
@@ -145,8 +144,8 @@ footer .glyphicon {
 							required="true" title="should be in the form of abc@example.com" />
 					</div>
 				</div>
-				</br>
-				</br>
+				<br>
+				<br>
 				<div class="control-group">
 					<form:label class="col-lg-4 control-label" path="address">
 						<spring:message text="Address" />
@@ -156,12 +155,12 @@ footer .glyphicon {
 							required="true"></form:textarea>
 					</div>
 				</div>
-				</br>
-				</br>
-				</br>
-				</br>
-				</br>
-				</br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
 				<div class="control-group">
 					<form:label class="col-lg-4 control-label" path="state">
 						<spring:message text="State" />
@@ -171,8 +170,8 @@ footer .glyphicon {
 							required="true" />
 					</div>
 				</div>
-				</br>
-				</br>
+				<br>
+				<br>
 				<div class="control-group">
 					<form:label class="col-lg-4 control-label" path="country">
 						<spring:message text="Country" />
@@ -182,8 +181,8 @@ footer .glyphicon {
 							required="true" />
 					</div>
 				</div>
-				</br>
-				</br>
+				<br>
+				<br>
 				<div class="control-group">
 					<form:label class="col-lg-4 control-label" path="pincode">
 						<spring:message text="Pincode" />
@@ -193,8 +192,8 @@ footer .glyphicon {
 							required="true" title="should not be empty" />
 					</div>
 				</div>
-				</br>
-				</br>
+				<br>
+				<br>
 				<div class="control-group">
 					<form:label class="col-lg-4 control-label" path="username">
 						<spring:message text="User Name" />
@@ -205,8 +204,8 @@ footer .glyphicon {
 							title="should not be empty" />
 					</div>
 				</div>
-				</br>
-				</br>
+				<br>
+				<br>
 				<div class="control-group">
 					<form:label class="col-lg-4 control-label" path="password">
 						<spring:message text="Password" />
@@ -216,8 +215,8 @@ footer .glyphicon {
 							required="true" title="should not be empty" />
 					</div>
 				</div>
-				</br>
-				</br>
+				<br>
+				<br>
 				<div class="control-group">
 					<form:label class="col-lg-4 control-label" path="password">
 						<spring:message text="Re-Password" />
@@ -228,8 +227,8 @@ footer .glyphicon {
 							title="should be same as password" />
 					</div>
 				</div>
-				</br>
-				</br>
+				<br>
+				<br>
 
 				<form:button type="submit" class="btn btn-info">
 					<spring:message text="Submit" />
@@ -240,5 +239,6 @@ footer .glyphicon {
 			</form:form>
 		</div>
 	</center>
+	<%@include file="Footer.jsp"%>
 </body>
 </html>

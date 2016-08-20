@@ -9,7 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Shopping</title>
+<title>Product Admin</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -78,30 +78,12 @@ footer .glyphicon {
 </style>
 </head>
 <body>
-	<h3>${editproduct}</h3>
-	<h3>${addproduct}</h3>
-	<h1>${success}</h1>
-
+<center>
+	<font face="Harlow Solid Italic"><h1>Add Product</h1></font>
+<br>
 	<div class="container">
-		<form:form action="product" method="post" modelAttribute="product">
+		<form:form action="product" method="post" modelAttribute="product" enctype="multipart/form-data">
 
-			<%-- 	<div class="control-group">
-				<form:label path="id" class="col-lg-4">
-					<spring:message text="ID" />
-				</form:label>
-				<div class="col-lg-4 controls">
-					<form:input path="id" class="form-control" />
-					<form:errors path="id" />
-					<c:choose>
-						<c:when test="${!empty productTable.id }">
-							<td><form:input path="id" disabled="true" readonly="true" /></td>
-						</c:when>
-						<c:otherwise>
-							<td><form:input path="id" /></td>
-						</c:otherwise>
-					</c:choose>
-				</div>
-			</div> --%>
 			<div class="control-group">
 				<form:label class="col-lg-4" path="name">
 					<spring:message text="NAME" />
@@ -111,49 +93,61 @@ footer .glyphicon {
 					<form:errors path="name" />
 				</div>
 			</div>
+			<br>
+			<br>
 			<div class="control-group">
 				<form:label class="col-lg-4" path="color">
-					<spring:message text="COLOR" />
+					<spring:message text="Color" />
 				</form:label>
 				<div class="col-lg-4 controls">
 					<form:input path="color" placeholder="Enter color" />
 				</div>
 			</div>
+					<br>
+			<br>
 			<div class="control-group">
 				<form:label class="col-lg-4" path="price">
-					<spring:message text="PRICE" />
+					<spring:message text="Price" />
 				</form:label>
 				<div class="col-lg-4 controls">
 					<form:input path="price" placeholder="Enter price" />
 					<form:errors path="price" />
 				</div>
 			</div>
-			<div class="control-group">
+					<br>
+			<br>
+				<%-- <div class="control-group">
 				<form:label class="col-lg-4" path="catagory">
-					<spring:message text="CATAGORY" />
+					<spring:message text="Catagory" />
 				</form:label>
 				<div class="col-lg-4 controls">
 					<form:select path="catagory.name" items="${catagoryList}"
 						itemValue="name" itemLabel="name" placeholder="Enter category" />
 				</div>
 			</div>
+			<br>
+			<br>
 			<div class="control-group">
 				<form:label class="col-lg-4" path="supplier">
-					<spring:message text="SUPPLIER" />
+					<spring:message text="Supplier" />
 				</form:label>
 				<div class="col-lg-4 controls">
 					<form:select path="supplier.name" items="${supplierList}"
 						itemValue="name" itemLabel="name" placeholder="Enter supplier" />
 				</div>
-			</div>
+			</div> 
+			<br>
+			<br>--%>
 			<div class="control-group">
 				<form:label class="col-lg-4" path="image">
-					<spring:message text="IMAGE" />
+					<spring:message text="Image" />
 				</form:label>
 				<div class="col-lg-4 controls">
-					<form:input type="file" path="image" />
+					<form:input type="file" path="image"  />
 				</div>
 			</div>
+			<br>
+			<br>
 			<div class="control-group">
 				<form:label class="col-lg-4" path="discription">
 					<spring:message text="DISCRIPTION" />
@@ -163,17 +157,19 @@ footer .glyphicon {
 					<form:errors path="discription" />
 				</div>
 			</div>
+			<br>
+			<br>
 			<div class="control-group">
-				<c:if test="${!empty productTable.name }">
-					<form:button type="submit" value="Add Product" />
-				</c:if>
-				<c:if test="${empty productTable.name }">
-					<form:button type="submit" value="Edit Product" />
-				</c:if>
+					<form:button type="submit" class="btn btn-info">
+					<spring:message text="Add Product" />
+				</form:button>
+				<form:button type="reset" class="btn btn-info">
+					<spring:message text="Reset" />
+				</form:button>
 			</div>
 		</form:form>
 	</div>
-
-
+</center>
+<%@include file="Footer.jsp"%>
 </body>
 </html>

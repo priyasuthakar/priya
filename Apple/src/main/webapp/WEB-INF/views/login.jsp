@@ -12,7 +12,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Index Page</title>
+<title>Login</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -71,12 +71,11 @@ footer .glyphicon {
 </style>
 
 </head>
-<body id="log" data-spy="scroll" data-target=".navbar" data-offset="60"
-	style="background-color: #b3ffb3">
+<body id="log" style="background-color: #b3ffb3">
 
 	<font face="Harlow Solid Italic"><h1>${successMessage}</h1></font>
 	<center>
-		<font face="Harlow Solid Italic"><h1>Sign-in</h1></font> </br> </br> </br> </br> </br> </br>
+		<font face="Harlow Solid Italic"><h1>Sign-in</h1></font> <br> <br> <br> <br> <br> <br>
 		<div class="container">
 			<form action="loginc" method="post" commandName="user"
 				class="form-horizontal" role="form">
@@ -88,7 +87,7 @@ footer .glyphicon {
 								required="true" title="should not be empty" />
 						</div>
 					</div>
-					</br> </br>
+					<br> <br>
 					<div class="control-group">
 						<label class="col-lg-4">Password</label>
 						<div class="col-lg-4 controls">
@@ -97,67 +96,40 @@ footer .glyphicon {
 								title="should not be empty" />
 						</div>
 					</div>
-					</br> </br>
+					<br> <br>
 				</center>
 				<div class="checkbox">
 					<label><input type="checkbox"> Remember me</label>
 				</div>
-				</br>
+				<br>
 				<div>
 					<input type="submit" class="btn btn-info" /> <input type="reset"
 						class="btn btn-info" />
 				</div>
-				</br>
+				<br>
 				<div>
-					<a href="reg">new user?</a>
+				
+					<a href="reg"><input type="button"
+						class="btn btn-link" />new user?</a>
 				</div>
-				</br> </br> <input type="hidden" name="${_csrf.parameterName }"
+				<br> <br> <input type="hidden" name="${_csrf.parameterName }"
 					value="${_csrf.token}" />
 				<!-- 	<a href="login" class="btn btn-default" role="button">Reset</a> -->
 			</form>
 		</div>
 	</center>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<footer class="container-fluid bg-4 text-center">
+	<%@include file="Footer.jsp"%>
+	</footer>
 </body>
 </html>
-<%-- <center>
-					<div class="control-group">
-						<form:label class="col-lg-4" path="username">
-							<spring:message text="User Name" />
-						</form:label>
-						<div class="col-lg-4 controls">
-							<form:input path="username" placeholder="Enter user name"
-								required="true" title="should not be empty" />
-						</div>
-					</div>
-					</br> </br>
-					<div class="control-group">
-						<form:label class="col-lg-4" path="password">
-							<spring:message text="Password" />
-						</form:label>
-						<div class="col-lg-4 controls">
-							<form:password path="password" placeholder="Enter password"
-								required="true" title="should not be empty" />
-						</div>
-					</div>
-					</br> </br>
-				</center>
-				<div class="checkbox">
-					<label><input type="checkbox"> Remember me</label>
-				</div>
-				<div>
-					<form:button type="submit" class="btn btn-info">
-						<spring:message text="Submit" />
-					</form:button>
-					<form:button type="reset" class="btn btn-info">
-						<spring:message text="Reset" />
-					</form:button>
-					</div>
-					<div>
-					<a href="reg">new user?</a>
-				</div>
- --%>
-
-
-
-
-

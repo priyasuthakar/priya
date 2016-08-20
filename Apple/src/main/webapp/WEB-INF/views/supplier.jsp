@@ -5,13 +5,13 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%-- <%@ page session="false"%> --%>
 <%@page isELIgnored="false"%>
-<%@include file="/WEB-INF/views/Header.jsp"%>
+<%@include file="/WEB-INF/views/AdminHeader.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Shopping</title>
+<title>Supplier Admin</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -80,10 +80,9 @@ footer .glyphicon {
 </style>
 </head>
 <body>
-	<font face="Harlow Solid Italic"><h1>${editsupplier}</h1></font>
-	<font face="Harlow Solid Italic"><h1>${addsupplier}</h1></font>
-	<font face="Harlow Solid Italic"><h1>${success}</h1></font>
-
+<center>
+	<font face="Harlow Solid Italic"><h1>Add Supplier</h1></font>
+	
 	<div class="container">
 		<form:form action="supplier" method="post" commandName="supplier">
 
@@ -95,114 +94,41 @@ footer .glyphicon {
 					<form:input path="id" />
 				</div>
 			</div>
-			</br>
-			</br> --%>
+			<br>
+			<br> --%>
 			<div class="control-group">
 				<form:label class="col-lg-4" path="name">
 					<spring:message text="Name" />
 				</form:label>
 				<div class="col-lg-4 controls">
-					<form:input path="name" />
+					<form:input path="name" placeholder="Enter name" />
+					<form:errors path="id" />
 				</div>
 			</div>
-			</br>
-			</br>
+			<br>
+			<br>
 			<div class="control-group">
 				<form:label class="col-lg-4" path="discription">
 					<spring:message text="Discription" />
 				</form:label>
 				<div class="col-lg-4 controls">
-					<form:input path="discription" />
+					<form:input path="discription" placeholder="Enter discription..."/>
+					<form:errors path="discription" />
 				</div>
 			</div>
-			</br>
-			</br>
-			<%-- <form:button type="submit" class="btn btn-info">
-				<spring:message text="ADD" />
-			</form:button>
-			<a href="supplier" class="btn btn-info" role="button">Reset</a> --%>
-			<c:if test="${! empty supplier.name}">
+			<br>
+			<br>
+			<div>
 				<form:button type="submit" class="btn btn-info">
-					<spring:message text="EditSupplier" />
+					<spring:message text="Add Supplier" />
 				</form:button>
-			</c:if>
-			<c:if test="${empty supplier.name}">
-				<form:button type="submit" class="btn btn-info">
-					<spring:message text="AddSupplier" />
+				<form:button type="reset" class="btn btn-info">
+					<spring:message text="Reset" />
 				</form:button>
-			</c:if>
-			</br>
+			</div>
 		</form:form>
 	</div>
-
-	<%-- <h1>Add a Supplier</h1>
-
-	<c:url var="addAction" value="/supplier/add"></c:url>
-
-	<form:form action="${addAction}" commandName="supplier">
-		<table>
-			<tr>
-				<td><form:label path="id">
-						<spring:message text="ID" />
-					</form:label></td>
-				<c:choose>
-					<c:when test="${!empty supplier.id}">
-						<td><form:input path="id" disabled="true" readonly="true" />
-						</td>
-					</c:when>
-
-					<c:otherwise>
-						<td><form:input path="id" pattern=".{3,4}" required="true"
-								title="id should contains 3 to 4 characters" /></td>
-					</c:otherwise>
-				</c:choose>
-			</tr>
-			<tr>
-				<form:input path="id" hidden="true" />
-				<td><form:label path="name">
-						<spring:message text="Name" />
-					</form:label></td>
-				<td><form:input path="name" required="true" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="address">
-						<spring:message text="discription" />
-					</form:label></td>
-				<td><form:input path="discription" required="true" /></td>
-			</tr>
-			<tr>
-				<td colspan="2"><c:if test="${!empty supplier.name}">
-						<input type="submit"
-							value="<spring:message text="Edit Supplier"/>" />
-					</c:if> <c:if test="${empty supplier.name}">
-						<input type="submit" value="<spring:message text="Add Supplier"/>" />
-					</c:if></td>
-			</tr>
-		</table>
-	</form:form>
-	<br>
-	<h3>Supplier List</h3>
-	<c:if test="${!empty supplierList}">
-		<table class="tg">
-			<tr>
-				<th width="80">Supplier ID</th>
-				<th width="120">Supplier Name</th>
-				<th width="120">Supplier discription</th>
-				<th width="60">Edit</th>
-				<th width="60">Delete</th>
-			</tr>
-			<c:forEach items="${supplierList}" var="supplier">
-				<tr>
-					<td>${supplier.id}</td>
-					<td>${supplier.name}</td>
-					<td>${supplier.discription}</td>
-					<td><a href="<c:url value='supplier/edit/${supplier.id}' />">Edit</a></td>
-					<td><a href="<c:url value='supplier/remove/${supplier.id}' />">Delete</a></td>
-				</tr>
-			</c:forEach>
-		</table>
-	</c:if>
-
- --%>
+	</center>
+	<%@include file="Footer.jsp"%>
 </body>
 </html>

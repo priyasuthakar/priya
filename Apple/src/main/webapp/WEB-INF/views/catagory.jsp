@@ -9,7 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Shopping</title>
+<title>Catagory Admin</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -78,62 +78,43 @@ footer .glyphicon {
 </style>
 </head>
 <body>
-	<font face="Harlow Solid Italic"><h1>${editcatagory}</h1></font>
+<center>
 	<font face="Harlow Solid Italic"><h1>${addcatagory}</h1></font>
-
-	<div class="container">
+<div class="container">
 		<form:form action="catagory" method="post" modelAttribute="catagory">
-			<%-- <div class="control-group">
-				<form:label class="col-lg-4" path="id">
-					<spring:message text="Id" />
-				</form:label>
-				<div class="col-lg-4 controls">
-					<form:input path="id" readonly="true" />
-				</div>
-			</div>
-			</br>
-			</br> --%>
 			<div class="control-group">
 				<form:label class="col-lg-4" path="name">
 					<spring:message text="Name" />
 				</form:label>
 				<div class="col-lg-4 controls">
-					<form:input path="name" />
+					<form:input path="name" placeholder="Enter name"/>
 					<form:errors path="name" />
 				</div>
 			</div>
-			</br>
-			</br>
+			<br>
+			<br>
 			<div class="control-group">
 				<form:label class="col-lg-4" path="discription">
 					<spring:message text="Discription" />
 				</form:label>
 				<div class="col-lg-4 controls">
-					<form:input path="discription" />
+					<form:input path="discription" placeholder="Enter discription..."/>
 					<form:errors path="discription" />
 				</div>
 			</div>
-			</br>
-			</br>
+			<br>
+			<br>
 			<div>
-				<c:if test="${!empty catagory.name}">
-					<form:button type="submit" class="btn btn-info">
-						<spring:message text="Edit Catagory" />
-					</form:button>
-				</c:if>
-				<c:if test="${empty catagory.name}">
 					<form:button type="submit" class="btn btn-info">
 						<spring:message text="Add Catagory" />
 					</form:button>
-				</c:if>
-				</td>
+					<form:button type="reset" class="btn btn-info">
+						<spring:message text="Reset" />
+					</form:button>
 			</div>
-			<%-- <form:button type="submit" class="btn btn-info">
-				<spring:message text="ADD" />
-			</form:button>
-			<a href="catagory" class="btn btn-info" role="button">Reset</a>
-			</br> --%>
 		</form:form>
 	</div>
+</center>
+<%@include file="Footer.jsp"%>
 </body>
 </html>

@@ -3,13 +3,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%-- <%@ page session="false"%> --%>
+<%@ page session="false"%>
 <%@page isELIgnored="false"%>
+<%@include file="Header.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Theme Made By www.w3schools.com - No Copyright -->
-<title>Shopping site</title>
+<title>My Shopping</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -189,7 +189,7 @@ footer .glyphicon {
 
 <body id="myPage" data-spy="scroll" data-target=".navbar"
 	data-offset="60">
-	<%@include file="Header.jsp"%>
+	
 	<font face="Harlow Solid Italic"><h1>${errorMessage}</h1></font>
 	<font face="Harlow Solid Italic"><h1>${logoutsuccess}</h1></font>
 
@@ -410,6 +410,7 @@ footer .glyphicon {
 					});
 				})
 	</script>
+	<%@include file="Footer.jsp"%>
 </body>
 </html>
 

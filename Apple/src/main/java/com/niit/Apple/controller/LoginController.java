@@ -45,18 +45,5 @@ public class LoginController {
 	public String admin() {
 		return "admin";
 	}
-	
-	/*@RequestMapping("/viewcatagory")
-    public ModelAndView view() {
-		ModelAndView mv=new ModelAndView("/view");
-        return mv;
-    }*/
-	
-	/*@RequestMapping("/editcatagory")
-    public ModelAndView edit() {
-		ModelAndView mv=new ModelAndView("/edit");
-       mv.addObject("catagoryList",catagoryDAO.list());
-        return mv;
-    }*/
 		
 	}

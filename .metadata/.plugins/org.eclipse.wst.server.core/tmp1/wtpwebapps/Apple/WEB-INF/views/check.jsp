@@ -21,7 +21,6 @@
 		</c:if>
 
 		<c:if test="${invalidCredentials==true}">
-			<%@include file="Header.jsp"%>
 			<%@include file="Home.jsp"%>
 		</c:if>
 

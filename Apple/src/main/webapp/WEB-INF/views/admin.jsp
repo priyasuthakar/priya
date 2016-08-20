@@ -79,42 +79,10 @@ footer .glyphicon {
 	<div id="admin">
 		<div class="container">
 
-			<!-- </br> </br>
-			<div class="col-md-1 col-md-offset-1">
-				<a href="catagory">ADDCATAGORY</a>
-			</div>
-			<div class="col-md-1 col-md-offset-1">
-				<a href="editcatagory">EDITCATAGORY</a>
-			</div>
-			<div class="col-md-1 col-md-offset-1">
-				<a href="viewcatagory">VIEWCATAGORY</a>
-			</div>
-			<br> <br> <br>
- -->
-			<!-- <div class="col-md-1 col-md-offset-1">
-				<a href="supplier">ADDSUPPLIER</a>
-			</div>
-			<div class="col-md-1 col-md-offset-1">
-				<a href="#">EDITSUPPLIER</a>
-			</div>
-			<div class="col-md-1 col-md-offset-1">
-				<a href="viewsupplier">VIEWSUPPLIER</a>
-			</div>
-			<br> <br> <br>
-			<div class="col-md-1 col-md-offset-1">
-				<a href="product">ADDPRODUCT</a>
-			</div>
-			<div class="col-md-1 col-md-offset-1">
-				<a href="#">EDITPRODUCT</a>
-			</div>
-			<div class="col-md-1 col-md-offset-1">
-				<a href="viewproduct">VIEWPRODUCT</a>
-			</div>
-		</div>
-	</div>
-	</br>
-	</br> -->
-			</br> </br> <img src=<c:url value="/resource/images/apple.jpg"/> width="2000"
+			<br> <br> <img src=<c:url value="/resource/images/apple.jpg"/> width="2000"
 				height="550">
+</div>
+</div>
+<%@include file="Footer.jsp"%>
 </body>
 </html>

@@ -62,9 +62,9 @@ footer .glyphicon {
 }
 </style>
 </head>
-<body id="myPage" data-spy="scroll" data-target=".navbar"
-	data-offset="60" style="background-color: #E6E6FA">
-
-
+<body id="myPage" style="background-color: #E6E6FA">
+<br>
+<br>
+<%@include file="Footer.jsp"%>
 </body>
 </html>

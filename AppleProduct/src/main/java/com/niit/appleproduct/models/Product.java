@@ -22,31 +22,29 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Size (min=4,message="The field must be atleast 4 characters!")
+	@Size (min=4,message="The field must be atleast 3 characters!")
 	private String name;
 	@Range(min=1000,max=100000,message="Price should not be less than 1000!")
 	private String price;
 	private String color;
-	@Length(min =5,max=25, message = "The field must be between 5 and 25 characters long!")
+	@Length(min =5,max=25, message = "The field must be between 3 and 25 characters long!")
 	private String discription;
 
 	@Transient	
 	private MultipartFile image;
+	
 	@ManyToOne
 	@JoinColumn(name="CATAGORY_ID")
 	private Catagory catagory_id;
+	
 	public Catagory getCatagory_id() {
 		return catagory_id;
 	}
+	
 	public void setCatagory_id(Catagory catagory_id) {
 		this.catagory_id = catagory_id;
 	}
-	public MultipartFile getImage() {
-		return image;
-	}
-	public void setImage(MultipartFile image) {
-		this.image = image;
-	}
+	
 	public int getId() {
 		return id;
 	}
@@ -87,4 +85,10 @@ public class Product {
 		this.discription = discription;
 	}
 
+	public MultipartFile getImage() {
+		return image;
+	}
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
 }

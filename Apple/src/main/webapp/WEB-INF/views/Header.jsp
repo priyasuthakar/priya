@@ -23,6 +23,7 @@
 				<font face="Script MT Bold"> Shopping Site </font>
 			</a>
 		</div>
+		 <div class="collapse navbar-collapse" id="myNavbar">
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="Home"><span
 					class="glyphicon glyphicon-home"></span>Home</a></li>
@@ -43,6 +44,7 @@
 			<li><a href="#contactus"><span
 					class="glyphicon glyphicon-earphone"></span>Contact Us</a></li>
 		</ul>
+		
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="cart"><span
 					class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
@@ -59,6 +61,7 @@
 				</c:when>
 			</c:choose>
 		</ul>
+	</div>
 	</div>
 	</nav>
 

@@ -7,6 +7,7 @@ import com.niit.appleproduct.models.Product;
 
 public class ProductTest {
 	public static void main(String arg[]) {
+		@SuppressWarnings("resource")
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.scan("com.niit.appleproduct");
 		context.refresh();

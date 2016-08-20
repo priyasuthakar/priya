@@ -24,10 +24,10 @@ public class ProductDAOimp implements ProductDAO {
 		sessionFactory.getCurrentSession().saveOrUpdate(product);
 	}
 	
-	@Transactional
+	/*@Transactional
 	public void save(Product product) {
 		sessionFactory.getCurrentSession().saveOrUpdate(product);
-	}
+	}*/
 	
 	@Transactional
 	public void update(Product product) {
@@ -43,7 +43,7 @@ public class ProductDAOimp implements ProductDAO {
 
 	@Transactional
 	public Product get(int id) {
-		String hql = "from product where id=" + "'" + id + "'";
+		String hql = "from Product where id=" + "'" + id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
 		List<Product> listProduct = query.list();

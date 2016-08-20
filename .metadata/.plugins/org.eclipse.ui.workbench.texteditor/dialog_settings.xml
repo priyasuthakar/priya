@@ -2,30 +2,30 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="form-control" key="selection"/>
+		<item value="&lt;br&gt;" key="selection"/>
 		<item value="true" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="&lt;/br&gt;"/>
+			<item value="modelAndView"/>
+			<item value="catagory"/>
+			<item value="Catagory"/>
+			<item value="clist"/>
 			<item value="controls"/>
 			<item value="input class=&quot;form-control&quot;"/>
 			<item value="lists"/>
-			<item value="list"/>
-			<item value="clist"/>
-			<item value="Catagory"/>
-			<item value="catagory"/>
-			<item value="control-label"/>
 		</list>
 		<list key="replacehistory">
+			<item value="&lt;br&gt;"/>
+			<item value="mv"/>
+			<item value="supplier"/>
+			<item value="product"/>
+			<item value="Supplier"/>
+			<item value="slist"/>
 			<item value="form-control"/>
 			<item value="input"/>
-			<item value="list"/>
-			<item value="lists"/>
-			<item value="slist"/>
-			<item value="Supplier"/>
-			<item value="supplier"/>
-			<item value="col-lg-4"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

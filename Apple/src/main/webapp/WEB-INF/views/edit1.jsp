@@ -9,7 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Shopping</title>
+<title>Supplier Admin</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -76,20 +76,20 @@ footer .glyphicon {
 <body>
 
 	<center>
-		<font face="Harlow Solid Italic"><h1>${editsupplier}</h1></font>
+		<font face="Harlow Solid Italic"><h1>Edit Supplier</h1></font>
 		<div class="container">
 			<form:form action="edit1" method="post" commandName="supplier"
 				class="form-horizontal" role="form">
-				<%-- <div class="control-group">
+				<div class="control-group">
 					<form:label class="col-lg-4" path="id">
-						<spring:message text="ID" />
+						<spring:message text="Id" />
 					</form:label>
 					<div class="col-lg-4 controls">
 						<form:hidden path="id" disabled="true" readonly="true" />
 					</div>
 				</div>
-				</br>
-				</br> --%>
+				<br>
+				<br> 
 				<div class="control-group">
 					<form:label class="col-lg-4" path="name">
 						<spring:message text="Name" />
@@ -98,8 +98,8 @@ footer .glyphicon {
 						<form:input path="name" />
 					</div>
 				</div>
-				</br>
-				</br>
+				<br>
+				<br>
 				<div class="control-group">
 					<form:label class="col-lg-4" path="discription">
 						<spring:message text="Discription" />
@@ -108,22 +108,21 @@ footer .glyphicon {
 						<form:input path="discription" />
 					</div>
 				</div>
-				</br>
-				</br>
-				<div>
+				<br>
+				<br>
 					<div>
 						<c:if test="${!empty supplier.name }">
-							<button type="submit" class="btn btn-primary">EDIT</button>
-							<button type="reset" class="btn btn-primary">RESET</button>
+							<form:button type="submit" class="btn btn-info">
+							<spring:message text="Edit" />
+						</form:button>
+						<form:button type="reset" class="btn btn-info">
+							<spring:message text="Reset" />
+						</form:button>
 						</c:if>
 					</div>
-					<%-- <form:button type="submit" class="btn btn-info">
-					<spring:message text="EDIT" />
-				</form:button>
-				<a href="edit1" class="btn btn-info" role="button">Reset</a> --%>
 			</form:form>
 		</div>
 	</center>
-
+<%@include file="Footer.jsp"%>
 </body>
 </html>

@@ -2,6 +2,8 @@ package com.niit.Apple.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 import com.niit.appleproduct.dao.SupplierDAO;
-import com.niit.appleproduct.models.Catagory;
 import com.niit.appleproduct.models.Supplier;
 
 @Controller
@@ -31,29 +32,40 @@ public class SupplierController {
 	public ModelAndView supplier(){
 		ModelAndView mv = new ModelAndView("/supplier");
 		mv.addObject("supplier", supplier);  
-		mv.addObject("addsupplier", "Add Supplier");
+		mv.addObject("addsupplier", "Supplier added successfully");
 		return mv;
 	}
 	
-	@RequestMapping(value ="/supplier",method=RequestMethod.POST)
+	@RequestMapping(value = "/supplier", method = RequestMethod.POST)
+	public ModelAndView addsupplier(@Valid @ModelAttribute("supplier") Supplier supplier,BindingResult result) {
+		ModelAndView mv = new ModelAndView();
+		if (result.hasErrors()) {
+			mv.addObject("addsupplier", "Add Supplier");
+			mv.setViewName("/supplier");
+		} 
+		else {
+			supplierDAO.saveOrUpdate(supplier);
+			mv.setViewName("redirect:/viewsupplier");
+		}
+		return mv;
+	}
+	
+	/*@RequestMapping(value ="/supplier",method=RequestMethod.POST)
 	public String  supplieradd(@ModelAttribute("supplier") Supplier supplier, BindingResult result,Model model,RedirectAttributes redirectAttribute) {
 	supplierDAO.saveOrUpdate(supplier);
 	return "redirect:/viewsupplier";
-	}
-
+	}*/
 
 	@RequestMapping(value ="viewsupplier")
-	public ModelAndView  view1(@ModelAttribute("supplier") Supplier supplier,Model model) {
-		ModelAndView mv = new ModelAndView("view");
+	public ModelAndView  viewsu(@ModelAttribute("supplier") Supplier supplier,Model model) {
+		ModelAndView mv = new ModelAndView("viewsu");
 		Gson gson = new Gson();
 		List<Supplier> slist=supplierDAO.list();
 		String lists = gson.toJson(slist);
-		System.out.println("supplier viewed"+lists);
 		model.addAttribute("lists", lists);
 		return mv;
 	}
-	
-	
+		
 	@RequestMapping(value ="/s{id}")
 	public String deletesupplier(@PathVariable("id") int id,ModelMap model) {
 		supplierDAO.delete(id);
@@ -63,68 +75,14 @@ public class SupplierController {
 	@RequestMapping(value ="/edit1{id}")
 	public String editsupplier(@PathVariable("id") int id,Model model  ) {
 		supplier = supplierDAO.get(id); 
-		System.out.println("edited");
 		model.addAttribute("supplier", supplier);
-		model.addAttribute("editsupplier", "Edit supplier");  
-		return "/redirect:/viewsupplier";
+		model.addAttribute("editsupplier", "Supplier editted successfully");  
+		return "/edit1";
 	}
 	
-	
-	
-	/*@RequestMapping(value ="/{id}")
-	public String deletesupplier(@PathVariable("id") int id,ModelMap model) {
-		supplierDAO.delete(id);
-		model.addAttribute("supplierList",supplierDAO.list());
-		return "view";
+	@RequestMapping(value ="/edit1",method=RequestMethod.POST)
+	public String  supplieredit(@ModelAttribute("supplier") Supplier supplier, BindingResult result,Model model,RedirectAttributes redirectAttribute) {
+	supplierDAO.saveOrUpdate(supplier);
+	return "redirect:/viewsupplier";
 	}
-	
-	@RequestMapping(value ="/edit1{id}")
-	public String editsupplier(@PathVariable("id") int id,Model model  ) {
-		supplier = supplierDAO.get(id); 
-		model.addAttribute("supplier", supplier);
-		model.addAttribute("editsupplier", "Edit supplier");  
-		return "supplier";
-	}
-	
-	@RequestMapping(value="/edit1",method=RequestMethod.POST)
-	public ModelAndView  supplieredit(@ModelAttribute("supplier") Supplier supplier,Model model) {
-     supplierDAO.update(supplier);
-     System.out.println("Error");
-		ModelAndView mv = new ModelAndView("/view");
-		Gson gson = new Gson();
-		List<Supplier> slist=supplierDAO.list();
-		String lists = gson.toJson(slist);
-		System.out.println("supplier viewed"+lists);
-		model.addAttribute("supplierList", lists);
-	
-		return mv;
-	
-		mv.addObject("supplierList",supplierDAO.list());
-		
-	}*/
-	
-	/*@RequestMapping(value ="/add1/delete/{id}")
-	public String deletesupplier(@PathVariable("id") int id,ModelMap model) {
-		supplierDAO.delete(id);
-		model.addAttribute("supplierList",supplierDAO.list());
-		return "view";
-	}
-	
-	@RequestMapping(value ="/add1/edit/{id}")
-	public String editsupplier(@PathVariable("id") int id,Model model  ) {
-		supplier = supplierDAO.get(id); 
-		model.addAttribute("supplier", supplier);
-		model.addAttribute("editsupplier", "Edit supplier");  
-		return "edit1";
-	}
-	
-	@RequestMapping("/edit1")
-	public ModelAndView  supplieredit(@ModelAttribute("supplier") Supplier supplier) {
-	System.out.println("Error");
-     supplierDAO.update(supplier);
-		ModelAndView mv = new ModelAndView("/view");
-		mv.addObject("supplierList",supplierDAO.list());
-		return mv;
-	}
-*/	
 	}

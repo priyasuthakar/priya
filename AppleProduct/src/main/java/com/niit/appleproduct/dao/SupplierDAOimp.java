@@ -25,11 +25,11 @@ public class SupplierDAOimp implements SupplierDAO {
 		sessionFactory.getCurrentSession().saveOrUpdate(supplier);
 	}
 	
-	@Transactional
+	/*@Transactional
 	public void save(Supplier supplier)
 	{
 		sessionFactory.getCurrentSession().save(supplier);
-	}
+	}*/
 
 	@Transactional
 	public void update(Supplier supplier)
@@ -46,9 +46,10 @@ public class SupplierDAOimp implements SupplierDAO {
 
 	@Transactional
 	public Supplier get(int id) {
-		String hql = "from supplier where id= '" + id + "'";
+		String hql = "from Supplier where id= '" + id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
+		@SuppressWarnings("unchecked")
 		List<Supplier> listSupplier = query.list();
 
 		if (listSupplier != null && !listSupplier.isEmpty()) {
