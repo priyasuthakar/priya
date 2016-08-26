@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -77,80 +77,81 @@ footer .glyphicon {
 	<center>
 		<font face="Harlow Solid Italic"><h1>Edit Product</h1></font>
 		<div class="container">
-			<form:form action="edit2" method="post" commandName="product"
-				class="form-horizontal" role="form">
-				<div class="control-group">
-					<form:label class="col-lg-4" path="id">
+			<form:form action="edit2" method="post" modelAttribute="product"
+				enctype="multipart/form-data">
+				<br>
+				<br>
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="id">
 						<spring:message text="ID" />
 					</form:label>
-					<div class="col-lg-4 controls">
-						<form:input path="id" disabled="true" readonly="true" />
+					<div class="col-lg-4 ">
+						<form:input class="form-control" path="id" disabled="true"
+							readonly="true" />
 					</div>
 				</div>
 				<br>
 				<br>
-				<div class="control-group">
-					<form:label class="col-lg-4" path="name">
-						<spring:message text="Name" />
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="name">
+						<spring:message text="NAME" />
 					</form:label>
-					<div class="col-lg-4 controls">
-						<form:input path="name" />
+					<div class="col-lg-4 ">
+						<form:input path="name" class="form-control"
+							placeholder="Enter name" />
+						<form:errors style="color:red" path="name" />
 					</div>
 				</div>
 				<br>
 				<br>
-				<div class="control-group">
-				<form:label class="col-lg-4" path="color">
-					<spring:message text="Color" />
-				</form:label>
-				<div class="col-lg-4 controls">
-					<form:input path="color" placeholder="Enter color" />
-				</div>
-			</div>
-			<br>
-			<br>
-			<div class="control-group">
-				<form:label class="col-lg-4" path="price">
-					<spring:message text="Price" />
-				</form:label>
-				<div class="col-lg-4 controls">
-					<form:input path="price"  />
-					<form:errors path="price" />
-				</div>
-			</div>
-			<br>
-			<br>
-			<%-- <div class="control-group">
-				<form:label class="col-lg-4" path="catagory">
-					<spring:message text="Catagory" />
-				</form:label>
-				<div class="col-lg-4 controls">
-					<form:select path="catagory.name" items="${catagoryList}"
-						itemValue="name" itemLabel="name" />
-				</div>
-			</div>
-			<div class="control-group">
-				<form:label class="col-lg-4" path="supplier">
-					<spring:message text="Supplier" />
-				</form:label>
-				<div class="col-lg-4 controls">
-					<form:select path="supplier.name" items="${supplierList}"
-						itemValue="name" itemLabel="name" />
-				</div>
-			</div> --%>
-				<div class="control-group">
-					<form:label class="col-lg-4" path="discription">
-						<spring:message text="Discription" />
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="color">
+						<spring:message text="Color" />
 					</form:label>
-					<div class="col-lg-4 controls">
-						<form:input path="discription" />
+					<div class="col-lg-4 ">
+						<form:input path="color" class="form-control"
+							placeholder="Enter color" />
+					</div>
+				</div>
+				<br>
+				<br>
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="price">
+						<spring:message text="Price" />
+					</form:label>
+					<div class="col-lg-4 ">
+						<form:input path="price" class="form-control"
+							placeholder="Enter price" />
+						<form:errors style="color:red" path="price" />
+					</div>
+				</div>
+				<br>
+				<br>
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="image">
+						<spring:message text="Image" />
+					</form:label>
+					<div class="col-lg-4 ">
+						<form:input type="file" path="image" />
+					</div>
+				</div>
+				<br>
+				<br>
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="discription">
+						<spring:message text="DISCRIPTION" />
+					</form:label>
+					<div class="col-lg-4 ">
+						<form:input path="discription" class="form-control"
+							placeholder="Enter discription" />
+						<form:errors style="color:red" path="discription" />
 					</div>
 				</div>
 				<br>
 				<br>
 				<div>
 					<c:if test="${!empty product.name }">
-						<form:button type="submit" class="btn btn-info">
+						<form:button type="submit" class="btn btn-success">
 							<spring:message text="Edit" />
 						</form:button>
 						<form:button type="reset" class="btn btn-info">
@@ -160,7 +161,8 @@ footer .glyphicon {
 				</div>
 			</form:form>
 		</div>
+		<br> <br>
 	</center>
-<%@include file="Footer.jsp"%>
+	<%@include file="Footer.jsp"%>
 </body>
-</html>
+</html> 

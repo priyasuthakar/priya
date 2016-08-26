@@ -12,9 +12,12 @@ public interface ProductDAO {
 
 	public void saveOrUpdate(Product product);
 	
-/*	public void save(Product product);
-	*/
-	public void update(Product product);
-
 	public void delete(int id);
+	
+	public List <Product> getByCatagory(int catagoryId);
+	
+	public List <Product> getBySupplier(int supplierId);
+	
+	public List<Product> getByProduct(int id);
+	
 }

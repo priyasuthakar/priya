@@ -1,5 +1,6 @@
 package com.niit.appleproduct.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,16 +34,25 @@ public class Product {
 	@Transient	
 	private MultipartFile image;
 	
-	@ManyToOne
-	@JoinColumn(name="CATAGORY_ID")
-	private Catagory catagory_id;
-	
-	public Catagory getCatagory_id() {
-		return catagory_id;
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="cat_id")
+	private Catagory cat;
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="sup_id")
+	private Supplier sup;
+
+
+	public Catagory getCat() {
+		return cat;
 	}
-	
-	public void setCatagory_id(Catagory catagory_id) {
-		this.catagory_id = catagory_id;
+	public void setCat(Catagory cat) {
+		this.cat = cat;
+	}
+	public Supplier getSup() {
+		return sup;
+	}
+	public void setSup(Supplier sup) {
+		this.sup = sup;
 	}
 	
 	public int getId() {

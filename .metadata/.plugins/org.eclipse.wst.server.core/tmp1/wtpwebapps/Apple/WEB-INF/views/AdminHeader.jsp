@@ -9,11 +9,11 @@
 </head>
 <body>
 	<c:choose>
-		<c:when test="${empty username}">
+		<c:when test="${empty loggedInUser}">
 			<font face="Harlow Solid Italic"><h1>Welcome Guest...!!!</h1></font>
 		</c:when>
-		<c:when test="${not empty username}">
-			<font face="Harlow Solid Italic"><h1>${username}</h1></font>
+		<c:when test="${not empty loggedInUser}">
+			<font face="Harlow Solid Italic"><h1>${loggedInUser}</h1></font>
 		</c:when>
 	</c:choose>
 	<nav class="navbar navbar-inverse">
@@ -43,16 +43,15 @@
 					<li><a href="viewproduct">View Product</a></li>
 				</ul></li>
 		</ul>
-
 		<ul class="nav navbar-nav navbar-right">
 			<c:choose>
-				<c:when test="${empty username}">
+				<c:when test="${empty loggedInUser}">
 					<li><a href="login"><span
 							class="glyphicon glyphicon-log-in"></span> Login</a></li>
 					<li><a href="reg"><span class="glyphicon glyphicon-user"></span>
 							Sign Up</a></li>
 				</c:when>
-				<c:when test="${not empty username}">
+				<c:when test="${not empty loggedInUser}">
 					<li><a href="logout"><span
 							class="glyphicon glyphicon-user"></span> Logout</a></li>
 				</c:when>

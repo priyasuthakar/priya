@@ -78,43 +78,56 @@ footer .glyphicon {
 </style>
 </head>
 <body>
-<center>
-	<font face="Harlow Solid Italic"><h1>${addcatagory}</h1></font>
-<div class="container">
-		<form:form action="catagory" method="post" modelAttribute="catagory">
-			<div class="control-group">
-				<form:label class="col-lg-4" path="name">
-					<spring:message text="Name" />
-				</form:label>
-				<div class="col-lg-4 controls">
-					<form:input path="name" placeholder="Enter name"/>
-					<form:errors path="name" />
+	<center>
+		<font face="Harlow Solid Italic"><h1>${addcatagory}</h1></font>
+		<div class="container">
+			<form:form action="catagory" method="post" modelAttribute="catagory">
+				<br>
+				<br>
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="name">
+						<spring:message text="Name" />
+					</form:label>
+					<div class="col-lg-4 ">
+						<form:input path="name" class="form-control"
+							placeholder="Enter name" />
+						<form:errors style="color:red" path="name" />
+					</div>
 				</div>
-			</div>
-			<br>
-			<br>
-			<div class="control-group">
-				<form:label class="col-lg-4" path="discription">
-					<spring:message text="Discription" />
-				</form:label>
-				<div class="col-lg-4 controls">
-					<form:input path="discription" placeholder="Enter discription..."/>
-					<form:errors path="discription" />
+				<br>
+				<br>
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="discription">
+						<spring:message text="Discription" />
+					</form:label>
+					<div class="col-lg-4 ">
+						<form:input path="discription" class="form-control"
+							placeholder="Enter discription..." />
+						<form:errors style="color:red" path="discription" />
+					</div>
 				</div>
-			</div>
-			<br>
-			<br>
-			<div>
-					<form:button type="submit" class="btn btn-info">
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<div>
+					<form:button onclick="myFunction()" class="btn btn-success">
 						<spring:message text="Add Catagory" />
 					</form:button>
 					<form:button type="reset" class="btn btn-info">
 						<spring:message text="Reset" />
 					</form:button>
-			</div>
-		</form:form>
-	</div>
-</center>
-<%@include file="Footer.jsp"%>
+				</div>
+			</form:form>
+		</div>
+		<script>
+			function myFunction() {
+				confirm("Press ok to submit!");
+			}
+		</script>
+		<br> <br>
+	</center>
+	<%@include file="Footer.jsp"%>
 </body>
 </html>

@@ -89,14 +89,15 @@ table {
 </style>
 </head>
 <body ng-app="productapp" ng-controller="productCtrl">
-<br>
-<br>
-<br>
-	 <div align="center">
-				<label>Search:<input ng-model="searchText"></label>
-    </button>
-			</div>
-			<br> <br>  
+	<br>
+	<br>
+	<br>
+	<div align="center">
+		<label>Search:</label><input type="text" ng-model="searchbox"><span
+			class="glypicon glypicon-search"></span>
+	</div>
+	<br>
+	<br>
 	<font face="Harlow Solid Italic"><h1>${addproduct}</h1></font>
 	<font face="Harlow Solid Italic"><h1>${editproduct}</h1></font>
 	<font face="Harlow Solid Italic"><h1>Product List</h1></font>
@@ -107,6 +108,8 @@ table {
 				<th width="120">NAME</th>
 				<th width="120">COLOR</th>
 				<th width="120">PRICE</th>
+				<th width="100">CAT_ID</th>
+				<th width="100">SUP_ID</th>
 				<th width="120">DiSCRIPTION</th>
 				<th width="120">EDIT</th>
 				<th width="120">DELETE</th>
@@ -118,12 +121,13 @@ table {
 				<td>{{plist.name}}</td>
 				<td>{{plist.color}}</td>
 				<td>{{plist.price}}</td>
+				<td>{{plist.cat.id}}</td>
+				<td>{{plist.sup.id}}</td>
 				<td>{{plist.discription}}</td>
-				<%-- <td><a href="<c:url value="/edit2{{plist.id}}"/>"> Edit</a></td>
-						<td><a href="<c:url value="/p{id}"/>"> Delete</a></td>
- --%>
-				<td><a href="<c:url value="/edit2{{plist.id}}"/>" ng-click="enableEditor()">Edit</a></td>
-				<td><a href="<c:url value="/p{{plist.id}}"/>" ng-click="remove()">Delete</a></td>
+				<td><a href="<c:url value="/edit2{{plist.id}}"/>"
+					ng-click="enableEditor()">Edit</a></td>
+				<td><a href="<c:url value="/p{{plist.id}}"/>"
+					ng-click="remove()">Delete</a></td>
 			</tr>
 		</tbody>
 	</table>

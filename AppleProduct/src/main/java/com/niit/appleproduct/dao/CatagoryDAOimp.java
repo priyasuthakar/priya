@@ -25,18 +25,21 @@ public class CatagoryDAOimp implements CatagoryDAO {
 		sessionFactory.getCurrentSession().saveOrUpdate(catagory);
 	}
 	
-/*	@Transactional
-	public void save(Catagory catagory)
-	{
-		sessionFactory.getCurrentSession().save(catagory);
-	}*/
-
 	@Transactional
-	public void update(Catagory catagory)
+	public Catagory getByName(String name)
 	{
-		sessionFactory.getCurrentSession().update(catagory);
+		String hql="from Catagory where name  =" + "'" + name + "'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+				
+		@SuppressWarnings("unchecked")
+		List<Catagory> listCatagory = query.list();
+		
+		if(listCatagory!= null && !listCatagory.isEmpty()) {
+			return listCatagory.get(0);
+			
+		}
+		return null;
 	}
-
 
 	@Transactional
 	public void delete(int id) {

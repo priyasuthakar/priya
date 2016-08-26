@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -14,14 +16,15 @@ import org.springframework.stereotype.Component;
 public class User {
 
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-private int id=0;
-
+private int id;
 private String firstname;
 	private String lastname;
 	private String age;
 	private String gender;
 	private String mobileno;
+	@Email(message="email must be in the format of abc@examble.com")
 	private String emailid;
+	@Length(min =5,max=25, message = "The field must be between 3 and 25 characters long!")
 	private String address;
 	private String state;
 	private String country;

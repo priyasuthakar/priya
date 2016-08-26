@@ -29,11 +29,10 @@ public class CatagoryController {
 	private Catagory catagory;
 
 	@RequestMapping("/catagory")
-	public ModelAndView catagory() {
-		ModelAndView mv = new ModelAndView("/catagory");
-		mv.addObject("catagory", catagory);
-		mv.addObject("addcatagory", "Add Catagory");
-		return mv;
+	public String catagory(Model model) {
+		model.addAttribute("catagory", catagory);
+		model.addAttribute("addcatagory", "Add Catagory");
+		return "catagory";
 	}
 
 	@RequestMapping(value = "/catagory", method = RequestMethod.POST)
@@ -50,12 +49,12 @@ public class CatagoryController {
 		return mv;
 	}
 
-	/*
+/*	
 	 * @RequestMapping(value ="/catagory",method=RequestMethod.POST) public
 	 * String catagoryadd(@ModelAttribute("catagory") Catagory catagory,
 	 * BindingResult result,Model model,RedirectAttributes redirectAttribute) {
 	 * catagoryDAO.saveOrUpdate(catagory); return "redirect:/viewcatagory"; }
-	 */
+*/	 
 
 	@RequestMapping(value = "viewcatagory")
 	public ModelAndView view(@ModelAttribute("catagory") Catagory catagory, Model model) {
@@ -85,12 +84,14 @@ public class CatagoryController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public String catagoryedit(@ModelAttribute("catagory") Catagory catagory, BindingResult result, Model model,
 			RedirectAttributes redirectAttribute) {
+		model.addAttribute("catagory", catagory);
+		model.addAttribute("editcatagory", "Edit Catagory");
 		catagoryDAO.saveOrUpdate(catagory);
 		return "redirect:/viewcatagory";
 	}
 
-	/*
-	 * @RequestMapping(value="/edit",method=RequestMethod.POST) public
+	
+/*	 * @RequestMapping(value="/edit",method=RequestMethod.POST) public
 	 * ModelAndView catagoryedit(@ModelAttribute("catagory") Catagory
 	 * catagory,Model model) { catagoryDAO.saveOrUpdate(catagory);
 	 * System.out.println("Error"); ModelAndView mv = new ModelAndView("/view");
@@ -103,5 +104,5 @@ public class CatagoryController {
 	 * mv.addObject("catagoryList",catagoryDAO.list());
 	 * 
 	 * }
-	 */
+*/	 
 }

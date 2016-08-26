@@ -1,0 +1,11 @@
+package com.niit.appleproduct.dao;
+
+public class CartDAOimp implements CartDAO {
+
+	public List<Cart> list(String loggedInUser);
+	public Cart get(int id);
+	public void saveOrUpdate(Cart cart);
+	public void delete(int id);
+	public Long getTotal(String loggedInUser);
+	
+}

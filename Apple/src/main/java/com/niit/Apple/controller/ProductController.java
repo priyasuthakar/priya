@@ -18,33 +18,42 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
+import com.niit.appleproduct.dao.CatagoryDAO;
 import com.niit.appleproduct.dao.ProductDAO;
+import com.niit.appleproduct.dao.SupplierDAO;
+import com.niit.appleproduct.models.Catagory;
 import com.niit.appleproduct.models.FileUpload;
 import com.niit.appleproduct.models.Product;
+import com.niit.appleproduct.models.Supplier;
 
 @Controller
 public class ProductController {
 
-	String path = "D:\\priya1\'Files";
+	String path = "D:/project workspace/Apple/src/main/webapp/resource/images/";
 	
 	@Autowired
 	private ProductDAO productDAO;
 	@Autowired
 	private Product product;
-	/*@Autowired
+	@Autowired
+	private CatagoryDAO catagoryDAO;
+	@Autowired
+	private Catagory catagory;
+	@Autowired
 	private SupplierDAO supplierDAO;
 	@Autowired
-	private Supplier supplier;*/
+	private Supplier supplier;
 	
 	@RequestMapping(value="/product")
-	public ModelAndView product(){
-		ModelAndView mv = new ModelAndView("product");
-		mv.addObject("product", product);  
-		mv.addObject("addproduct", "Add Product");
-		return mv;
+	public String product(Model model){
+		model.addAttribute("product", product);  
+		model.addAttribute("addproduct", "Add Product");
+		model.addAttribute("catagoryList",this.catagoryDAO.list());
+		model.addAttribute("supplierList",this.supplierDAO.list());
+		return "product";
 	}
-	
-/*	@RequestMapping("/product")
+/*	
+	@RequestMapping("/product")
 	public String product(Model model){
 		model.addAttribute("product", new Product());
 		model.addAttribute("catagory", new Catagory());
@@ -53,9 +62,9 @@ public class ProductController {
 		model.addAttribute("catagoryList",this.catagoryDAO.list());
 		//model.addAttribute("supplierList",this.supplierDAO.list());
 		return "product";
-	}*/
+	}
 	
-	/*@RequestMapping(value ="product",method=RequestMethod.POST)
+	@RequestMapping(value ="product",method=RequestMethod.POST)
 	public String addproduct(@ModelAttribute("product") Product product){
 		//Catagory catgory=CatagoryDAO.getByName(product.getCatagory().getName());
 		//Supplier supplier=SupplierDAO.getByName(product.getSupplier().getName());
@@ -67,8 +76,8 @@ public class ProductController {
 		MultipartFile file=product.getImage();
 		FileUpload.upload(path, file, product.getId()+".jpg");
 		return "redirect:/viewproduct";
-	}*/
-	@RequestMapping(value = "/product", method = RequestMethod.POST)
+	}
+*/	@RequestMapping(value = "/product", method = RequestMethod.POST)
 	public ModelAndView addproduct(@Valid @ModelAttribute("product") Product product,BindingResult result) {
 		ModelAndView mv = new ModelAndView();
 		if (result.hasErrors()) {
@@ -76,6 +85,8 @@ public class ProductController {
 			mv.setViewName("/product");
 		} 
 		else {
+			Catagory catagory = catagoryDAO.getByName(product.getCat().getName());
+			product.setCat(catagory);
 			productDAO.saveOrUpdate(product);
 			mv.addObject("ProductList", "PRODUCT LIST");
 			MultipartFile file=product.getImage();
@@ -98,9 +109,7 @@ public class ProductController {
 	
 	@RequestMapping(value ="/p{id}")
 	public String deleteproduct(@PathVariable("id") int id,ModelMap model) {
-		System.out.println("errroggggggggggggggr");
 		productDAO.delete(id);
-		System.out.println("errror");
 		model.addAttribute("productList",productDAO.list());
 		return "redirect:/viewproduct";
 	}
@@ -109,14 +118,14 @@ public class ProductController {
 	public String editproduct(@PathVariable("id") int id,ModelMap model  ) {
 		product = productDAO.get(id);
 		model.addAttribute("product", product);
-		model.addAttribute("editproduct", "Edit product");  
+		model.addAttribute("editproduct", "Edit product");
 		return "/edit2";
 	}
 	
 	@RequestMapping(value ="/edit2",method=RequestMethod.POST)
-	public String  productedit(@ModelAttribute("product") Product product, BindingResult result,Model model,RedirectAttributes redirectAttribute) {
-	productDAO.saveOrUpdate(product);
-	return "redirect:/viewproduct";
+	public String  productedit(@ModelAttribute("product") Product product, BindingResult result,ModelMap model) {
+		productDAO.saveOrUpdate(product);
+		return "redirect:/viewproduct";
 	}
 	
 	}

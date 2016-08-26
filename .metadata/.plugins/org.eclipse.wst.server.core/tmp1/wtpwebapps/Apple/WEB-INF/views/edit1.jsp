@@ -80,49 +80,59 @@ footer .glyphicon {
 		<div class="container">
 			<form:form action="edit1" method="post" commandName="supplier"
 				class="form-horizontal" role="form">
-				<div class="control-group">
-					<form:label class="col-lg-4" path="id">
-						<spring:message text="Id" />
-					</form:label>
-					<div class="col-lg-4 controls">
-						<form:hidden path="id" disabled="true" readonly="true" />
-					</div>
-				</div>
 				<br>
-				<br> 
-				<div class="control-group">
-					<form:label class="col-lg-4" path="name">
-						<spring:message text="Name" />
+				<br>
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="id">
+						<spring:message text="ID" />
 					</form:label>
-					<div class="col-lg-4 controls">
-						<form:input path="name" />
+					<div class="col-lg-4 ">
+						<form:input class="form-control" path="id" disabled="true"
+							readonly="true" />
 					</div>
 				</div>
 				<br>
 				<br>
-				<div class="control-group">
-					<form:label class="col-lg-4" path="discription">
-						<spring:message text="Discription" />
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="name">
+						<spring:message text="NAME" />
 					</form:label>
-					<div class="col-lg-4 controls">
-						<form:input path="discription" />
+					<div class="col-lg-4 ">
+						<form:input path="name" class="form-control"
+							placeholder="Enter name" />
+						<form:errors style="color:red" path="name" />
 					</div>
 				</div>
 				<br>
 				<br>
-					<div>
-						<c:if test="${!empty supplier.name }">
-							<form:button type="submit" class="btn btn-info">
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="discription">
+						<spring:message text="DISCRIPTION" />
+					</form:label>
+					<div class="col-lg-4 ">
+						<form:input path="discription" class="form-control"
+							placeholder="Enter discription" />
+						<form:errors style="color:red" path="discription" />
+					</div>
+				</div>
+				<br>
+				<br>
+
+				<div>
+					<c:if test="${!empty supplier.name }">
+						<form:button type="submit" class="btn btn-success">
 							<spring:message text="Edit" />
 						</form:button>
 						<form:button type="reset" class="btn btn-info">
 							<spring:message text="Reset" />
 						</form:button>
-						</c:if>
-					</div>
+					</c:if>
+				</div>
 			</form:form>
 		</div>
 	</center>
-<%@include file="Footer.jsp"%>
+	<br>
+	<br>
+	<%@include file="Footer.jsp"%>
 </body>
 </html>

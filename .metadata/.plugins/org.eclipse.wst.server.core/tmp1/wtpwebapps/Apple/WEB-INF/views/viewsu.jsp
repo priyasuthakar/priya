@@ -89,11 +89,12 @@ table {
 </style>
 </head>
 <body ng-app="supplierapp" ng-controller="supplierCtrl">
-<br>
-<br>
-<br>
+	<br>
+	<br>
+	<br>
 	<div align="center">
-		<label>Search:<input ng-model="searchText"></label>
+		<label>Search:</label><input type="text" ng-model="searchbox"><span
+			class="glypicon glypicon-search"></span>
 	</div>
 	<br>
 	<br>

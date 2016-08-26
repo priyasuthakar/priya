@@ -1,0 +1,13 @@
+package com.niit.appleproduct.models;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Entity
+@Table(name = "BUY")
+@Component
+public class Buy {
+
+}

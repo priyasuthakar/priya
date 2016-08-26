@@ -3,9 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%-- <%@ page session="false"%> --%>
+<%@ page session="false"%>
 <%@page isELIgnored="false"%>
-<%@include file="/WEB-INF/views/Header.jsp"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -34,15 +33,8 @@ h1 {
 }
 
 .navbar {
-	margin-bottom: 0;
 	background-color: #660033;
-	z-index: 9999;
-	border: 0;
 	font-size: 18px !important;
-	line-height: 1.42857143 !important;
-	letter-spacing: 2px;
-	border-radius: 0;
-	font-family: Montserrat, sans-serif;
 }
 
 .navbar .navbar-brand {
@@ -68,30 +60,51 @@ footer .glyphicon {
 	margin-bottom: 20px;
 	color: #660033;
 }
+
+@media screen and (max-width: 768px) {
+	.col-lg-4 {
+		text-align: center;
+		margin: 25px 0;
+	}
+	.btn-lg {
+		width: 100%;
+		margin-bottom: 35px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.logo {
+		font-size: 150px;
+	}
+}
 </style>
 
 </head>
 <body id="log" style="background-color: #b3ffb3">
-
+	<%@include file="Header.jsp"%>
 	<font face="Harlow Solid Italic"><h1>${successMessage}</h1></font>
+	<font face="Harlow Solid Italic"><h1>${errorMessage}</h1></font>
+
 	<center>
-		<font face="Harlow Solid Italic"><h1>Sign-in</h1></font> <br> <br> <br> <br> <br> <br>
+		<font face="Harlow Solid Italic"><h1>Sign-in</h1></font> <br> <br>
+		<br> <br> <br> <br>
 		<div class="container">
-			<form action="loginc" method="post" commandName="user"
+			<form action="login" method="post" commandName="user"
 				class="form-horizontal" role="form">
 				<center>
-					<div class="control-group">
-						<label class="col-lg-4">User Name</label>
-						<div class="col-lg-4 controls">
-							<input type="text" name="username" placeholder="Enter user name"
-								required="true" title="should not be empty" />
+					<div class="form-group">
+						<label class="col-lg-4 control-label">User Name</label>
+						<div class="col-lg-4 ">
+							<input class="form-control" type="text" name="username"
+								placeholder="Enter user name" required="true"
+								title="should not be empty" />
 						</div>
 					</div>
 					<br> <br>
-					<div class="control-group">
-						<label class="col-lg-4">Password</label>
-						<div class="col-lg-4 controls">
-							<input type="password" name="password"
+					<div class="form-group">
+						<label class="col-lg-4 control-label">Password</label>
+						<div class="col-lg-4 ">
+							<input class="form-control" type="password" name="password"
 								placeholder="Enter password" required="true"
 								title="should not be empty" />
 						</div>
@@ -103,33 +116,19 @@ footer .glyphicon {
 				</div>
 				<br>
 				<div>
-					<input type="submit" class="btn btn-info" /> <input type="reset"
-						class="btn btn-info" />
+					<input type="submit" class="btn btn-success" /> <input
+						type="reset" class="btn btn-info" />
 				</div>
 				<br>
 				<div>
-				
-					<a href="reg"><input type="button"
-						class="btn btn-link" />new user?</a>
+					<a href="reg"><input type="button" class="btn btn-link" />new
+						user?</a>
 				</div>
-				<br> <br> <input type="hidden" name="${_csrf.parameterName }"
-					value="${_csrf.token}" />
-				<!-- 	<a href="login" class="btn btn-default" role="button">Reset</a> -->
+				<br> <br> <input type="hidden"
+					name="${_csrf.parameterName }" value="${_csrf.token}" />
 			</form>
 		</div>
 	</center>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<footer class="container-fluid bg-4 text-center">
 	<%@include file="Footer.jsp"%>
-	</footer>
 </body>
 </html>

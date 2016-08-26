@@ -89,15 +89,16 @@ table {
 </style>
 </head>
 <body ng-app="catagoryapp" ng-controller="catagoryCtrl">
-<br>
-<br>
-<br>
+	<br>
+	<br>
+	<br>
 	<div align="center">
-		<label>Search:<input ng-model="searchText"></label>
+		<label>Search:</label><input type="text" ng-model="searchbox"><span
+			class="glypicon glypicon-search"></span>
 	</div>
 	<br>
 	<br>
-	
+
 	<font face="Harlow Solid Italic">
 		<h1>Catagory List</h1>
 	</font>

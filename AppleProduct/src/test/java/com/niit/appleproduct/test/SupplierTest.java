@@ -7,6 +7,7 @@ import com.niit.appleproduct.models.Supplier;
 
 public class SupplierTest {
 	public static void main(String arg[]) {
+		
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.scan("com.niit.appleproduct");
 		context.refresh();

@@ -3,9 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ page session="false"%>
+
 <%@page isELIgnored="false"%>
-<%@include file="Header.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -120,15 +119,8 @@ h4 {
 }
 
 .navbar {
-	margin-bottom: 0;
 	background-color: #660033;
-	z-index: 9999;
-	border: 0;
-	font-size: 18px !important;
-	line-height: 1.42857143 !important;
-	letter-spacing: 2px;
-	border-radius: 0;
-	font-family: Montserrat, sans-serif;
+	font-size: 16px !important;
 }
 
 .navbar .navbar-brand {
@@ -151,7 +143,6 @@ h4 {
 
 footer .glyphicon {
 	font-size: 24px;
-	margin-bottom: 20px;
 	color: #660033;
 }
 
@@ -189,93 +180,155 @@ footer .glyphicon {
 
 <body id="myPage" data-spy="scroll" data-target=".navbar"
 	data-offset="60">
-	
-	<font face="Harlow Solid Italic"><h1>${errorMessage}</h1></font>
+	<!-- 
+	style="background-image:url(https://s3.amazonaws.com/Syntaxxx/background-gold-bokeh.jpg);" -->
+
+	<div>
+		<c:choose>
+			<c:when test="${empty loggedInUser}">
+				<font face="Harlow Solid Italic"><h1>Welcome Guest...!!!</h1></font>
+			</c:when>
+			<c:when test="${!empty loggedInUser}">
+				<font face="Harlow Solid Italic"><h1>${loggedInUser}</h1></font>
+			</c:when>
+		</c:choose>
+	</div>
+	<div class="responsive">
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand"> <span
+						class="glyphicon glyphicon-apple"></span> <font
+						face="Script MT Bold"> Shopping Site </font>
+					</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="Home"><span
+							class="glyphicon glyphicon-home"></span>Home</a></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#"> Catagory <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="product1?catname=Desktop">Desktop</a></li>
+							<li><a href="product1?catname=Laptop">Laptop</a></li>
+							<li><a href="product1?catname=Iphone">Iphone</a></li>
+							<li><a href="product1?catname=Ipad">Ipad</a></li>
+							<li><a href="product1?catname=Ipod">Ipod</a></li>
+							<li><a href="product1?catname=Accessories">Accessories</a></li>
+						</ul></li>
+					<li><a href="#portfolio"><span
+							class="glyphicon glyphicon-pencil"></span>Portfolio</a></li>
+					<li><a href="#about"><span
+							class="glyphicon glyphicon-stats"></span>About Us</a></li>
+					<li><a href="#contactus"><span
+							class="glyphicon glyphicon-earphone"></span>Contact Us</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="cart"><span
+							class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
+					<c:choose>
+						<c:when test="${empty loggedInUser}">
+							<li><a href="login"><span
+									class="glyphicon glyphicon-log-in"></span> Login</a></li>
+							<li><a href="reg"><span class="glyphicon glyphicon-user"></span>
+									Sign Up</a></li>
+						</c:when>
+						<c:when test="${not empty loggedInUser}">
+							<li><a href="logout"><span
+									class="glyphicon glyphicon-user"></span> Logout</a></li>
+						</c:when>
+					</c:choose>
+				</ul>
+			</div>
+		</nav>
+	</div>
 	<font face="Harlow Solid Italic"><h1>${logoutsuccess}</h1></font>
+	<font face="Harlow Solid Italic"><h1>${successbuy}</h1></font>
 
 	<!-- Container (Portfolio Section) -->
 	<div id="portfolio" class="container-fluid text-center">
 		<h2>Portfolio</h2>
 		<br>
-		<div class="container">
-			<div class="w3-container w3-center w3-animate-left">
-				<div class="w3-container w3-center w3-animate-zoom">
-					<div id="myCarousel" class="carousel slide" data-ride="carousel">
-						<!-- Indicators -->
-						<ol class="carousel-indicators">
-							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-							<li data-target="#myCarousel" data-slide-to="1"></li>
-							<li data-target="#myCarousel" data-slide-to="2"></li>
-							<li data-target="#myCarousel" data-slide-to="3"></li>
-							<li data-target="#myCarousel" data-slide-to="4"></li>
-							<li data-target="#myCarousel" data-slide-to="5"></li>
-						</ol>
+		<div class="container-responsive">
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<!-- Indicators -->
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+					<li data-target="#myCarousel" data-slide-to="3"></li>
+					<li data-target="#myCarousel" data-slide-to="4"></li>
+					<li data-target="#myCarousel" data-slide-to="5"></li>
+				</ol>
 
-						<!-- Wrapper for slides -->
-						<div class="carousel-inner" role="listbox">
+				<!-- Wrapper for slides -->
+				<div class="carousel-inner" role="listbox">
 
-							<div class="item active">
-								<img src=<c:url value="/resource/images/desktop.jpg"/>
-									alt="Desktop">
-								<div class="carousel-caption">
-									<a href="product1" data-toggle="tooltip" title="Desktop!">Desktop</a>
-								</div>
-							</div>
-
-							<div class="item">
-								<img src=<c:url value="/resource/images/laptop.jpg"/>
-									alt="Laptop">
-								<div class="carousel-caption">
-									<a href="product1" data-toggle="tooltip" title="Laptop!">Laptop</a>
-								</div>
-							</div>
-
-							<div class="item">
-								<img src=<c:url value="/resource/images/iphone.jpg"/>
-									alt="IPhone">
-								<div class="carousel-caption">
-									<a href="product1" data-toggle="tooltip" title="Iphone!">Iphone</a>
-								</div>
-							</div>
-
-							<div class="item">
-								<img src=<c:url value="/resource/images/ipad.jpg"/> alt="IPad">
-								<div class="carousel-caption">
-									<a href="product1" data-toggle="tooltip" title="Ipad!">Ipad</a>
-								</div>
-							</div>
-
-							<div class="item">
-								<img src=<c:url value="/resource/images/ipod.jpg"/> alt="IPod">
-								<div class="carousel-caption">
-									<a href="product1" data-toggle="tooltip" title="Ipod!">Ipod</a>
-								</div>
-							</div>
-							<div class="item">
-								<img src=<c:url value="/resource/images/accesories.jpg"/>
-									alt="Accesories">
-								<div class="carousel-caption">
-									<a href="product1" data-toggle="tooltip" title="Accesories!">Accesories</a>
-								</div>
-							</div>
+					<div class="item active">
+						<img src=<c:url value="/resource/images/desktop.jpg"/>
+							style="height: 420px" class="img-responsive" alt="Desktop">
+						<div class="carousel-caption">
+							<a href="product1" data-toggle="tooltip" title="Desktop!">Desktop</a>
 						</div>
-						<!-- Left and right controls -->
-						<a class="left carousel-control" href="#myCarousel" role="button"
-							data-slide="prev"> <span
-							class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-							<span class="sr-only">Previous</span>
-						</a> <a class="right carousel-control" href="#myCarousel"
-							role="button" data-slide="next"> <span
-							class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-							<span class="sr-only">Next</span>
-						</a>
+					</div>
+
+					<div class="item">
+						<img src=<c:url value="/resource/images/laptop.jpg"/>
+							style="height: 420px" class="img-responsive" alt="Laptop">
+						<div class="carousel-caption">
+							<a href="product1" data-toggle="tooltip" title="Laptop!">Laptop</a>
+						</div>
+					</div>
+
+					<div class="item">
+						<img src=<c:url value="/resource/images/iphone.jpg"/>
+							style="height: 420px" class="img-responsive" alt="IPhone">
+						<div class="carousel-caption">
+							<a href="product1" data-toggle="tooltip" title="Iphone!">Iphone</a>
+						</div>
+					</div>
+
+					<div class="item">
+						<img src=<c:url value="/resource/images/ipad.jpg"/>
+							style="height: 420px" class="img-responsive" alt="IPad">
+						<div class="carousel-caption">
+							<a href="product1" data-toggle="tooltip" title="Ipad!">Ipad</a>
+						</div>
+					</div>
+
+					<div class="item">
+						<img src=<c:url value="/resource/images/ipod.jpg"/>
+							style="height: 420px" class="img-responsive" alt="IPod">
+						<div class="carousel-caption">
+							<a href="product1" data-toggle="tooltip" title="Ipod!">Ipod</a>
+						</div>
+					</div>
+					<div class="item">
+						<img src=<c:url value="/resource/images/accesories.jpg"/>
+							style="height: 420px" class="img-responsive" alt="Accesories">
+						<div class="carousel-caption">
+							<a href="product1" data-toggle="tooltip" title="Accesories!">Accesories</a>
+						</div>
 					</div>
 				</div>
+				<!-- Left and right controls -->
+				<a class="left carousel-control" href="#myCarousel" role="button"
+					data-slide="prev"> <span
+					class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a> <a class="right carousel-control" href="#myCarousel" role="button"
+					data-slide="next"> <span
+					class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
 			</div>
 		</div>
 	</div>
 	<br>
-
+	<footer class="container-fluid text-center">
+		<a href="#myPage" title="To Top"> <span
+			class="glyphicon glyphicon-chevron-up"></span>
+		</a>
+	</footer>
 	<!-- Container (About Section) -->
 	<div id="about" class="container-fluid bg-grey ">
 		<div class="row">
@@ -317,7 +370,11 @@ footer .glyphicon {
 			</div>
 		</div>
 	</div>
-
+	<footer class="container-fluid text-center">
+		<a href="#myPage" title="To Top"> <span
+			class="glyphicon glyphicon-chevron-up"></span>
+		</a>
+	</footer>
 	<!-- Container (Contact Section) -->
 	<div id="contactus" class="container-fluid bg-grey">
 		<h2 class="text-center">CONTACT</h2>

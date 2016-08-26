@@ -1,0 +1,25 @@
+package com.niit.appleproduct.models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Table
+@Entity
+@Component("cart")
+public class Cart {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	private Long TotalAmount;
+	private int quantity;
+	private String productname;
+	private String username;
+
+}

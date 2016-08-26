@@ -78,98 +78,111 @@ footer .glyphicon {
 </style>
 </head>
 <body>
-<center>
-	<font face="Harlow Solid Italic"><h1>Add Product</h1></font>
-<br>
-	<div class="container">
-		<form:form action="product" method="post" modelAttribute="product" enctype="multipart/form-data">
-
-			<div class="control-group">
-				<form:label class="col-lg-4" path="name">
-					<spring:message text="NAME" />
-				</form:label>
-				<div class="col-lg-4 controls">
-					<form:input path="name" placeholder="Enter name" />
-					<form:errors path="name" />
+	<center>
+		<font face="Harlow Solid Italic"><h1>Add Product</h1></font> <br>
+		<div class="container">
+			<form:form action="product" method="post" modelAttribute="product"
+				enctype="multipart/form-data">
+				<br>
+				<br>
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="name">
+						<spring:message text="NAME" />
+					</form:label>
+					<div class="col-lg-4 ">
+						<form:input path="name" class="form-control"
+							placeholder="Enter name" />
+						<form:errors style="color:red" path="name" />
+					</div>
 				</div>
-			</div>
-			<br>
-			<br>
-			<div class="control-group">
-				<form:label class="col-lg-4" path="color">
-					<spring:message text="Color" />
-				</form:label>
-				<div class="col-lg-4 controls">
-					<form:input path="color" placeholder="Enter color" />
+				<br>
+				<br>
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="color">
+						<spring:message text="Color" />
+					</form:label>
+					<div class="col-lg-4 ">
+						<form:input path="color" class="form-control"
+							placeholder="Enter color" />
+					</div>
 				</div>
-			</div>
-					<br>
-			<br>
-			<div class="control-group">
-				<form:label class="col-lg-4" path="price">
-					<spring:message text="Price" />
-				</form:label>
-				<div class="col-lg-4 controls">
-					<form:input path="price" placeholder="Enter price" />
-					<form:errors path="price" />
+				<br>
+				<br>
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="price">
+						<spring:message text="Price" />
+					</form:label>
+					<div class="col-lg-4 ">
+						<form:input path="price" class="form-control"
+							placeholder="Enter price" />
+						<form:errors style="color:red" path="price" />
+					</div>
 				</div>
-			</div>
-					<br>
-			<br>
-				<%-- <div class="control-group">
-				<form:label class="col-lg-4" path="catagory">
-					<spring:message text="Catagory" />
-				</form:label>
-				<div class="col-lg-4 controls">
-					<form:select path="catagory.name" items="${catagoryList}"
-						itemValue="name" itemLabel="name" placeholder="Enter category" />
+				<br>
+				<br>
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="image">
+						<spring:message text="Image" />
+					</form:label>
+					<div class="col-lg-4 ">
+						<form:input type="file" path="image" />
+					</div>
 				</div>
-			</div>
-			<br>
-			<br>
-			<div class="control-group">
-				<form:label class="col-lg-4" path="supplier">
-					<spring:message text="Supplier" />
-				</form:label>
-				<div class="col-lg-4 controls">
-					<form:select path="supplier.name" items="${supplierList}"
-						itemValue="name" itemLabel="name" placeholder="Enter supplier" />
+				<br>
+				<br>
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="cat">
+						<spring:message text="Catagory" />
+					</form:label>
+					<div class="col-lg-4 ">
+						<form:select path="cat.name" class="form-control"
+							items="${catagoryList}" itemLabel="name" itemValue="name"
+							placeholder="Enter catagory" />
+					</div>
 				</div>
-			</div> 
-			<br>
-			<br>--%>
-			<div class="control-group">
-				<form:label class="col-lg-4" path="image">
-					<spring:message text="Image" />
-				</form:label>
-				<div class="col-lg-4 controls">
-					<form:input type="file" path="image"  />
+				<br>
+				<br>
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="sup">
+						<spring:message text="Supplier" />
+					</form:label>
+					<div class="col-lg-4 ">
+						<form:select path="sup.name" items="${supplierList}"
+							itemValue="name" itemLabel="name" class="form-control"
+							placeholder="Enter supplier" />
+					</div>
 				</div>
-			</div>
-			<br>
-			<br>
-			<div class="control-group">
-				<form:label class="col-lg-4" path="discription">
-					<spring:message text="DISCRIPTION" />
-				</form:label>
-				<div class="col-lg-4 controls">
-					<form:input path="discription" placeholder="Enter discription" />
-					<form:errors path="discription" />
+				<br>
+				<br>
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="discription">
+						<spring:message text="DISCRIPTION" />
+					</form:label>
+					<div class="col-lg-4 ">
+						<form:input path="discription" class="form-control"
+							placeholder="Enter discription" />
+						<form:errors style="color:red" path="discription" />
+					</div>
 				</div>
-			</div>
-			<br>
-			<br>
-			<div class="control-group">
-					<form:button type="submit" class="btn btn-info">
-					<spring:message text="Add Product" />
-				</form:button>
-				<form:button type="reset" class="btn btn-info">
-					<spring:message text="Reset" />
-				</form:button>
-			</div>
-		</form:form>
-	</div>
-</center>
-<%@include file="Footer.jsp"%>
+				<br>
+				<br>
+				<div class="form-group">
+					<form:button onclick="myFunction()" class="btn btn-success">
+						<spring:message text="Add Product" />
+					</form:button>
+					<form:button type="reset" class="btn btn-info">
+						<spring:message text="Reset" />
+					</form:button>
+				</div>
+			</form:form>
+		</div>
+		<script>
+function myFunction() {
+    confirm("Press ok to submit!");
+}
+</script>
+		<br> <br>
+	</center>
+	<%@include file="Footer.jsp"%>
 </body>
-</html>
+</html> 

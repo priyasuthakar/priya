@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%-- <%@include file="/WEB-INF/views/AdminHeader.jsp"%> --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -79,10 +78,11 @@ footer .glyphicon {
 	<div id="admin">
 		<div class="container">
 
-			<br> <br> <img src=<c:url value="/resource/images/apple.jpg"/> width="2000"
-				height="550">
-</div>
-</div>
-<%@include file="Footer.jsp"%>
+			<br> <br> <img
+				src=<c:url value="/resource/images/apple.jpg"/> width="2000"
+				height="550" class="img-responsive">
+		</div>
+	</div>
+	<%@include file="Footer.jsp"%>
 </body>
 </html>

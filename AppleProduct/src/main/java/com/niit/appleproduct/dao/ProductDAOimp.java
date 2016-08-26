@@ -21,19 +21,10 @@ public class ProductDAOimp implements ProductDAO {
 
 	@Transactional
 	public void saveOrUpdate(Product product) {
+		System.out.println(product.getId());
 		sessionFactory.getCurrentSession().saveOrUpdate(product);
 	}
 	
-	/*@Transactional
-	public void save(Product product) {
-		sessionFactory.getCurrentSession().saveOrUpdate(product);
-	}*/
-	
-	@Transactional
-	public void update(Product product) {
-		sessionFactory.getCurrentSession().saveOrUpdate(product);
-	}
-
 	@Transactional
 	public void delete(int id) {
 		Product product = new Product();
@@ -47,9 +38,47 @@ public class ProductDAOimp implements ProductDAO {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
 		List<Product> listProduct = query.list();
-
 		if (listProduct != null && !listProduct.isEmpty()) {
 			return listProduct.get(0);
+		}
+		return null;
+	}
+
+	@Transactional
+	public List<Product> getByProduct(int id)
+	{
+		String hql="from Product where id  =" + "'" + id+ "'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		@SuppressWarnings("unchecked")
+		List<Product> listProduct = query.list();
+		if(listProduct!= null && !listProduct.isEmpty()) {
+			return listProduct;
+		}
+		return null;
+	}
+	
+	@Transactional
+	public List <Product> getByCatagory(int catagoryId)
+	{
+		String hql="from Product where cat_id  =" + "'" + catagoryId + "'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		@SuppressWarnings("unchecked")
+		List<Product> listProduct = query.list();		
+		if(listProduct!= null && !listProduct.isEmpty()) {
+			return listProduct;			
+		}
+		return null;
+	}
+	
+	@Transactional
+	public List <Product> getBySupplier(int supplierId)
+	{
+		String hql="from Product where sup_id  =" + "'" + supplierId + "'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		@SuppressWarnings("unchecked")
+		List<Product> listProduct = query.list();		
+		if(listProduct!= null && !listProduct.isEmpty()) {
+			return listProduct;			
 		}
 		return null;
 	}

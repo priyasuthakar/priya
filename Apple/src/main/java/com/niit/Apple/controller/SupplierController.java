@@ -29,11 +29,10 @@ public class SupplierController {
 	private Supplier supplier;
 	
 	@RequestMapping("/supplier")
-	public ModelAndView supplier(){
-		ModelAndView mv = new ModelAndView("/supplier");
-		mv.addObject("supplier", supplier);  
-		mv.addObject("addsupplier", "Supplier added successfully");
-		return mv;
+	public String supplier(Model model){
+		model.addAttribute("supplier", supplier);  
+		model.addAttribute("addsupplier", "Supplier added successfully");
+		return "supplier";
 	}
 	
 	@RequestMapping(value = "/supplier", method = RequestMethod.POST)
@@ -50,12 +49,6 @@ public class SupplierController {
 		return mv;
 	}
 	
-	/*@RequestMapping(value ="/supplier",method=RequestMethod.POST)
-	public String  supplieradd(@ModelAttribute("supplier") Supplier supplier, BindingResult result,Model model,RedirectAttributes redirectAttribute) {
-	supplierDAO.saveOrUpdate(supplier);
-	return "redirect:/viewsupplier";
-	}*/
-
 	@RequestMapping(value ="viewsupplier")
 	public ModelAndView  viewsu(@ModelAttribute("supplier") Supplier supplier,Model model) {
 		ModelAndView mv = new ModelAndView("viewsu");

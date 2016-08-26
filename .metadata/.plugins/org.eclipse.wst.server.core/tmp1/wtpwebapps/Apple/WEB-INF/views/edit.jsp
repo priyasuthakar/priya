@@ -76,44 +76,51 @@ footer .glyphicon {
 </head>
 <body>
 	<center>
-			<font face="Harlow Solid Italic"><h1>${editcatagory}</h1></font>
-	
+		<font face="Harlow Solid Italic"><h1>${editcatagory}</h1></font>
+
 		<div class="container">
 			<form:form action="edit" method="post" modelAttribute="catagory"
 				class="form-horizontal" role="form">
-				<div class="control-group">
-					<form:label class="col-lg-4" path="id">
+				<br>
+				<br>
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="id">
 						<spring:message text="ID" />
 					</form:label>
-					<div class="col-lg-4 controls">
-						<form:input path="id" disabled="true" readonly="true" />
+					<div class="col-lg-4 ">
+						<form:input class="form-control" path="id" disabled="true"
+							readonly="true" />
 					</div>
 				</div>
 				<br>
 				<br>
-				<div class="control-group">
-					<form:label class="col-lg-4" path="name">
-						<spring:message text="Name" />
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="name">
+						<spring:message text="NAME" />
 					</form:label>
-					<div class="col-lg-4 controls">
-						<form:input path="name" />
+					<div class="col-lg-4 ">
+						<form:input path="name" class="form-control"
+							placeholder="Enter name" />
+						<form:errors style="color:red" path="name" />
 					</div>
 				</div>
 				<br>
 				<br>
-				<div class="control-group">
-					<form:label class="col-lg-4" path="discription">
-						<spring:message text="Discription" />
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="discription">
+						<spring:message text="DISCRIPTION" />
 					</form:label>
-					<div class="col-lg-4 controls">
-						<form:input path="discription" />
+					<div class="col-lg-4 ">
+						<form:input path="discription" class="form-control"
+							placeholder="Enter discription" />
+						<form:errors style="color:red" path="discription" />
 					</div>
 				</div>
 				<br>
 				<br>
 				<div>
 					<c:if test="${!empty catagory.name }">
-						<form:button type="submit" class="btn btn-info">
+						<form:button type="submit" class="btn btn-success">
 							<spring:message text="Edit" />
 						</form:button>
 						<form:button type="reset" class="btn btn-info">
@@ -124,6 +131,8 @@ footer .glyphicon {
 			</form:form>
 		</div>
 	</center>
-<%@include file="Footer.jsp"%>
+	<br>
+	<br>
+	<%@include file="Footer.jsp"%>
 </body>
 </html>

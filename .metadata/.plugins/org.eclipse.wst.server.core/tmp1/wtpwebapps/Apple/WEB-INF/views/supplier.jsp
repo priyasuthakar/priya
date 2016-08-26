@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%-- <%@ page session="false"%> --%>
+<%@ page session="false"%>
 <%@page isELIgnored="false"%>
 <%@include file="/WEB-INF/views/AdminHeader.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -80,54 +80,53 @@ footer .glyphicon {
 </style>
 </head>
 <body>
-<center>
-	<font face="Harlow Solid Italic"><h1>Add Supplier</h1></font>
-	
-	<div class="container">
-		<form:form action="supplier" method="post" commandName="supplier">
+	<center>
+		<font face="Harlow Solid Italic"><h1>Add Supplier</h1></font>
 
-			<%-- <div class="control-group">
-				<form:label class="col-lg-4" path="id">
-					<spring:message text="Id" />
-				</form:label>
-				<div class="col-lg-4 controls">
-					<form:input path="id" />
+		<div class="container">
+			<form:form action="supplier" method="post" commandName="supplier">
+				<br>
+				<br>
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="name">
+						<spring:message text="Name" />
+					</form:label>
+					<div class="col-lg-4 ">
+						<form:input path="name" class="form-control"
+							placeholder="Enter name" />
+						<form:errors style="color:red" path="id" />
+					</div>
 				</div>
-			</div>
-			<br>
-			<br> --%>
-			<div class="control-group">
-				<form:label class="col-lg-4" path="name">
-					<spring:message text="Name" />
-				</form:label>
-				<div class="col-lg-4 controls">
-					<form:input path="name" placeholder="Enter name" />
-					<form:errors path="id" />
+				<br>
+				<br>
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="discription">
+						<spring:message text="Discription" />
+					</form:label>
+					<div class="col-lg-4 ">
+						<form:input path="discription" class="form-control"
+							placeholder="Enter discription..." />
+						<form:errors style="color:red" path="discription" />
+					</div>
 				</div>
-			</div>
-			<br>
-			<br>
-			<div class="control-group">
-				<form:label class="col-lg-4" path="discription">
-					<spring:message text="Discription" />
-				</form:label>
-				<div class="col-lg-4 controls">
-					<form:input path="discription" placeholder="Enter discription..."/>
-					<form:errors path="discription" />
+				<br>
+				<br>
+				<div>
+					<form:button onclick="myFunction()" class="btn btn-success">
+						<spring:message text="Add Supplier" />
+					</form:button>
+					<form:button type="reset" class="btn btn-info">
+						<spring:message text="Reset" />
+					</form:button>
 				</div>
-			</div>
-			<br>
-			<br>
-			<div>
-				<form:button type="submit" class="btn btn-info">
-					<spring:message text="Add Supplier" />
-				</form:button>
-				<form:button type="reset" class="btn btn-info">
-					<spring:message text="Reset" />
-				</form:button>
-			</div>
-		</form:form>
-	</div>
+			</form:form>
+		</div>
+		<script>
+function myFunction() {
+    confirm("Press ok to submit!");
+}
+</script>
+		<br> <br>
 	</center>
 	<%@include file="Footer.jsp"%>
 </body>
