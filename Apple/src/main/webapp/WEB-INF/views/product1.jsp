@@ -57,7 +57,7 @@ footer .glyphicon {
 table, th, td, tr {
 	border: 2px solid grey;
 	border-collapse: collapse;
-	padding: 15px;
+	padding-left: 50%
 }
 </style>
 </head>

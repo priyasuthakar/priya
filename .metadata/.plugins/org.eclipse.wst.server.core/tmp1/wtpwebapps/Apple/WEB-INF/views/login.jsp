@@ -89,8 +89,8 @@ footer .glyphicon {
 		<font face="Harlow Solid Italic"><h1>Sign-in</h1></font> <br> <br>
 		<br> <br> <br> <br>
 		<div class="container">
-			<form action="login" method="post" commandName="user"
-				class="form-horizontal" role="form">
+			<form action="login" method="post" class="form-horizontal"
+				role="form">
 				<center>
 					<div class="form-group">
 						<label class="col-lg-4 control-label">User Name</label>

@@ -365,7 +365,11 @@ footer .glyphicon {
 
 		<script>
 			function myFunction() {
-				confirm("Press ok to submit!");
+				  var x = confirm("Are you sure you want to submit the details?");
+			      if (x)
+			          return true;
+			      else
+			        return false;
 			}
 		</script>
 

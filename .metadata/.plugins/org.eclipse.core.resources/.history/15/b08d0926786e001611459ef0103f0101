@@ -1,0 +1,57 @@
+package com.niit.Apple.controller;
+
+import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.niit.appleproduct.dao.CartDAO;
+import com.niit.appleproduct.dao.ProductDAO;
+import com.niit.appleproduct.models.Cart;
+import com.niit.appleproduct.models.Product;
+import com.niit.appleproduct.models.User;
+
+@Controller
+public class CartController {
+	@Autowired
+	private CartDAO cartDAO;
+	@Autowired
+	private Product product;
+	@Autowired
+	private Cart cart;
+	@Autowired
+	private User user;
+	@Autowired
+	private ProductDAO productDAO;
+			
+	@RequestMapping("/cart{id}")
+	public String  cart(@PathVariable("id") int id,HttpSession session,Model model) {
+	   Product product = productDAO.get(id); 
+	   	Cart cart=new Cart();
+		cart.setPrice(product.getPrice());
+		cart.setPname(product.getName());
+		cart.setQuantity("1");
+		String loggedInUser=(String) session.getAttribute("loggedInUser");
+		cart.setUsername(loggedInUser);
+		cartDAO.saveOrUpdate(cart);
+		return "/viewcart";
+	}
+	
+	@RequestMapping(value="/viewcart")
+	public String viewcart(Model model,HttpSession session){
+		model.addAttribute("cart",new Cart());
+		String loggedInUser= (String) session.getAttribute("loggedInUser");
+        model.addAttribute("cartList", this.cartDAO.list(loggedInUser));
+		model.addAttribute("totalsize", cartDAO.getTotalsize(loggedInUser));
+		model.addAttribute("CartList", "CART LIST");
+		return "viewcart";
+	}
+	
+	@RequestMapping("/del{id}")
+	public String deletecart(@PathVariable("id") int id) {
+		cartDAO.delete(id);
+		return "redirect:/viewcart";
+	}
+	}

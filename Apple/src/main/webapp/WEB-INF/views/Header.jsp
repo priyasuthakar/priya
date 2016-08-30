@@ -44,9 +44,7 @@
 						class="glyphicon glyphicon-earphone"></span>Contact Us</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="cart"><span
-						class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
-				<c:choose>
+					<c:choose>
 					<c:when test="${empty loggedInUser}">
 						<li><a href="login"><span
 								class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -54,6 +52,8 @@
 								Sign Up</a></li>
 					</c:when>
 					<c:when test="${not empty loggedInUser}">
+					<li><a href="viewcart"><span
+							class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
 						<li><a href="logout"><span
 								class="glyphicon glyphicon-user"></span> Logout</a></li>
 					</c:when>
@@ -63,4 +63,4 @@
 		</nav>
 	</div>
 </body>
-</html> 
+</html>

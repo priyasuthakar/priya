@@ -21,8 +21,9 @@ public class ProductDAOimp implements ProductDAO {
 
 	@Transactional
 	public void saveOrUpdate(Product product) {
-		System.out.println(product.getId());
+		
 		sessionFactory.getCurrentSession().saveOrUpdate(product);
+		System.out.println(product.getId());
 	}
 	
 	@Transactional

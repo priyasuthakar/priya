@@ -14,8 +14,8 @@ public class CartTest {
 		Cart cart = (Cart) context.getBean("cart");
 		cart.setId(0);
 		cart.setPname("f");
-		cart.setQuantity(4);
-		cart.setTotal(null);
+		cart.setQuantity("0");
+		cart.setTotalsize("5456");
 		
 		cartDAO.saveOrUpdate(cart);
 		

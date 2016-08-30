@@ -1,0 +1,64 @@
+package com.niit.appleproduct.models;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Table
+@Entity
+@Component("cart")
+public class Cart {
+
+
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	private String Totalsize;
+	private String quantity;
+	private String pname;
+	private String username;
+	private int price;
+	@Id
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public String getTotalsize() {
+		return Totalsize;
+	}
+	public void setTotalsize(String totalsize) {
+		Totalsize = totalsize;
+	}
+	public String getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
+	}
+	public String getPname() {
+		return pname;
+	}
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	
+}

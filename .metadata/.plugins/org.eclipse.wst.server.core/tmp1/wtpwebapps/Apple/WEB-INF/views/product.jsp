@@ -113,7 +113,7 @@ footer .glyphicon {
 						<spring:message text="Price" />
 					</form:label>
 					<div class="col-lg-4 ">
-						<form:input path="price" class="form-control"
+						<form:input type="number" path="price" class="form-control"
 							placeholder="Enter price" />
 						<form:errors style="color:red" path="price" />
 					</div>
@@ -148,7 +148,7 @@ footer .glyphicon {
 					</form:label>
 					<div class="col-lg-4 ">
 						<form:select path="sup.name" items="${supplierList}"
-							itemValue="name" itemLabel="name" class="form-control"
+							itemLabel="name" itemValue="name" class="form-control"
 							placeholder="Enter supplier" />
 					</div>
 				</div>
@@ -159,8 +159,8 @@ footer .glyphicon {
 						<spring:message text="DISCRIPTION" />
 					</form:label>
 					<div class="col-lg-4 ">
-						<form:input path="discription" class="form-control"
-							placeholder="Enter discription" />
+						<form:textarea type="text" rows="6" max="500" path="discription"
+							class="form-control" placeholder="Enter discription" />
 						<form:errors style="color:red" path="discription" />
 					</div>
 				</div>
@@ -178,11 +178,16 @@ footer .glyphicon {
 		</div>
 		<script>
 function myFunction() {
-    confirm("Press ok to submit!");
+	  var x = confirm("Are you sure you want to add the product?");
+      if (x)
+          return true;
+      else
+        return false;
+
 }
 </script>
 		<br> <br>
 	</center>
 	<%@include file="Footer.jsp"%>
 </body>
-</html> 
+</html>

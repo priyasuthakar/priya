@@ -21,33 +21,24 @@ public class SupplierDAOimp implements SupplierDAO {
 	}
 
 	@Transactional
-	public Supplier getByName(String name)
-	{
-		String hql="from Supplier where name  =" + "'" + name + "'";
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);	
-		@SuppressWarnings("unchecked")
-		List<Supplier> listSupplier = query.list();		
-		if(listSupplier!= null && !listSupplier.isEmpty()) {
-			return listSupplier.get(0);			
-		}
-		return null;
-	}
-	
-	@Transactional
 	public void saveOrUpdate(Supplier supplier) {
 		sessionFactory.getCurrentSession().saveOrUpdate(supplier);
 	}
 	
-	/*@Transactional
-	public void save(Supplier supplier)
-	{
-		sessionFactory.getCurrentSession().save(supplier);
-	}*/
-
 	@Transactional
-	public void update(Supplier supplier)
+	public Supplier getByName(String name)
 	{
-		sessionFactory.getCurrentSession().update(supplier);
+		String hql="from Supplier where name  =" + "'" + name + "'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+				
+		@SuppressWarnings("unchecked")
+		List<Supplier> listSupplier = query.list();
+		
+		if(listSupplier!= null && !listSupplier.isEmpty()) {
+			return listSupplier.get(0);
+			
+		}
+		return null;
 	}
 
 	@Transactional
@@ -61,10 +52,8 @@ public class SupplierDAOimp implements SupplierDAO {
 	public Supplier get(int id) {
 		String hql = "from Supplier where id= '" + id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		
 		@SuppressWarnings("unchecked")
 		List<Supplier> listSupplier = query.list();
-
 		if (listSupplier != null && !listSupplier.isEmpty()) {
 			return listSupplier.get(0);
 		}

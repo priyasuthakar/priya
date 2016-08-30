@@ -12,13 +12,15 @@ import org.springframework.stereotype.Component;
 @Table(name = "BUY")
 @Component
 public class Buy {
-	@Id
+
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id=0;
 	private String no;
 	private String my;
 	private String name;
 	private String cvv;
+	private String username;
+	@Id
 	public int getId() {
 		return id;
 	}
@@ -49,8 +51,11 @@ public class Buy {
 	public void setCvv(String cvv) {
 		this.cvv = cvv;
 	}
-	
-	
-	
-	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+		
 }

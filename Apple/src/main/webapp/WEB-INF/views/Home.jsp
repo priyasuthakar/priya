@@ -223,8 +223,6 @@ footer .glyphicon {
 							class="glyphicon glyphicon-earphone"></span>Contact Us</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="cart"><span
-							class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
 					<c:choose>
 						<c:when test="${empty loggedInUser}">
 							<li><a href="login"><span
@@ -233,6 +231,8 @@ footer .glyphicon {
 									Sign Up</a></li>
 						</c:when>
 						<c:when test="${not empty loggedInUser}">
+						<li><a href="viewcart"><span
+							class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
 							<li><a href="logout"><span
 									class="glyphicon glyphicon-user"></span> Logout</a></li>
 						</c:when>
@@ -267,7 +267,8 @@ footer .glyphicon {
 						<img src=<c:url value="/resource/images/desktop.jpg"/>
 							style="height: 420px" class="img-responsive" alt="Desktop">
 						<div class="carousel-caption">
-							<a href="product1" data-toggle="tooltip" title="Desktop!">Desktop</a>
+							<a href="product1?catname=Desktop" data-toggle="tooltip"
+								title="Desktop!">Desktop</a>
 						</div>
 					</div>
 
@@ -275,7 +276,8 @@ footer .glyphicon {
 						<img src=<c:url value="/resource/images/laptop.jpg"/>
 							style="height: 420px" class="img-responsive" alt="Laptop">
 						<div class="carousel-caption">
-							<a href="product1" data-toggle="tooltip" title="Laptop!">Laptop</a>
+							<a href="product1?catname=Laptop" data-toggle="tooltip"
+								title="Laptop!">Laptop</a>
 						</div>
 					</div>
 
@@ -283,7 +285,8 @@ footer .glyphicon {
 						<img src=<c:url value="/resource/images/iphone.jpg"/>
 							style="height: 420px" class="img-responsive" alt="IPhone">
 						<div class="carousel-caption">
-							<a href="product1" data-toggle="tooltip" title="Iphone!">Iphone</a>
+							<a href="product1?catname=Iphone" data-toggle="tooltip"
+								title="Iphone!">Iphone</a>
 						</div>
 					</div>
 
@@ -291,7 +294,8 @@ footer .glyphicon {
 						<img src=<c:url value="/resource/images/ipad.jpg"/>
 							style="height: 420px" class="img-responsive" alt="IPad">
 						<div class="carousel-caption">
-							<a href="product1" data-toggle="tooltip" title="Ipad!">Ipad</a>
+							<a href="product1?catname=Ipad" data-toggle="tooltip"
+								title="Ipad!">Ipad</a>
 						</div>
 					</div>
 
@@ -299,14 +303,16 @@ footer .glyphicon {
 						<img src=<c:url value="/resource/images/ipod.jpg"/>
 							style="height: 420px" class="img-responsive" alt="IPod">
 						<div class="carousel-caption">
-							<a href="product1" data-toggle="tooltip" title="Ipod!">Ipod</a>
+							<a href="product1?catname=Ipod" data-toggle="tooltip"
+								title="Ipod!">Ipod</a>
 						</div>
 					</div>
 					<div class="item">
 						<img src=<c:url value="/resource/images/accesories.jpg"/>
 							style="height: 420px" class="img-responsive" alt="Accesories">
 						<div class="carousel-caption">
-							<a href="product1" data-toggle="tooltip" title="Accesories!">Accesories</a>
+							<a href="product1?catname=Accessories" data-toggle="tooltip"
+								title="Accessories!">Accessories</a>
 						</div>
 					</div>
 				</div>

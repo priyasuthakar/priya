@@ -1,8 +1,6 @@
 package com.niit.appleproduct.dao;
 
 import java.util.List;
-
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,16 +41,14 @@ public class BuyDAOimp implements BuyDAO {
 		buy.setId(id);
 		sessionFactory.getCurrentSession().delete(buy);
 	}
-
+	
 	@Transactional
-	public List<Buy> list() {
-
+	public List<Buy> list(String loggedInUser) {
+		String hql="from Buy where username  =" + "'" + loggedInUser + "'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
-		List<Buy> listBuy = (List<Buy>) sessionFactory.getCurrentSession()
-		.createCriteria(Buy.class)
-				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
-		return listBuy;
-
+		List<Buy> listBuy = query.list();
+			return listBuy;
 	}
 
 }

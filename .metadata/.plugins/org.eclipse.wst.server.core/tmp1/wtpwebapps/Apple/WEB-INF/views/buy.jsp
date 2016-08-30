@@ -5,7 +5,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page session="false"%>
 <%@page isELIgnored="false"%>
-<%@include file="Header.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -81,14 +80,7 @@ footer .glyphicon {
 
 </head>
 <body>
-<c:choose>
-						<c:when test="${empty loggedInUser}">
-							<a href="login"></a>
-						</c:when>
-						<c:when test="${not empty loggedInUser}">
-							<a href="buy"></a>
-						</c:when>
-					</c:choose>
+	<%@include file="Header.jsp"%>
 	<center>
 		<font face="Harlow Solid Italic"><h1>Card Details</h1></font>
 		<div class="container">
@@ -107,38 +99,51 @@ footer .glyphicon {
 				<br>
 				<br>
 				<div class="form-group">
-				<form:label class="col-lg-4 control-label" path="my">
-					<spring:message text="Month and Year" />
-				</form:label>
-				<div class="col-lg-4 ">
-					<form:input type="number" path="my" class="form-control"
-						placeholder="Enter month and year" required="true"
-						title="should not be empty" />
+					<form:label class="col-lg-4 control-label" path="my">
+						<spring:message text="Month and Year" />
+					</form:label>
+					<div class="col-lg-4 ">
+						<form:input type="number" path="my" class="form-control"
+							placeholder="Enter month and year" required="true"
+							title="should not be empty" />
+					</div>
 				</div>
+				<br>
+				<br>
+				<div class="form-group">
+					<form:label class="col-lg-4 control-label" path="name">
+						<spring:message text="Name" />
+					</form:label>
+					<div class="col-lg-4 ">
+						<form:input path="name" class="form-control"
+							placeholder="Enter name" required="true"
+							title="should not be empty" />
+					</div>
+				</div>
+				<div class="form-group">
+					<br> <br>
+					<form:label class="col-lg-4 control-label" path="cvv">
+						<spring:message text="CVV" />
+					</form:label>
+					<div class="col-lg-4 ">
+						<form:input type="number" path="cvv" class="form-control"
+							placeholder="Enter cvv" required="true"
+							title="should not be empty" />
+					</div>
+				</div>
+				<br>
+				<br>
+				<div>
+					<a href="proceded"><form:button type="submit"
+							class="btn btn-success">
+							<spring:message text="Proceed" />
+						</form:button></a>
+					<form:button type="reset" class="btn btn-info">
+						<spring:message text="Reset" />
+					</form:button>
+				</div>
+			</form:form>
 		</div>
-		<br> <br>
-		<div class="form-group">
-		<form:label class="col-lg-4 control-label" path="name">
-			<spring:message text="Name" />
-		</form:label>
-		<div class="col-lg-4 ">
-			<form:input path="name" class="form-control" placeholder="Enter name"
-				required="true" title="should not be empty" />
-		</div>
-		</div>
-		<div class="form-group">
-		<br> <br>
-		<form:label class="col-lg-4 control-label" path="cvv">
-			<spring:message text="CVV" />
-		</form:label>
-		<div class="col-lg-4 ">
-			<form:input type="number" path="cvv" class="form-control" placeholder="Enter cvv" 
-				required="true" title="should not be empty" />
-		</div>
-		</div>
-		<br> <br>
-
-		</form:form>
-		</div>
+	</center>
 </body>
-</html> 
+</html>

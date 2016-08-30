@@ -21,14 +21,14 @@ import org.springframework.web.multipart.MultipartFile;
 @Component
 public class Product {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	@Size (min=4,message="The field must be atleast 3 characters!")
 	private String name;
-	@Range(min=1000,max=100000,message="Price should not be less than 1000!")
+	@Range(min=500,max=2000000,message="Price should not be less than 1000!")
 	private String price;
 	private String color;
-	@Length(min =5,max=25, message = "The field must be between 3 and 25 characters long!")
+	@Length(min =3,message = "The field must be minimum 3 characters long!")
 	private String discription;
 
 	@Transient	
@@ -78,7 +78,7 @@ public class Product {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-
+	
 	public String getColor() {
 		return color;
 	}

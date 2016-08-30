@@ -76,10 +76,9 @@ table {
 	<div class="container">
 		<c:forEach items="${productinfo}" var="product">
 			<div class="col-sm-6">
-				<br> <br> <br> <br> <br>
+				<br> <br> <br> <br> 
 				<div class="item">
-					<img src="resource/images/${product.id}.jpg" width=300; height=300;
-						class="img-responsive">
+					<img src="resource/images/${product.id}.jpg" style="height: 350px" class="img-responsive" >
 				</div>
 			</div>
 			<div class="col-sm-6">
@@ -94,14 +93,20 @@ table {
 				${product.price} <br> <br> <b>DISCRIPTION
 					:&nbsp&nbsp&nbsp</b> ${product.discription} <br> <br> <br>
 				<br>
-				<button onclick="myFunction()" class="btn btn-success">BUY NOW
-				</button>
-				<button onclick="myFunction1()" class="btn btn-success">ADD TO CART</button>
+				<br> <br> <a href="buy"><button onclick="myFunction()"
+						class="btn btn-success">BUY NOW</button></a>
+				<a href="<c:url value= '/cart${product.id}'/>"><button onclick="myFunction1()" class="btn btn-success">ADD
+					TO CART</button></a>
 				<script>
 			function myFunction() {
-				confirm("Press ok to buy a product!");
-			}
-		</script><script>
+				  var x = confirm("Are you sure you want to buy?");
+			      if (x)
+			          return true;
+			      else
+			        return false;
+	}
+		</script>
+				<script>
 			function myFunction1() {
 				confirm("Press ok to add the item to cart!");
 			}

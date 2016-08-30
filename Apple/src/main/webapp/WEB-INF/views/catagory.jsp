@@ -123,7 +123,12 @@ footer .glyphicon {
 		</div>
 		<script>
 			function myFunction() {
-				confirm("Press ok to submit!");
+				  var x = confirm("Are you sure you want to add the catagory?");
+			      if (x)
+			          return true;
+			      else
+			        return false;
+
 			}
 		</script>
 		<br> <br>

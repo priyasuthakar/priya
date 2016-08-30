@@ -276,4 +276,4 @@ footer .glyphicon {
 	<%@include file="Footer.jsp"%>
 
 </body>
-</html> 
+</html>

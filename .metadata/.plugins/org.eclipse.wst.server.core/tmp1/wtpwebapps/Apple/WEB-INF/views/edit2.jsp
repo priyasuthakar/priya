@@ -1,4 +1,5 @@
- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -120,7 +121,7 @@ footer .glyphicon {
 						<spring:message text="Price" />
 					</form:label>
 					<div class="col-lg-4 ">
-						<form:input path="price" class="form-control"
+						<form:input type="number" path="price" class="form-control"
 							placeholder="Enter price" />
 						<form:errors style="color:red" path="price" />
 					</div>
@@ -137,13 +138,14 @@ footer .glyphicon {
 				</div>
 				<br>
 				<br>
+
 				<div class="form-group">
 					<form:label class="col-lg-4 control-label" path="discription">
 						<spring:message text="DISCRIPTION" />
 					</form:label>
 					<div class="col-lg-4 ">
-						<form:input path="discription" class="form-control"
-							placeholder="Enter discription" />
+						<form:textarea type="text" rows="6" max="500" path="discription"
+							class="form-control" placeholder="Enter discription" />
 						<form:errors style="color:red" path="discription" />
 					</div>
 				</div>
@@ -165,4 +167,4 @@ footer .glyphicon {
 	</center>
 	<%@include file="Footer.jsp"%>
 </body>
-</html> 
+</html>

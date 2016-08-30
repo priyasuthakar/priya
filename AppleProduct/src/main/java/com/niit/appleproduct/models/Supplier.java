@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Supplier {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	@Size (min=4,message="The field must be atleast 4 characters!")
 	private String name;
